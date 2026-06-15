@@ -1,0 +1,84 @@
+{
+  "company": {
+    "name": "ProJenius Innovation Technology Private Limited",
+    "shortName": "ProJenius",
+    "location": "Madurai, Tamil Nadu, India",
+    "primaryPhone": "+91 89254 50473",
+    "whatsappPhone": "+91 89254 50473",
+    "email": "teamprojenius2025@gmail.com",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=ProJenius%20Innovation%20Technology%20Madurai%20Tamil%20Nadu%20India"
+  },
+  "leadership": [
+    {
+      "name": "Harshini M",
+      "role": "CEO and Co-Founder"
+    },
+    {
+      "name": "Karthick Ganesh M",
+      "role": "Founder and COO"
+    }
+  ],
+  "team": [
+    {
+      "name": "Hariharan S",
+      "role": "Full Stack Developer"
+    },
+    {
+      "name": "Balaji J",
+      "role": "Video Editor"
+    },
+    {
+      "name": "Kanimozhi B",
+      "role": "IoT Engineer"
+    }
+  ],
+  "services": [
+    "Web Development",
+    "Digital Marketing",
+    "UI/UX Design",
+    "IoT Solutions",
+    "Software Training",
+    "Startup Support",
+    "AI and Smart Solutions",
+    "Cloud and IoT Integration",
+    "Product Development",
+    "Project Development"
+  ],
+  "courses": [
+    "React Development",
+    "UI/UX Designing",
+    "Python Programming",
+    "IoT Development",
+    "Digital Marketing",
+    "Data Analytics"
+  ],
+  "internship": {
+    "durations": ["1 Month", "3 Months", "6 Months"],
+    "modes": ["Online", "Offline", "Hybrid"],
+    "eligibility": ["Students", "Freshers", "Career switchers"],
+    "domains": [
+      "Full Stack Development",
+      "Frontend Development",
+      "Backend Development",
+      "React JS",
+      "Python Development",
+      "Java Development",
+      "AI and Machine Learning",
+      "Data Science",
+      "IoT Development",
+      "Blockchain Development",
+      "UI/UX Design",
+      "Mobile App Development"
+    ],
+    "benefits": [
+      "Internship Certificate",
+      "Project Completion Certificate",
+      "Letter of Recommendation",
+      "Placement Assistance",
+      "Mentorship from Experts",
+      "Resume Building Support",
+      "LinkedIn Profile Optimization"
+    ]
+  },
+  "fallback": "I do not have that exact detail right now. Please contact our team at +91 89254 50473, and we will guide you with the correct information."
+}

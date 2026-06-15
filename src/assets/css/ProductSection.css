@@ -1,0 +1,131 @@
+.tabs-section {
+  background: #ffffff;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.tabs-section .heading {
+      text-align: center;
+    margin-bottom: 22px;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.tab-btn {
+  padding: 14px 30px;
+  border: 1px solid #dbe4f0;
+  border-radius: 50px;
+  background: #f4f7fb;
+  color: #0f172a;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.4s ease;
+}
+
+.tab-btn:hover {
+  background: #0ea5e9;
+  color: #ffffff;
+  border-color: #0ea5e9;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #00bfff, #52d6ff);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 10px 25px rgba(16, 201, 255, 0.2);
+}
+
+.tabs-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+}
+
+.tabs-image img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.tabs-text h2 {
+  color: #0f172a;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.tabs-text p {
+  color: #64748b;
+  line-height: 1.9;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.explore-btn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #00bfff, #52d6ff);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.explore-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(101, 84, 255, 0.25);
+}
+
+@media (max-width: 991px) {
+  .tabs-content {
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+
+  .tabs-text h2 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 767px) {
+  .tabs-section {
+    padding: 60px 15px;
+  }
+
+  .tabs-content {
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .tabs-image img {
+    height: 300px;
+  }
+
+  .tabs-text h2 {
+    font-size: 28px;
+  }
+
+  .tab-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

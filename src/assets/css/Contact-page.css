@@ -1,0 +1,202 @@
+.header-wrap {
+    background-image: linear-gradient(#1219297d), url('images/projenius-banner.webp');
+}
+
+.contact-main-section{
+    background: #fff;
+    padding: 100px 0;
+    position: relative;
+}
+
+.contact-info-box{
+    color: #06142d;
+}
+
+.section-tag{
+    color: #22d3ee;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-info-box h2{
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 15px;
+}
+
+.contact-info-box p{
+    color: #5b6475;
+    line-height: 1.9;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.contact-detail-item{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.contact-icon{
+    width: 62px;
+    height: 62px;
+    background: #f3f7fb;
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #22d3ee;
+    font-size: 22px;
+}
+
+.contact-detail-item h5{
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.contact-detail-item span{
+    color: #5b6475;
+}
+.contact-detail-item span a{
+    color: #5b6475;
+    text-decoration: none;
+}
+
+/* FORM */
+
+.contact-form-wrapper{
+    background: #fff;
+    border-radius: 30px;
+    padding: 45px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    border: 1px solid #edf2f7;
+}
+
+.contact-form-wrapper h3{
+    font-size: 34px;
+    font-weight: 700;
+    color: #06142d;
+    margin-bottom: 30px;
+}
+
+.custom-contact-input{
+    height: 60px;
+    border-radius: 16px;
+    border: 1px solid #dbe4ef;
+    padding: 15px 20px;
+    box-shadow: none !important;
+}
+
+textarea.custom-contact-input{
+    height: auto;
+}
+
+.custom-contact-input:focus{
+    border-color: #22d3ee;
+}
+
+
+
+/* MAP */
+
+.map-section{
+    background: #fff;
+    padding-bottom: 100px;
+}
+
+.map-wrapper{
+    overflow: hidden;
+    border-radius: 30px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+/* FAQ */
+
+.faq-main-section{
+    background: #fff;
+    padding: 100px 0;
+}
+
+.faq-title-wrap h2{
+    font-size: 48px;
+    font-weight: 700;
+    color: #06142d;
+    margin-top: 12px;
+    margin-bottom: 50px;
+}
+
+.custom-faq .accordion-item{
+    border: none;
+    border-radius: 20px !important;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+}
+
+.custom-faq .accordion-button{
+    padding: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: none !important;
+    background: #fff;
+    color: #06142d;
+}
+
+.custom-faq .accordion-button:not(.collapsed){
+    background: #06142d;
+    color: #fff;
+}
+
+.custom-faq .accordion-body{
+    padding: 25px;
+    color: #5b6475;
+    line-height: 1.9;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+    .contact-page-title{
+        font-size: 42px;
+    }
+
+    .contact-info-box h2,
+    .faq-title-wrap h2{
+        font-size: 36px;
+    }
+
+    .contact-form-wrapper{
+        padding: 30px;
+    }
+
+}
+
+@media(max-width:767px){
+
+    .contact-page-title{
+        font-size: 34px;
+    }
+
+    .contact-banner-content{
+        padding-top: 100px;
+    }
+
+    .contact-info-box h2,
+    .faq-title-wrap h2{
+        font-size: 30px;
+    }
+
+    .contact-form-wrapper h3{
+        font-size: 28px;
+    }
+
+}

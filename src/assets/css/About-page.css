@@ -1,0 +1,835 @@
+/* =========================================
+   ABOUT SECTION - 1
+========================================= */
+
+.about-1 {
+    overflow: hidden;
+    background: #ffffff;
+    padding: 80px 0;
+}
+
+.about-1 .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-1 .circle-container {
+    position: relative;
+    width: 420px;
+    height: 420px;
+}
+
+/* Circles */
+
+.about-1 .circle {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.about-1 .circle span {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.4;
+    font-family: "Outfit", sans-serif;
+}
+
+/* Circle 1 */
+
+.about-1 .circle-development {
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    border: 2px solid #121929;
+}
+
+.about-1 .circle-development span {
+    color: #121929;
+}
+
+/* Circle 2 */
+
+.about-1 .circle-webdesign {
+    top: 110px;
+    left: 110px;
+    background: #121929;
+}
+
+.about-1 .circle-webdesign span {
+    color: #ffffff;
+}
+
+/* Circle 3 */
+
+.about-1 .circle-mobileapps {
+    top: 220px;
+    left: 220px;
+    background: #66c7dd;
+}
+
+.about-1 .circle-mobileapps span {
+    color: #121929;
+}
+
+/* Content */
+
+.about-1 p.desc {
+    font-size: 18px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.about-1 ul.icon-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-1 li.list {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.about-1 li.list i {
+    color: #66c7dd;
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+/* Button */
+
+
+
+/* =========================================
+   ABOUT SECTION - 2
+========================================= */
+
+.about-2 {
+    background-image: linear-gradient(#12192940), url(/images/projenius-banner-1.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    min-height: 550px;
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    margin-bottom: 50px;
+    transition: background-image 0.7s ease, filter 0.7s ease;
+}
+
+.about-2 .box-content {
+    padding: 35px 30px;
+    background-color: #66c7dd;
+    border-radius: 20px;
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    width: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.about-2 .counter-number {
+    font-size: 52px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+    font-family: "Outfit", sans-serif;
+}
+
+.about-2 .counter-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 12px;
+    font-family: "Outfit", sans-serif;
+}
+
+.about-2 .counter-description {
+    font-size: 17px;
+    line-height: 28px;
+    color: #111;
+    margin-bottom: 0;
+    font-family: "Outfit", sans-serif;
+}
+
+/* =========================================
+   ABOUT SECTION - 3
+========================================= */
+
+.about-3 img.why-img {
+    width: 100%;
+    border-radius: 20px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.about-3 .why-right {
+    padding-left: 54px;
+}
+
+.about-3 .icon-box {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+.about-3 .icon {
+    width: 64px;
+    height: 64px;
+    background-color: #66c7dd;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+
+.about-3 .icon i {
+    font-size: 24px;
+}
+
+.about-3 .icon-box:hover .icon {
+    background-color: #121929;
+    color: #ffffff;
+    transform: rotateY(180deg);
+}
+
+.about-3 h3.icon-box-heading {
+    font-weight: 600;
+}
+
+.about-3 p.section-desc {
+    font-size: 18px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   ABOUT SECTION - 4
+========================================= */
+
+.about-4 {
+    background-color: #E8F7FA;
+}
+
+.about-4 .img-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-4 .img-mag {
+    max-width: 100%;
+}
+
+.about-4 p.section-desc {
+    font-size: 18px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+
+
+/* =========================================
+   AWARDS SECTION
+========================================= */
+
+.awards-section {
+    background: #121929;
+    transform-origin: center top;
+}
+
+.awards-section #sub-heading {
+    color: #66c7dd;
+}
+
+.awards-section .section-title,
+.awards-section .awards-desc {
+    color: #ffffff;
+}
+
+.awards-section[data-aos="zoom-in-up"] {
+    opacity: 0;
+    transform: perspective(900px) rotateX(-12deg) translateY(40px) scale(0.96);
+    transition-property: opacity, transform;
+}
+
+.awards-section[data-aos="zoom-in-up"].aos-animate {
+    opacity: 1;
+    transform: perspective(900px) rotateX(0deg) translateY(0) scale(1);
+}
+
+.awards-section .awards-desc {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+.awards-masonry {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.award-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    margin-bottom: 20px;
+    break-inside: avoid;
+    cursor: pointer;
+}
+
+.award-item img {
+    width: 100%;
+    display: block;
+    border-radius: 24px;
+    transition: transform 0.5s ease;
+}
+
+.award-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(18, 25, 41, 0.92),
+            rgba(18, 25, 41, 0.15));
+    opacity: 0;
+    transition: 0.4s ease;
+    z-index: 1;
+}
+
+.award-content {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    right: 20px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+}
+
+.award-title {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: "Outfit", sans-serif;
+}
+
+.award-subtitle {
+    color: #f5f5f5;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+.award-item:hover img {
+    transform: scale(1.08);
+}
+
+.award-item:hover::before {
+    opacity: 1;
+}
+
+.award-item:hover .award-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1199px) {
+
+    .about-1 .circle-container {
+        width: 360px;
+        height: 360px;
+    }
+
+    .about-1 .circle {
+        width: 160px;
+        height: 160px;
+    }
+
+    .about-1 .circle-webdesign {
+        top: 100px;
+        left: 100px;
+    }
+
+    .about-1 .circle-mobileapps {
+        top: 200px;
+        left: 200px;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .about-1,
+    .about-3,
+    .about-4 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .about-1 .wrapper {
+        margin-bottom: 50px;
+    }
+
+    .about-1 .circle-container {
+        width: 320px;
+        height: 320px;
+    }
+
+    .about-1 .circle {
+        width: 140px;
+        height: 140px;
+    }
+
+    .about-1 .circle-webdesign {
+        top: 90px;
+        left: 90px;
+    }
+
+    .about-1 .circle-mobileapps {
+        top: 180px;
+        left: 180px;
+    }
+
+    .about-3 .why-right {
+        padding-left: 0;
+        margin-top: 40px;
+    }
+
+    .about-2 {
+        min-height: auto;
+        padding: 40px 20px 220px;
+    }
+
+    .about-2 .box-content {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .awards-masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .about-1 {
+        padding: 50px 15px;
+    }
+
+    .about-1 .circle-container {
+        width: 260px;
+        height: 260px;
+    }
+
+    .about-1 .circle {
+        width: 115px;
+        height: 115px;
+        padding: 10px;
+    }
+
+    .about-1 .circle span {
+        font-size: 13px;
+    }
+
+    .about-1 .circle-webdesign {
+        top: 70px;
+        left: 70px;
+    }
+
+    .about-1 .circle-mobileapps {
+        top: 140px;
+        left: 140px;
+    }
+
+    .about-1 p.desc,
+    .about-3 p.section-desc,
+    .about-4 p.section-desc,
+    .awards-section .awards-desc {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .about-1 .btn,
+    .about-4 .btn {
+        width: 100%;
+    }
+
+    .about-2 {
+        padding: 20px 15px;
+    }
+
+    .about-2 .box-content {
+        position: relative;
+        width: 100%;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin-top: 220px;
+    }
+
+    .about-2 .col-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .awards-masonry {
+        column-count: 1;
+    }
+
+    .award-title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .about-1 .circle-container {
+        width: 220px;
+        height: 220px;
+    }
+
+    .about-1 .circle {
+        width: 95px;
+        height: 95px;
+    }
+
+    .about-1 .circle span {
+        font-size: 11px;
+    }
+
+    .about-1 .circle-webdesign {
+        top: 60px;
+        left: 60px;
+    }
+
+    .about-1 .circle-mobileapps {
+        top: 120px;
+        left: 120px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        line-height: 1.4;
+    }
+
+    .award-title {
+        font-size: 18px;
+    }
+
+    .award-subtitle {
+        font-size: 13px;
+    }
+}
+/* =========================================
+   EXTRA RESPONSIVE FIXES
+========================================= */
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ABOUT 1 */
+
+.about-1 .container,
+.about-2.container,
+.about-3.container {
+    width: 100%;
+}
+
+.about-1 .wrapper {
+    width: 100%;
+}
+
+.about-1 .circle-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Prevent zoom overlap */
+
+@media (min-width: 1400px) {
+
+    .about-1 .circle-container {
+        width: 480px;
+        height: 480px;
+    }
+
+    .about-1 .circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-1 .circle-webdesign {
+        top: 130px;
+        left: 130px;
+    }
+
+    .about-1 .circle-mobileapps {
+        top: 260px;
+        left: 260px;
+    }
+
+    .about-1 p.desc,
+    .about-3 p.section-desc {
+        max-width: 95%;
+    }
+}
+
+/* ABOUT 2 */
+
+.about-2 {
+    width: 100%;
+}
+
+.about-2 .row {
+    row-gap: 25px;
+}
+
+.about-2 .box-content {
+    max-width: 100%;
+}
+
+.about-2 .counter-number {
+    word-break: break-word;
+}
+
+/* ABOUT 3 */
+
+.about-3 .row {
+    align-items: center;
+}
+
+.about-3 .icon-box {
+    width: 100%;
+}
+
+.about-3 .icon {
+    flex-shrink: 0;
+}
+
+.about-3 .icon-box-heading {
+    font-size: clamp(20px, 2vw, 26px);
+}
+
+.about-3 .icon-box-desc {
+    font-size: clamp(14px, 1.3vw, 17px);
+    line-height: 1.8;
+}
+
+/* AWARDS */
+
+.awards-section .container {
+    overflow: hidden;
+}
+
+.award-item img {
+    object-fit: cover;
+}
+
+/* LAPTOP ZOOM FIX */
+
+@media (max-width: 1366px) and (min-width: 992px) {
+
+    .about-2 .box-content {
+        width: auto;
+        left: 30px;
+        right: 30px;
+    }
+
+    .about-3 .why-right {
+        padding-left: 30px;
+    }
+
+    .about-3 .icon-box {
+        padding: 18px;
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 991px) {
+
+    .about-3 .row {
+        row-gap: 35px;
+    }
+
+    .about-3 .icon-box {
+        padding: 18px;
+    }
+
+    .about-2 {
+        border-radius: 18px;
+    }
+
+    .about-2 .box-content {
+        border-radius: 18px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+    .header-wrap {
+        background-position: center;
+    }
+
+    .title-section {
+        text-align: center;
+        padding: 80px 15px;
+    }
+
+    .about-1 {
+        text-align: center;
+    }
+
+    .about-1 li.list {
+        justify-content: center;
+        text-align: left;
+    }
+
+    .about-1 .btn {
+        margin-top: 10px;
+    }
+
+    .about-2 {
+        margin-bottom: 30px;
+        border-radius: 16px;
+    }
+
+    .about-2 .box-content {
+        margin-top: 180px;
+        padding: 25px 20px;
+    }
+
+    .about-2 .counter-number {
+        font-size: 38px;
+    }
+
+    .about-2 .counter-title {
+        font-size: 20px;
+    }
+
+    .about-3 {
+        padding-top: 20px !important;
+    }
+
+    .about-3 .icon-box {
+        text-align: left;
+    }
+
+    .about-3 .icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    .award-content {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 480px) {
+
+    .page-title {
+        font-size: 34px;
+    }
+
+    .about-1 .circle-container {
+        transform: scale(0.92);
+        transform-origin: center;
+    }
+
+    .about-2 .box-content {
+        margin-top: 150px;
+        padding: 20px 15px;
+    }
+
+    .about-3 .icon-box {
+        padding: 15px;
+        width:353px;
+    }
+
+    .award-item {
+        border-radius: 18px;
+    }
+
+    .award-item img {
+        border-radius: 18px;
+    }
+
+    a.btn.d-flex.w-50.align-item-center {
+    width: 100% !important;
+}
+}
+
+/* EXTRA SMALL DEVICES */
+
+@media (max-width: 360px) {
+
+    .about-1 .circle-container {
+        transform: scale(0.82);
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .about-2 .counter-number {
+        font-size: 32px;
+    }
+
+    .about-2 .counter-description {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .award-title {
+        font-size: 16px;
+    }
+}
+
+.about-2 .box-content{
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}

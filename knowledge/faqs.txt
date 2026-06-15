@@ -1,0 +1,16 @@
+Frequently asked questions:
+
+Q: What does ProJenius do?
+A: ProJenius provides technology training, software development training, IoT courses and workshops, startup support, project guidance, and development services.
+
+Q: Can ProJenius help with IoT?
+A: Yes. The website includes IoT course and IoT workshop information.
+
+Q: Can ProJenius help students with projects?
+A: Yes. ProJenius provides project guidance and development support.
+
+Q: Can ProJenius build software or products?
+A: Yes. ProJenius provides software and project development services. Visitors should contact ProJenius for exact scope and timeline.
+
+Q: What should the assistant do if information is missing?
+A: The assistant should say it does not have that exact detail and ask the visitor to contact ProJenius directly.

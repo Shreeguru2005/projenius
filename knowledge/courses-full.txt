@@ -1,0 +1,48 @@
+ProJenius courses and training:
+
+ProJenius offers industry-focused training, workshops, and smart learning programs with real-time projects, expert mentorship, practical workshops, and future career preparation.
+
+Popular courses listed on the website:
+- React Development: components, hooks, routing, APIs, responsive layouts, and real-time project implementation.
+- UI/UX Designing: wireframes, design systems, prototypes, creative tools, and digital experience design.
+- Python Programming: Python fundamentals, practical coding, automation projects, data handling, and beginner-friendly development concepts.
+- IoT Development: sensors, embedded systems, cloud connectivity, automation, and hardware programming.
+- Digital Marketing: SEO, social media marketing, content strategy, branding, analytics, and advertising.
+- Data Analytics: data visualization, reporting, dashboards, business insights, and analytics tools.
+
+Course details page:
+The smart learning program is titled "Building Smart Solutions With AI, IoT & Innovation." It includes modern technologies, real-time projects, expert mentorship, practical workshops, and industry-focused training.
+
+Listed course-detail topics:
+- Fundamentals of Data Science
+- Programming for Data Science
+- Machine Learning Basics
+- Cloud Computing Concepts
+- Data Analytics Techniques
+- Real-world Applications
+- Capstone Project
+- Industry Level Workshops
+
+Course-detail metadata shown on the website:
+- Lectures: 236
+- Quiz: 43
+- Duration: 4 Months
+- Skill Level: All Levels
+- Language: English
+- Students: 774
+
+Related courses shown:
+- Web Development
+- Digital Marketing
+- UI / UX Design
+- Business Consulting
+
+Training program areas:
+- Career Guidance
+- Mentoring Program
+- IoT Workshop
+- Programming Workshop
+- Future Ready training
+- Skill Growth
+- Smart Innovation
+- Coding Skills

@@ -1,0 +1,17 @@
+ProJenius products:
+
+Products shown on the website:
+- EduTech Platform: modern responsive websites with premium UI and smooth performance.
+- IoT Kit: smart AI-powered systems for automation and business growth.
+- AI-Powered Nut Sorting and Grading System: a solution connected to AI-powered sorting and grading.
+
+The product section is titled "Innovative Products for Smart Future" and says ProJenius offers innovative solutions designed to empower businesses.
+
+Projects and work showcase:
+- Helminth Egg Detection Poster: medical conference poster about helminth egg detection in dog samples, diagnosis, and zoonotic risks.
+- AI-Powered Water Health Monitoring: software project.
+- Road Hazard Detection: AI-based accident detection system with instant emergency GPS alerts and real-time response tracking.
+- Smart Waste Management: smart waste segregation using sensors for automatic wet and dry waste classification.
+- Autonomous Follower Robot: hardware project with obstacle avoidance for smart logistics and automated material transportation.
+
+The project section says ProJenius creates powerful digital experiences with modern design, innovative strategies, and professional development solutions.

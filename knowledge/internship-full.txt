@@ -1,0 +1,79 @@
+ProJenius internship program:
+
+The new website includes an Internship page at /internship.
+
+Program details:
+- Duration: 1 Month, 3 Months, or 6 Months.
+- Mode: Online, Offline, or Hybrid.
+- Type: Guided Internship Program.
+- Eligibility: Students, freshers, and career switchers.
+
+Internship domains:
+- Full Stack Development: build complete web apps with frontend, backend, APIs, and database workflows.
+- Frontend Development: create responsive interfaces with React, reusable components, and polished UI flows.
+- Backend Development: design server logic, APIs, authentication, and database-backed application features.
+- React JS: develop dynamic React pages with routing, state management, and API integration.
+- Python Development: work with Python fundamentals, automation, APIs, and practical project modules.
+- Java Development: practice object-oriented programming and build structured Java application features.
+- AI and Machine Learning: explore model building, data preparation, prediction workflows, and AI use cases.
+- Data Science: analyze datasets, visualize insights, and create portfolio-ready data projects.
+- IoT Development: connect sensors, microcontrollers, and dashboards for smart device prototypes.
+- Blockchain Development: understand decentralized app concepts, smart-contract basics, and traceability systems.
+- UI/UX Design: design user journeys, wireframes, prototypes, and clean app screens.
+- Mobile App Development: build mobile-first app screens and practical real-world app features.
+
+Internship categories:
+- Development
+- AI and Data
+- Hardware
+- Design
+- Emerging Tech
+
+Learning points:
+- Industry-Level Projects
+- Git and GitHub
+- API Integration
+- Database Management
+- Team Collaboration
+- Agile Methodology
+
+Internship benefits:
+- Internship Certificate
+- Project Completion Certificate
+- Letter of Recommendation
+- Placement Assistance
+- Mentorship from Experts
+- Resume Building Support
+- LinkedIn Profile Optimization
+
+Live projects:
+- E-Commerce Website
+- Hospital Management System
+- Student Portal
+- Blockchain Traceability System
+- AI Chatbot
+
+Technologies covered:
+- HTML
+- CSS
+- JavaScript
+- React JS
+- Node.js
+- Express.js
+- MongoDB
+- Python
+- GitHub
+- Postman
+
+Success story areas:
+- Intern Testimonials
+- Student Reviews
+- Placement Achievements
+
+Internship stats shown on the website:
+- 500+ Interns Trained
+- 100+ Projects Completed
+- 50+ Hiring Partners
+- 90% Student Satisfaction
+
+If a visitor asks how to apply for an internship, tell them to contact ProJenius through the contact page, phone, email, or WhatsApp number.

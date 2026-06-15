@@ -1,0 +1,410 @@
+.pricing-main-section {
+    padding: 80px 40px;
+    overflow: hidden;
+}
+
+.pricing-image-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 100%;
+    min-height: 620px;
+    background: #0d1122;
+}
+
+/* ── Ken Burns Slideshow ── */
+@keyframes kenBurns {
+    0%   { transform: scale(1)    translateX(0%)    translateY(0%); }
+    25%  { transform: scale(1.08) translateX(-1%)   translateY(-1%); }
+    50%  { transform: scale(1.05) translateX(1%)    translateY(1%); }
+    75%  { transform: scale(1.1)  translateX(-0.5%) translateY(0.5%); }
+    100% { transform: scale(1)    translateX(0%)    translateY(0%); }
+}
+
+.pricing-slide-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.pricing-slide-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+}
+
+.pricing-slide-bg.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.pricing-slide-bg.active img {
+    animation: kenBurns 8s ease-in-out infinite;
+}
+
+.pricing-slide-bg.prev {
+    opacity: 0;
+    z-index: 0;
+}
+
+/* Dark overlay */
+.pricing-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Dot indicators */
+.pricing-slide-dots {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 6px;
+    z-index: 5;
+}
+
+.pricing-slide-dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    transition: width 0.35s ease, background 0.35s ease, border-radius 0.35s ease;
+}
+
+.pricing-slide-dot.active {
+    width: 20px;
+    border-radius: 3px;
+    background: #66C7DD;
+}
+
+/* Overlay content — must be above slideshow layers */
+.pricing-overlay-content {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    z-index: 6;
+}
+
+
+
+.pricing-overlay-content .small-text {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.pricing-overlay-content h1 {
+    color: #fff;
+    font-size: 62px;
+    line-height: 68px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.arrow-circle {
+    width: 65px;
+    height: 65px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-top: 35px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.arrow-circle:hover {
+    background: #66c7dd;
+    border-color: #66c7dd;
+    color: #000;
+}
+
+/* =========================
+   PACKAGE CARD
+========================= */
+
+.package-card {
+    background: #071122;
+    border-radius: 20px;
+    padding: 35px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    /* Reduced Height */
+    min-height: 620px;
+}
+
+.package-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+    opacity: 0.2;
+}
+
+.package-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.package-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.thunder-icon {
+        width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #66c7dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: #000;
+    flex-shrink: 0;
+}
+
+.package-top h3 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.package-text {
+    color: #d8d8d8;
+    font-size: 17px;
+    line-height: 30px;
+    margin-bottom: 28px;
+}
+
+.package-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.package-list li {
+    color: #fff;
+    font-size: 19px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.package-list li i {
+        color: #66c7dd;
+    font-size: 21px;
+}
+
+/* =========================
+   PRICE AREA
+========================= */
+
+.price-box {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.dollar {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.price {
+    color: #fff;
+    font-size: 58px;
+    font-weight: 700;
+}
+
+.save-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.save-box img {
+    width: 55px;
+}
+
+.save-box span {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.choose-btn {
+        width: 100%;
+    margin-top: 30px;
+    height: 65px;
+    border: none;
+    background: #66c7dd;
+    color: #000;
+    font-size: 21px;
+    font-weight: 700;
+    transition: 0.4s;
+}
+
+.choose-btn:hover {
+    background: #fff;
+}
+
+.outline-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+.outline-btn:hover {
+     background: linear-gradient(135deg, #00bfff, #52d6ff);
+    color: #000;
+    border: 1px solid transparent;
+    outline: none;
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 1399px){
+
+    .pricing-overlay-content h1 {
+        font-size: 52px;
+        line-height: 58px;
+    }
+
+    .package-top h3 {
+        font-size: 28px;
+    }
+
+    .package-list li {
+        font-size: 17px;
+    }
+
+    .price {
+        font-size: 50px;
+    }
+}
+
+@media(max-width: 991px){
+
+    .pricing-main-section {
+        padding: 60px 20px;
+    }
+
+    .pricing-image-card img {
+        min-height: 500px;
+    }
+
+    .pricing-overlay-content h1 {
+        font-size: 42px;
+        line-height: 50px;
+    }
+
+    .package-card {
+        min-height: auto;
+        padding: 30px;
+    }
+
+    .package-top h3 {
+        font-size: 25px;
+    }
+
+    .package-list li {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 45px;
+    }
+
+    .choose-btn {
+        height: 60px;
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 575px){
+
+    .pricing-overlay-content {
+        left: 25px;
+        top: 30px;
+    }
+
+    .pricing-overlay-content h1 {
+        font-size: 34px;
+        line-height: 42px;
+    }
+
+    .arrow-circle {
+        width: 55px;
+        height: 55px;
+        font-size: 20px;
+    }
+
+    .package-card {
+        padding: 25px;
+    }
+
+    .package-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .package-top h3 {
+        font-size: 22px;
+    }
+
+    .package-text {
+        font-size: 15px;
+        line-height: 26px;
+    }
+
+    .package-list li {
+        font-size: 15px;
+        line-height: 26px;
+    }
+
+    .price-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .price {
+        font-size: 40px;
+    }
+
+    .save-box span {
+        font-size: 18px;
+    }
+
+    .choose-btn {
+        font-size: 17px;
+    }
+}

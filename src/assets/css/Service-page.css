@@ -1,0 +1,1202 @@
+.header-wrap {
+    background-image: linear-gradient(#1219297d), url('images/projenius-banner.webp');
+}
+
+.header-wrap {
+  background-image: linear-gradient(#1219297d),
+    url("images/projenius-banner.webp");
+}
+
+/* =========================================
+   COURSE SECTION
+========================================= */
+
+.modern-course-section {
+  padding: 100px 0;
+  background: #ffffff;
+}
+
+.modern-course-section .section-heading {
+  margin-bottom: 60px;
+}
+
+.modern-course-card {
+  background: #ffffff;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid #e8edf5;
+  transition: 0.4s;
+  height: 100%;
+}
+
+.modern-course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.modern-course-image {
+  height: 250px;
+  overflow: hidden;
+}
+
+.modern-course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.modern-course-card:hover .modern-course-image img {
+  transform: scale(1.08);
+}
+
+.modern-course-content {
+  padding: 30px;
+}
+
+.modern-course-content h3 {
+  color: #07142f;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.modern-course-content p {
+  color: #5c6574;
+  line-height: 1.9;
+  font-size: 15px;
+  margin-bottom: 26px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+  .modern-course-image {
+    height: 230px;
+  }
+
+  .modern-course-content h3 {
+    font-size: 24px;
+  }
+
+  .workshop-title-section {
+    padding-top: 80px;
+  }
+
+  .workshop-event-card,
+  .workshop-event-card:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+
+  .workshop-event-card:nth-child(even) .workshop-event-image {
+    order: 0;
+  }
+
+  .workshop-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .modern-course-section {
+    padding: 70px 0;
+  }
+
+  .modern-course-section .section-heading {
+    margin-bottom: 40px;
+  }
+
+  .modern-course-image {
+    height: 220px;
+  }
+
+  .modern-course-content {
+    padding: 24px;
+  }
+
+  .modern-course-content h3 {
+    font-size: 22px;
+  }
+
+  .modern-course-content p {
+    font-size: 14px;
+  }
+
+  .modern-course-content button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .workshop-hero {
+    min-height: 560px;
+  }
+
+  .workshop-title-section p {
+    font-size: 16px;
+  }
+
+  .workshop-showcase-section,
+  .workshop-gallery-section {
+    padding: 70px 0;
+  }
+
+  .workshop-event-image {
+    min-height: 250px;
+  }
+
+  .workshop-event-content {
+    padding: 28px;
+  }
+
+  .workshop-event-content h3 {
+    font-size: 26px;
+  }
+
+  .workshop-event-content h4 {
+    font-size: 21px;
+  }
+
+  .workshop-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.workshop-1 img.img-workshop-1 {
+    width: 100%;
+}
+
+.workshop-1 .even {
+    background-color: #E8F7FA;
+}
+
+.workshop-1 .section {
+    padding-top: 72px;
+    padding-bottom: 20px;
+}
+
+.workshop-hero {
+  min-height: 620px;
+}
+
+.workshop-title-section {
+  max-width: 780px;
+  padding-top: 110px;
+}
+
+.workshop-title-section .page-title {
+  margin-bottom: 22px;
+  line-height: 1.08;
+}
+
+.workshop-title-section p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 20px;
+  line-height: 1.8;
+  max-width: 720px;
+}
+
+.workshop-eyebrow {
+  color: #38bdf8;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.workshop-showcase-section,
+.workshop-gallery-section {
+  background: #ffffff;
+  padding: 96px 0;
+}
+
+.workshop-showcase-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%);
+}
+
+.workshop-event-grid {
+  display: grid;
+  gap: 30px;
+}
+
+.workshop-event-card {
+  background: #ffffff;
+  border: 1px solid #e4eaf3;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(18, 25, 41, 0.08);
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+}
+
+.workshop-event-card:nth-child(even) {
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+}
+
+.workshop-event-card:nth-child(even) .workshop-event-image {
+  order: 2;
+}
+
+.workshop-event-image {
+  min-height: 340px;
+  overflow: hidden;
+  position: relative;
+}
+
+.workshop-event-image img,
+.workshop-gallery-card img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.workshop-event-image span {
+  background: rgba(18, 25, 41, 0.82);
+  border-radius: 999px;
+  bottom: 22px;
+  color: #ffffff;
+  font-weight: 700;
+  left: 22px;
+  padding: 10px 16px;
+  position: absolute;
+}
+
+.workshop-event-content {
+  padding: 42px;
+}
+
+.workshop-card-label {
+  color: #38bdf8;
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.workshop-event-content h3 {
+  color: #07142f;
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.workshop-event-content h4 {
+  color: #121929;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.35;
+  margin: 22px 0 12px;
+}
+
+.workshop-event-content p {
+  color: #5c6574;
+  font-size: 16px;
+  line-height: 1.85;
+  margin-bottom: 22px;
+}
+
+.workshop-badges,
+.workshop-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.workshop-badges span {
+  background: #eef7ff;
+  border: 1px solid #d8ecff;
+  border-radius: 999px;
+  color: #121929;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 13px;
+}
+
+.workshop-details span {
+  background: #f6f8fb;
+  border-radius: 10px;
+  color: #4e5969;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 14px;
+}
+
+.workshop-gallery-link {
+  align-items: center;
+  background: #121929;
+  border-radius: 999px;
+  color: #ffffff;
+  display: inline-flex;
+  font-weight: 800;
+  margin-top: 26px;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.workshop-gallery-link:hover {
+  background: #38bdf8;
+  color: #121929;
+}
+
+.workshop-gallery-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.workshop-gallery-card {
+  background: #ffffff;
+  border: 1px solid #e4eaf3;
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(18, 25, 41, 0.07);
+  overflow: hidden;
+  position: relative;
+  animation: galleryReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.workshop-gallery-card:nth-child(2n) {
+  animation-delay: 0.08s;
+}
+
+.workshop-gallery-card:nth-child(3n) {
+  animation-delay: 0.16s;
+}
+
+.workshop-gallery-card::before {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 42%,
+    transparent 70%
+  );
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-80%);
+  transition: opacity 0.4s ease, transform 0.8s ease;
+  z-index: 1;
+}
+
+.workshop-gallery-card img {
+  aspect-ratio: 4 / 3;
+  filter: saturate(0.96) contrast(0.98);
+  height: auto;
+  transform: scale(1.01);
+  transition: filter 0.55s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.workshop-gallery-card:hover {
+  box-shadow: 0 24px 54px rgba(18, 25, 41, 0.15);
+  transform: translateY(-10px);
+}
+
+.workshop-gallery-card:hover::before {
+  opacity: 1;
+  transform: translateX(80%);
+}
+
+.workshop-gallery-card:hover img {
+  filter: saturate(1.12) contrast(1.04) brightness(1.04);
+  transform: scale(1.1) rotate(0.6deg);
+}
+
+.workshop-gallery-card div {
+  padding: 18px;
+}
+
+.workshop-gallery-card h3 {
+  color: #07142f;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  margin: 0 0 6px;
+}
+
+.workshop-gallery-card span {
+  color: #38bdf8;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+@keyframes galleryReveal {
+  from {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.service-1{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.service-1 .section-heading {
+    margin-bottom: 65px;
+}
+
+.service-1 .row {
+    row-gap: 60px;
+}
+
+.service-1 .box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 30px;
+    padding-top: 53px;
+    position: relative; /* ADD THIS */
+    border-radius: 18px;
+    min-height: 260px;
+    height: 100%;
+}
+
+.service-1 .icon {
+    font-size: 30px;
+}
+
+.service-1 .icon-circle {
+    background-color: #121929;
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -32px; /* UPDATED */
+    left: 50%; /* ADD THIS */
+    transform: translateX(-50%); /* ADD THIS */
+}
+.service-1 .icon-circle.even {
+        background-color: #121929;
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.service-1.row.r2 {
+    margin-top: 115px;
+}
+
+.service-link {
+    color: #121929;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.career-guidance-process {
+  background: #f5f8fc;
+  padding: 92px 0;
+}
+
+.internship-image {
+    border-radius: 28px;
+    overflow: hidden;
+}
+
+.internship-image img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+}
+
+.internship-highlights {
+    margin-top: 60px;
+}
+
+.internship-card {
+    min-height: 100%;
+}
+
+.internship-hero {
+  min-height: 620px;
+}
+
+.internship-title-section {
+  max-width: 840px;
+  padding-top: 120px;
+}
+
+.internship-title-section .page-title {
+  line-height: 1.12;
+  margin-bottom: 30px;
+}
+
+.internship-eyebrow {
+  color: #38bdf8;
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.internship-program-section,
+.internship-domains-section,
+.internship-split-section,
+.internship-roadmap-section,
+.internship-projects-section,
+.internship-tech-section,
+.internship-success-section,
+.internship-process-section,
+.internship-faq-section,
+.internship-cta-section {
+  padding: 92px 0;
+}
+
+.internship-program-section,
+.internship-roadmap-section,
+.internship-tech-section,
+.internship-process-section {
+  background: #f5f8fc;
+}
+
+.internship-about-grid,
+.internship-success-grid {
+  align-items: center;
+  display: grid;
+  gap: 44px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.internship-detail-grid,
+.internship-stats-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.internship-detail-card,
+.internship-domain-card,
+.internship-panel,
+.internship-roadmap-card,
+.internship-project-card,
+.internship-stat-card,
+.internship-faq-item {
+  background: #ffffff;
+  border: 1px solid #e4eaf3;
+  box-shadow: 0 16px 40px rgba(18, 25, 41, 0.07);
+}
+
+.internship-detail-card {
+  align-items: center;
+  border-radius: 18px;
+  color: #121929;
+  display: flex;
+  font-weight: 800;
+  gap: 12px;
+  padding: 20px;
+}
+
+.internship-detail-card i {
+  color: #38bdf8;
+  font-size: 24px;
+}
+
+.internship-domain-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.internship-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 0 0 34px;
+}
+
+.internship-filter-btn {
+  background: #ffffff;
+  border: 1px solid #dce6f2;
+  border-radius: 999px;
+  color: #121929;
+  cursor: pointer;
+  font-weight: 900;
+  padding: 11px 18px;
+  transition: 0.25s ease;
+}
+
+.internship-filter-btn:hover,
+.internship-filter-btn.active {
+  background: #121929;
+  border-color: #121929;
+  color: #ffffff;
+}
+
+.internship-domain-layout {
+  align-items: start;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.34fr);
+}
+
+.internship-domain-card {
+  border-radius: 20px;
+  color: inherit;
+  cursor: pointer;
+  min-height: 178px;
+  padding: 28px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.internship-domain-card:hover,
+.internship-domain-card.active,
+.internship-project-card:hover {
+  transform: translateY(-8px);
+}
+
+.internship-domain-card.active {
+  border-color: #38bdf8;
+  box-shadow: 0 20px 46px rgba(56, 189, 248, 0.18);
+}
+
+.internship-domain-card i {
+  align-items: center;
+  background: linear-gradient(135deg, #121929, #27344f);
+  border-radius: 16px;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 26px;
+  height: 58px;
+  justify-content: center;
+  margin-bottom: 22px;
+  box-shadow: 0 14px 28px rgba(18, 25, 41, 0.18);
+  width: 58px;
+}
+
+.internship-domain-card:nth-child(1) i {
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+}
+
+.internship-domain-card:nth-child(2) i {
+  background: linear-gradient(135deg, #ec4899, #f97316);
+}
+
+.internship-domain-card:nth-child(3) i {
+  background: linear-gradient(135deg, #0f766e, #22c55e);
+}
+
+.internship-domain-card:nth-child(4) i {
+  background: linear-gradient(135deg, #06b6d4, #6366f1);
+}
+
+.internship-domain-card:nth-child(5) i {
+  background: linear-gradient(135deg, #f59e0b, #facc15);
+  color: #121929;
+}
+
+.internship-domain-card:nth-child(6) i {
+  background: linear-gradient(135deg, #ef4444, #f97316);
+}
+
+.internship-domain-card:nth-child(7) i {
+  background: linear-gradient(135deg, #7c3aed, #db2777);
+}
+
+.internship-domain-card:nth-child(8) i {
+  background: linear-gradient(135deg, #14b8a6, #3b82f6);
+}
+
+.internship-domain-card:nth-child(9) i {
+  background: linear-gradient(135deg, #64748b, #111827);
+}
+
+.internship-domain-card:nth-child(10) i {
+  background: linear-gradient(135deg, #f43f5e, #a855f7);
+}
+
+.internship-domain-card:nth-child(11) i {
+  background: linear-gradient(135deg, #10b981, #84cc16);
+  color: #102114;
+}
+
+.internship-domain-card:nth-child(12) i {
+  background: linear-gradient(135deg, #fb7185, #fb923c);
+}
+
+.internship-domain-card h3,
+.internship-project-card h3,
+.internship-roadmap-card h3 {
+  color: #07142f;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.internship-domain-apply {
+  align-items: center;
+  color: #38bdf8;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.internship-track-preview {
+  background: #121929;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(18, 25, 41, 0.16);
+  color: #ffffff;
+  padding: 32px;
+  position: sticky;
+  top: 110px;
+}
+
+.internship-track-preview #sub-heading {
+  color: #38bdf8;
+}
+
+.internship-track-preview > i {
+  align-items: center;
+  background: #38bdf8;
+  border-radius: 18px;
+  color: #121929;
+  display: inline-flex;
+  font-size: 30px;
+  height: 64px;
+  justify-content: center;
+  margin: 18px 0 24px;
+  width: 64px;
+}
+
+.internship-track-preview h3 {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+
+.internship-track-preview p {
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.internship-track-apply {
+  align-items: center;
+  background: #ffffff;
+  border-radius: 999px;
+  color: #121929;
+  display: inline-flex;
+  font-weight: 900;
+  justify-content: center;
+  padding: 13px 20px;
+  text-decoration: none;
+}
+
+.internship-track-apply:hover {
+  background: #38bdf8;
+  color: #121929;
+}
+
+.internship-split-grid {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.internship-panel {
+  border-radius: 24px;
+  padding: 38px;
+}
+
+.internship-check-grid,
+.internship-story-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.internship-check-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.internship-check-grid span,
+.internship-story-list span {
+  align-items: center;
+  background: #f6f8fb;
+  border-radius: 14px;
+  color: #4e5969;
+  display: flex;
+  font-weight: 800;
+  gap: 10px;
+  padding: 14px 16px;
+}
+
+.internship-check-grid i,
+.internship-story-list i {
+  color: #38bdf8;
+}
+
+.internship-roadmap {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.internship-roadmap-card {
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+}
+
+.internship-roadmap-card::after {
+  color: #38bdf8;
+  content: "\F285";
+  font-family: bootstrap-icons;
+  font-size: 24px;
+  position: absolute;
+  right: -22px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.internship-roadmap-card:last-child::after {
+  display: none;
+}
+
+.internship-roadmap-card span {
+  color: #38bdf8;
+  display: block;
+  font-weight: 900;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.internship-project-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.internship-project-card {
+  border-radius: 20px;
+  padding: 28px;
+  transition: 0.3s ease;
+}
+
+.internship-project-card i {
+  color: #38bdf8;
+  display: block;
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+
+.internship-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.internship-tech-list span {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #dce6f2;
+  border-radius: 999px;
+  color: #121929;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 10px;
+  padding: 13px 20px;
+}
+
+.internship-tech-chip i {
+  font-size: 18px;
+}
+
+.internship-tech-chip.tech-html i { color: #e34c26; }
+.internship-tech-chip.tech-css i { color: #264de4; }
+.internship-tech-chip.tech-javascript i { color: #f7df1e; text-shadow: 0 0 2px rgba(0,0,0,0.25); }
+.internship-tech-chip.tech-react-js i { color: #61dafb; }
+.internship-tech-chip.tech-node-js i { color: #68a063; }
+.internship-tech-chip.tech-express-js i { color: #444; }
+.internship-tech-chip.tech-mongodb i { color: #4db33d; }
+.internship-tech-chip.tech-python i { color: #3776ab; }
+.internship-tech-chip.tech-github i { color: #181717; }
+.internship-tech-chip.tech-postman i { color: #ff6c37; }
+
+.internship-stat-card {
+  border-radius: 22px;
+  padding: 30px;
+  text-align: center;
+}
+
+.internship-stat-card strong {
+  color: #121929;
+  display: block;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.internship-stat-card span {
+  color: #5c6574;
+  font-weight: 800;
+}
+
+.internship-process {
+  align-items: center;
+  display: grid;
+  gap: 34px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.internship-process-step {
+  position: relative;
+}
+
+.internship-process-step::after {
+  color: #38bdf8;
+  content: "\F285";
+  font-family: bootstrap-icons;
+  font-size: 24px;
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.internship-process-step:last-child::after {
+  display: none;
+}
+
+.internship-process-step span {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e4eaf3;
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(18, 25, 41, 0.07);
+  color: #121929;
+  display: flex;
+  font-weight: 900;
+  justify-content: center;
+  min-height: 96px;
+  padding: 18px;
+  text-align: center;
+}
+
+.internship-faq-list {
+  display: grid;
+  gap: 16px;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.internship-faq-item {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.internship-faq-item summary {
+  color: #121929;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 900;
+  list-style: none;
+  padding: 22px 24px;
+}
+
+.internship-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.internship-faq-item p {
+  border-top: 1px solid #e4eaf3;
+  color: #5c6574;
+  line-height: 1.8;
+  margin: 0;
+  padding: 20px 24px 24px;
+}
+
+.internship-cta-box {
+  align-items: center;
+  background: #121929;
+  border-radius: 28px;
+  display: flex;
+  gap: 28px;
+  justify-content: space-between;
+  padding: 46px;
+}
+
+.internship-cta-box h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.internship-cta-box div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.internship-outline-btn {
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  color: #ffffff;
+  display: inline-flex;
+  font-weight: 900;
+  justify-content: center;
+  padding: 13px 24px;
+  text-decoration: none;
+}
+
+.internship-outline-btn:hover {
+  background: #ffffff;
+  color: #121929;
+}
+
+
+@media (max-width:482px){
+  .row.mt-5 {
+    display: flex;
+    flex-direction: column-reverse;
+}
+  .last {
+    display: flex;
+    flex-direction: column-reverse;
+}
+}
+
+@media (max-width: 1199px) {
+  .internship-domain-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .internship-domain-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .internship-track-preview {
+    position: relative;
+    top: auto;
+  }
+
+  .internship-project-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 991px) {
+  .internship-title-section {
+    padding-top: 80px;
+  }
+
+  .internship-about-grid,
+  .internship-success-grid,
+  .internship-split-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .internship-roadmap,
+  .internship-process {
+    grid-template-columns: 1fr;
+  }
+
+  .internship-roadmap-card::after,
+  .internship-process-step::after {
+    content: "\F282";
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: -32px;
+    transform: translateX(-50%);
+  }
+
+  .internship-roadmap,
+  .internship-process {
+    gap: 44px;
+  }
+
+  .internship-cta-box {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  .internship-hero {
+    min-height: 560px;
+  }
+
+  .internship-program-section,
+  .internship-domains-section,
+  .internship-split-section,
+  .internship-roadmap-section,
+  .internship-projects-section,
+  .internship-tech-section,
+  .internship-success-section,
+  .internship-process-section,
+  .internship-faq-section,
+  .internship-cta-section {
+    padding: 70px 0;
+  }
+
+  .internship-detail-grid,
+  .internship-domain-grid,
+  .internship-check-grid,
+  .internship-project-grid,
+  .internship-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .internship-filter-row {
+    justify-content: flex-start;
+  }
+
+  .internship-panel,
+  .internship-track-preview,
+  .internship-cta-box {
+    padding: 28px;
+  }
+
+  .internship-cta-box h2 {
+    font-size: 28px;
+  }
+
+  .internship-cta-box div,
+  .internship-cta-box .btn,
+  .internship-outline-btn {
+    width: 100%;
+  }
+}

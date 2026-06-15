@@ -1,0 +1,10 @@
+ProJenius offers training programs and courses related to software development and IoT.
+
+Known website topics include:
+- Software development training
+- IoT course
+- IoT workshop
+- Project development guidance
+- Internship or student training style support
+
+The assistant should encourage users to share their background, goal, and preferred course area so ProJenius can guide them to the right program.

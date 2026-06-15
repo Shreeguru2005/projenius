@@ -1,0 +1,365 @@
+/* ── TOP SPACER ── */
+.svc-spacer-top {
+        background: #0b1628;
+    /* height: 20vh; */
+}
+
+/* ── SECTION ── */
+.svc-section {
+    display: flex;
+    align-items: flex-start;
+    padding: 80px 5%;
+    background: #0b1628;
+    color: #fff;
+}
+
+/* ══════════════════════
+   LEFT SIDE — STICKY
+══════════════════════ */
+.svc-left {
+    width: 40%;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    padding-right: 40px;
+}
+
+.svc-sub {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #4ecca3;
+    margin-bottom: 16px;
+}
+
+.svc-title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.svc-para {
+    color: #aaa;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+
+/* ══════════════════════
+   RIGHT SIDE — SCROLL
+══════════════════════ */
+.svc-right {
+    width: 60%;
+}
+
+/* ── BASE CARD ── */
+.svc-card {
+    height: 420px;
+    margin-bottom: 100px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: sticky;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Each card stacks with z-index and slight top offset */
+.svc-card-1 {
+    top: 100px;
+    z-index: 1;
+}
+
+.svc-card-2 {
+    top: 120px;
+    z-index: 2;
+}
+
+.svc-card-3 {
+    top: 140px;
+    z-index: 3;
+}
+
+.svc-card-4 {
+    top: 160px;
+    z-index: 4;
+}
+
+/* ── CARD IMAGE ── */
+.svc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── DARK OVERLAY ── */
+.svc-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 55%);
+}
+
+/* ── CARD TEXT CONTENT ── */
+.svc-content {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+.svc-card-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.svc-read-more {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: letter-spacing 0.3s ease;
+}
+
+.svc-read-more:hover {
+    letter-spacing: 1px;
+}
+
+/* =========================
+   CARD ANIMATION
+========================= */
+
+.svc-card {
+    opacity: 0;
+    transform: translateY(100px) scale(0.95);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+/* show animation */
+.svc-card.show-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* floating hover effect */
+.svc-card:hover {
+    transform: translateY(-12px) scale(1.02);
+}
+
+/* image zoom */
+.svc-img {
+    transition: transform 0.8s ease;
+}
+
+.svc-card:hover .svc-img {
+    transform: scale(1.08);
+}
+
+/* content animation */
+.svc-content {
+    transition: transform 0.5s ease;
+}
+
+.svc-card:hover .svc-content {
+    transform: translateY(-6px);
+}
+
+/* =========================
+   HEADING ANIMATION
+========================= */
+
+.svc-sub,
+.svc-title,
+.svc-para,
+.btn {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+/* delay for premium stagger effect */
+.svc-sub {
+    animation-delay: 0.2s;
+}
+
+.svc-title {
+    animation-delay: 0.5s;
+}
+
+.svc-para {
+    animation-delay: 0.8s;
+}
+
+.btn {
+    animation-delay: 1.1s;
+}
+
+/* animation keyframes */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+/* Large Tablets */
+@media (max-width: 991px) {
+
+    .svc-section {
+        flex-direction: column;
+        padding: 60px 5%;
+    }
+
+    .svc-left {
+        width: 100%;
+        position: relative;
+        top: unset;
+        padding-right: 0;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .svc-right {
+        width: 100%;
+    }
+
+    .svc-title {
+        font-size: 36px;
+    }
+
+    .svc-card {
+        height: 380px;
+        margin-bottom: 70px;
+    }
+
+    .svc-content {
+        left: 24px;
+        bottom: 24px;
+    }
+
+    .svc-card-title {
+        font-size: 24px;
+    }
+
+    /* remove stacked sticky effect on tablet */
+    .svc-card-1,
+    .svc-card-2,
+    .svc-card-3,
+    .svc-card-4 {
+        top: unset;
+        position: relative;
+    }
+}
+
+
+/* Mobile Devices */
+@media (max-width: 767px) {
+
+    .svc-section {
+        padding: 50px 20px;
+    }
+
+    .svc-left {
+        margin-bottom: 40px;
+    }
+
+    .svc-sub {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .svc-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .svc-para {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .svc-card {
+        height: 300px;
+        border-radius: 16px;
+        margin-bottom: 40px;
+    }
+
+    .svc-content {
+        left: 18px;
+        bottom: 18px;
+    }
+
+    .svc-card-title {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .svc-read-more {
+        font-size: 14px;
+    }
+
+    .svc-img {
+        object-position: center;
+    }
+}
+
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    .svc-section {
+        padding: 40px 16px;
+    }
+
+    .svc-title {
+        font-size: 24px;
+    }
+
+    .svc-card {
+        height: 260px;
+    }
+
+    .svc-content {
+        left: 16px;
+        bottom: 16px;
+    }
+
+    .svc-card-title {
+        font-size: 18px;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.svc-btn-content {
+    display: inline-block;
+    animation: svcBtnTextIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes svcBtnTextIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,375 @@
+.magazine-sec-main-wrapper {
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background: #1a1a1a;
+}
+
+.magazine-viewer-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+}
+
+.magazine-bg-blur {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.magazine-bg-blur::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.35);
+  z-index: 1;
+}
+
+.magazine-bg-blur .react-pdf__Document {
+  width: 100%;
+  height: 100%;
+}
+
+.magazine-bg-blur .react-pdf__Page {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.35);
+  filter: blur(48px) saturate(1.1) brightness(0.75);
+  opacity: 0.85;
+}
+
+.magazine-bg-blur .react-pdf__Page__canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.magazine-toolbar {
+  position: relative;
+  z-index: 2;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.toolbar-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toolbar-brand-left {
+  justify-self: start;
+}
+
+.toolbar-brand-right {
+  justify-self: end;
+  text-align: right;
+}
+
+.toolbar-brand-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #111827;
+}
+
+.toolbar-brand-tagline {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.toolbar-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.toolbar-action-btn:hover {
+  background: rgba(17, 24, 39, 0.06);
+  color: #111827;
+  transform: translateY(-1px);
+}
+
+.magazine-sec-book-area {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 96px;
+  overflow: hidden;
+}
+
+.magazine-sec-book-shadow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.magazine-flipbook-shell {
+  position: relative;
+  flex-shrink: 0;
+  transition: width 0.25s ease, height 0.25s ease;
+}
+
+.magazine-flipbook-shell .react-pdf__Document,
+.magazine-flipbook-shell .stf__parent,
+.magazine-sec-flip-book {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.magazine-flipbook-shell .stf__wrapper,
+.magazine-flipbook-shell .stf__block {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.magazine-sec-flip-book {
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.magazine-side-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 8px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  z-index: 100;
+  transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.45));
+}
+
+.magazine-side-arrow:hover {
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.magazine-side-arrow.left {
+  left: 18px;
+}
+
+.magazine-side-arrow.right {
+  right: 18px;
+}
+
+.magazine-bottom-bar {
+  position: relative;
+  z-index: 2;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 120px 1fr 48px;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.magazine-page-number {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.magazine-scrubber-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 520px;
+  justify-self: center;
+}
+
+.magazine-scrubber {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: #d1d5db;
+  outline: none;
+  cursor: pointer;
+}
+
+.magazine-scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #111827;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+}
+
+.magazine-scrubber::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #111827;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+}
+
+.magazine-fullscreen-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #374151;
+  cursor: pointer;
+  justify-self: end;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.magazine-fullscreen-btn:hover {
+  background: rgba(17, 24, 39, 0.06);
+  color: #111827;
+}
+
+.magazine-sec-page-wrap {
+  overflow: hidden;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.magazine-sec-page-wrap .react-pdf__Page {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.magazine-sec-page-wrap .react-pdf__Page__canvas {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.magazine-viewer-container:fullscreen {
+  background: #111;
+}
+
+.magazine-viewer-container:fullscreen .magazine-sec-book-area {
+  padding-inline: 120px;
+}
+
+@media (max-width: 1024px) {
+  .magazine-toolbar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    padding: 12px 16px;
+  }
+
+  .toolbar-brand-left,
+  .toolbar-brand-right {
+    display: none;
+  }
+
+  .magazine-sec-book-area {
+    padding: 16px 56px;
+  }
+
+  .magazine-side-arrow.left {
+    left: 8px;
+  }
+
+  .magazine-side-arrow.right {
+    right: 8px;
+  }
+
+  .magazine-bottom-bar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .magazine-scrubber-wrap {
+    max-width: 100%;
+  }
+
+  .magazine-fullscreen-btn {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar-actions {
+    gap: 2px;
+  }
+
+  .toolbar-action-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .magazine-side-arrow svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .magazine-sec-book-area {
+    padding: 12px 44px;
+  }
+}

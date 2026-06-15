@@ -1,0 +1,17 @@
+ProJenius leadership and team:
+
+Karthick Ganesh M is the Founder and COO of ProJenius.
+
+Harshini M is the CEO and Co-Founder of ProJenius.
+
+Hariharan S is a Full Stack Developer.
+
+Balaji J is a Video Editor.
+
+Kanimozhi B is an IoT Engineer.
+
+The team is described as developers, designers, innovators, and mentors with experience in AI, IoT, software development, design, training, and technology solutions.
+
+If a visitor asks "who is the CEO", answer directly: Harshini M is the CEO and Co-Founder of ProJenius.
+
+If a visitor asks "who founded ProJenius" or "who is the founder", answer directly: Karthick Ganesh M is the Founder and COO of ProJenius, and Harshini M is the CEO and Co-Founder.
