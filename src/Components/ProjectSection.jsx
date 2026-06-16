@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../assets/css/ProjectSection.css";
-import '../index.css'
+import "../index.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -12,34 +12,31 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function ProjectSection() {
-
   useEffect(() => {
-  AOS.init({
-    duration: 1000,
-  once: true,
-  offset: 80,
-  easing: "ease-in-out",
-  });
-}, []);
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 80,
+      easing: "ease-in-out",
+    });
+  }, []);
 
   const projects = [
     {
       title: "Helminth Egg Detection Poster",
       subtitle: "Medical Conference Poster",
       description:
-        "Scientific poster on helminth egg detection in dog samples highlighting diagnosis and zoonotic risks worldwide. now!",
+        "Scientific poster on helminth egg detection in dog samples highlighting diagnosis and zoonotic risks worldwide.",
       rating: 5,
-      image:
-        "/images/project-image-1.webp",
+      image: "/images/project-image-1.webp",
     },
     {
       title: "AI-Powered Water Health Monitoring",
       subtitle: "Software",
       description:
-        "Powerful marketing strategies designed to improve customer engagement, online visibility and long term business growth successfully.",
+        "Powerful monitoring platform designed to improve water quality analysis and real-time environmental tracking.",
       rating: 4,
-      image:
-        "/images/project-image-2.webp",
+      image: "/images/project-image-2.webp",
     },
     {
       title: "Road Hazard Detection",
@@ -47,8 +44,7 @@ export default function ProjectSection() {
       description:
         "AI-based accident detection system with instant emergency GPS alerts and real-time response tracking.",
       rating: 5,
-      image:
-        "/images/project-image-3.webp",
+      image: "/images/project-image-3.webp",
     },
     {
       title: "Smart Waste Management",
@@ -56,8 +52,7 @@ export default function ProjectSection() {
       description:
         "Smart waste segregation system using sensors for automatic wet and dry waste classification.",
       rating: 4,
-      image:
-        "/images/project-image-4.webp",
+      image: "/images/project-image-4.webp",
     },
     {
       title: "Autonomous Follower Robot",
@@ -65,19 +60,26 @@ export default function ProjectSection() {
       description:
         "Intelligent follower robot with obstacle avoidance for smart logistics and automated material transportation.",
       rating: 5,
-      image:
-        "/images/project-image-5.webp",
+      image: "/images/project-image-5.webp",
     },
   ];
 
   return (
     <section className="nv-work-showcase">
-
       <div className="nv-work-container">
-
         <div className="nv-work-header">
-          <span className="nv-sub-heading" id="sub-heading" data-aos="fade-up">Our Projects</span>
-          <h2 className="nv-title" id="title" data-aos="fade-up">Work Showcase</h2>
+          <span
+            className="nv-sub-heading"
+            id="sub-heading"
+            data-aos="fade-up"
+          >
+            Our Projects
+          </span>
+
+          <h2 className="nv-title" id="title" data-aos="fade-up">
+            Work Showcase
+          </h2>
+
           <p data-aos="fade-up">
             We create powerful digital experiences with modern design,
             innovative strategies and professional development solutions.
@@ -96,63 +98,58 @@ export default function ProjectSection() {
             disableOnInteraction: false,
           }}
           breakpoints={{
-            0: { slidesPerView: 1 },
-            768: { slidesPerView: 1 },
-            992: { slidesPerView: 3 },
-            1200: { slidesPerView: 3 },
+            0: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 1,
+            },
+            992: {
+              slidesPerView: 3,
+            },
+            1200: {
+              slidesPerView: 3,
+            },
           }}
         >
-
           {projects.map((item, index) => (
-
             <SwiperSlide key={index}>
+              <div className="nv-work-card">
+                <div className="nv-flip-box">
+                  {/* FRONT */}
+                  <div className="nv-flip-front">
+                    <img src={item.image} alt={item.title} />
+                  </div>
 
-  <div className="nv-work-card">
+                  {/* BACK */}
+                  <div className="nv-flip-back">
+                    <h3 className="nv-project-title">
+                      {item.title}
+                    </h3>
 
-    <div className="nv-flip-box">
+                    <span className="nv-subtitle">
+                      {item.subtitle}
+                    </span>
 
-      {/* FRONT SIDE */}
+                    <p className="nv-desc">
+                      {item.description}
+                    </p>
 
-      <div className="nv-flip-front">
-
-        <img src={item.image} alt={item.title} />
-
-      </div>
-
-      {/* BACK SIDE */}
-
-      <div className="nv-flip-back">
-
-        <span className="nv-subtitle">
-          {item.subtitle}
-        </span>
-
-        <h3>{item.title}</h3>
-
-        <p className="nv-desc">
-          {item.description}
-        </p>
-
-        <div className="nv-rating">
-          {[...Array(item.rating)].map((_, i) => (
-            <i key={i} className="bi bi-star-fill"></i>
+                    <div className="nv-rating">
+                      {[...Array(item.rating)].map((_, i) => (
+                        <i
+                          key={i}
+                          className="bi bi-star-fill"
+                        ></i>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</SwiperSlide>
-
-          ))}
-
         </Swiper>
-
       </div>
-
     </section>
   );
 }

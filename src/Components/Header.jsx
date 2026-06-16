@@ -79,9 +79,14 @@ export default function Header() {
         } ${showHeader ? "header-visible" : "header-hidden"}`}
     >
       <div className="glass-navbar-inner">
-        <Link to="/" className="glass-logo" aria-label="ProJenius Home">
-          <img src={logo} alt="ProJenius" className="shiny-logo-img" />
-        </Link>
+        <Link
+  to="/"
+  className="glass-logo"
+  aria-label="ProJenius Home"
+  onClick={() => window.location.reload()}
+>
+  <img src={logo} alt="ProJenius" className="shiny-logo-img" />
+</Link>
 
         <nav className="glass-nav-links" aria-label="Main navigation">
           {navLinks.map((link) =>

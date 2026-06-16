@@ -150,8 +150,7 @@ const PricingSection = () => {
               </div>
 
               <button
-               className="btn"
-               style={{ width: "100%" }}
+               className="choose-btn"
                onClick={() => openWhatsApp("Monthly")}
               >
              Choose Package <i className="bi bi-arrow-right"></i>
@@ -200,13 +199,12 @@ const PricingSection = () => {
                 </div>
               </div>
 
-<button
-  className="btn outline-btn"
-  style={{ width: "100%", border: "2px solid #fff" }}
-  onClick={() => openWhatsApp("Yearly")}
->
-  Choose Package <i className="bi bi-arrow-right"></i>
-</button>
+              <button
+                className="choose-btn"
+                onClick={() => openWhatsApp("Yearly")}
+              >
+                Choose Package <i className="bi bi-arrow-right"></i>
+              </button>
             </div>
           </div>
 

@@ -3,373 +3,351 @@
 ================================ */
 
 /* RESET SAFETY */
-
 .nv-work-showcase * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* SECTION */
-
 .nv-work-showcase {
-    width: 100%;
-    padding: 60px 0;
-    background: #ffffff;
-    overflow: hidden;
+  width: 100%;
+  padding: 60px 0;
+  background: #ffffff;
+  overflow: hidden;
 }
 
 .nv-work-container {
-    width: 1400px;
-    max-width: 95%;
-    margin: auto;
+  width: 1400px;
+  max-width: 95%;
+  margin: auto;
 }
 
 /* HEADER */
-
 .nv-work-header {
-    text-align: center;
-    margin-bottom: 60px;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .nv-title {
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 15px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 15px;
 }
 
 .nv-work-header p {
-    max-width: 760px;
-    margin: auto;
-    font-size: 16px;
-    line-height: 30px;
-    color: #6b7280;
+  max-width: 760px;
+  margin: auto;
+  font-size: 16px;
+  line-height: 30px;
+  color: #6b7280;
 }
 
 /* SWIPER */
-
 .nv-work-showcase .swiper {
-        padding: 0px 0;
-    overflow: visible;
+  padding: 0;
+  overflow: visible;
 }
 
 /* REMOVE SWIPER EFFECTS */
-
 .nv-work-showcase .swiper-slide {
-    opacity: 1 !important;
-    filter: none !important;
-    transform: none;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none;
 }
 
 .nv-work-showcase .swiper-slide-prev,
 .nv-work-showcase .swiper-slide-next {
-    opacity: 1 !important;
-    filter: none !important;
+  opacity: 1 !important;
+  filter: none !important;
 }
 
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
-    display: none !important;
+  display: none !important;
 }
 
 /* CARD */
-
 .nv-work-card {
-    position: relative;
-    height: 460px;
-    border-radius: 28px;
-    perspective: 1200px;
-    transition: 0.4s ease;
+  position: relative;
+  height: 460px;
+  border-radius: 28px;
+  perspective: 1200px;
+  transition: 0.4s ease;
 }
 
 /* SCALE EFFECT */
-
 .swiper-slide .nv-work-card {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .swiper-slide-active .nv-work-card {
-    transform: scale(1);
-    z-index: 10;
+  transform: scale(1);
+  z-index: 10;
 }
 
 /* FLIP BOX */
-
 .nv-flip-box {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s ease;
-    transition-delay: 0s;
-    transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transition-delay: 0s;
+  transform-style: preserve-3d;
 }
 
 /* ACTIVE FLIP */
-
 .swiper-slide-active .nv-flip-box {
-    transform: rotateY(180deg);
-    transition-delay: 1s;
+  transform: rotateY(180deg);
+  transition-delay: 1s;
 }
 
 /* FRONT + BACK */
-
 .nv-flip-front,
 .nv-flip-back {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 28px;
-    overflow: hidden;
-    backface-visibility: hidden;
-    transition: box-shadow 0.4s ease;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transition: box-shadow 0.4s ease;
 }
 
+/* BACK CARD BORDER */
 .nv-flip-back {
-    /* Unique Border Design */
-    border: 3px solid rgba(102, 199, 221, 0.3);
-    box-shadow: 0 0 15px rgba(102, 199, 221, 0.15), inset 0 0 15px rgba(102, 199, 221, 0.1);
-    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  border: 3px solid rgba(102, 199, 221, 0.3);
+  box-shadow:
+    0 0 15px rgba(102, 199, 221, 0.15),
+    inset 0 0 15px rgba(102, 199, 221, 0.1);
 }
 
-/* Glowing Border on Active Slide */
+/* ACTIVE GLOW */
 .swiper-slide-active .nv-flip-front {
-    box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
 }
 
 .swiper-slide-active .nv-flip-back {
-    border-color: #00bfff;
-    box-shadow: 0 0 30px rgba(0, 191, 255, 0.5), inset 0 0 20px rgba(0, 191, 255, 0.3);
+  border-color: #00bfff;
+  box-shadow:
+    0 0 30px rgba(0, 191, 255, 0.5),
+    inset 0 0 20px rgba(0, 191, 255, 0.3);
 }
 
 /* FRONT IMAGE */
-
 .nv-flip-front {
-    background: #000;
+  background: #000;
 }
 
 .nv-flip-front img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    transform: scale(1.8); /* Zoom in to hide white letterboxing baked into the images */
-    display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block;
+  transform: scale(1.8);
 }
 
 /* BACK SIDE */
-
 .nv-flip-back {
-    background:
-        linear-gradient(
-            135deg,
-            rgba(15, 23, 42, 0.98),
-            rgba(17, 24, 39, 0.95)
-        ),
-        url("/images/pattern.png");
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.98),
+      rgba(17, 24, 39, 0.95)
+    ),
+    url("/images/pattern.png");
 
-    color: #ffffff;
+  color: #ffffff;
+  transform: rotateY(180deg);
 
-    transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 35px;
+  padding: 35px;
+  text-align: left;
 }
 
-/* SUBTITLE */
+/* PROJECT TITLE */
+.nv-project-title {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
 
+/* PROJECT TYPE */
 .nv-subtitle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    width: fit-content;
+  width: fit-content;
 
-    padding: 10px 22px;
+  padding: 10px 22px;
 
-    border-radius: 40px;
+  border-radius: 40px;
 
-    background: linear-gradient(
-        135deg,
-        #00bfff,
-        #52d6ff
-    );
+  background: linear-gradient(
+    135deg,
+    #00bfff,
+    #52d6ff
+  );
 
-    color: #000;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 1px;
-
-    margin-bottom: 22px;
-}
-
-/* TITLE */
-
-.nv-flip-back h3 {
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 1.3;
-    margin-bottom: 18px;
-    color: #ffffff;
+  margin-bottom: 20px;
 }
 
 /* DESCRIPTION */
-
 .nv-desc {
-    color: rgba(255, 255, 255, 0.88);
-    font-size: 17px;
-    line-height: 30px;
-    margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 25px;
 }
 
 /* RATING */
-
 .nv-rating {
-    display: flex;
-    gap: 6px;
+  display: flex;
+  gap: 6px;
 }
 
 .nv-rating i {
-    color: #facc15;
-    font-size: 15px;
+  color: #facc15;
+  font-size: 15px;
 }
 
 /* NAVIGATION */
-
 .nv-work-showcase .swiper-button-next,
 .nv-work-showcase .swiper-button-prev {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-
-    /* background: #ffffff; */
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-
-    transition: 0.3s ease;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
 }
 
 .nv-work-showcase .swiper-button-next:hover,
 .nv-work-showcase .swiper-button-prev:hover {
-    transform: translateY(-3px);
+  transform: translateY(-3px);
 }
 
 .nv-work-showcase .swiper-button-next::after,
 .nv-work-showcase .swiper-button-prev::after {
-    font-size: 18px;
-    font-weight: 700;
-    color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
 }
 
 /* TABLET */
-
 @media (max-width: 991px) {
+  .nv-work-showcase {
+    padding: 50px 0;
+  }
 
-    .nv-work-showcase {
-        padding: 50px 0;
-    }
+  .nv-work-header {
+    margin-bottom: 45px;
+  }
 
-    .nv-work-header {
-        margin-bottom: 45px;
-    }
+  .nv-title {
+    font-size: 38px;
+  }
 
-    .nv-title {
-        font-size: 38px;
-    }
+  .nv-work-card {
+    height: 420px;
+  }
 
-    .nv-work-card {
-        height: 420px;
-    }
+  .nv-flip-back {
+    padding: 28px;
+  }
 
-    .nv-flip-back {
-        padding: 28px;
-    }
+  .nv-project-title {
+    font-size: 24px;
+  }
 
-    .nv-flip-back h3 {
-        font-size: 24px;
-    }
-
+  .nv-desc {
+    font-size: 15px;
+    line-height: 26px;
+  }
 }
 
 /* MOBILE */
-
 @media (max-width: 767px) {
+  .nv-work-showcase {
+    padding: 45px 0;
+  }
 
-    .nv-work-showcase {
-        padding: 45px 0;
-    }
+  .nv-title {
+    font-size: 32px;
+  }
 
-    .nv-title {
-        font-size: 32px;
-    }
+  .nv-work-header p {
+    font-size: 15px;
+    line-height: 28px;
+  }
 
-    .nv-work-header p {
-        font-size: 15px;
-        line-height: 28px;
-    }
+  .nv-work-card {
+    height: 380px;
+  }
 
-    .nv-work-card {
-        height: 380px;
-    }
+  .nv-flip-back {
+    padding: 24px;
+  }
 
-    .nv-flip-back {
-        padding: 24px;
-    }
+  .nv-project-title {
+    font-size: 22px;
+  }
 
-    .nv-flip-back h3 {
-        font-size: 22px;
-    }
+  .nv-subtitle {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
 
-    .nv-desc {
-        font-size: 14px;
-        line-height: 26px;
-    }
+  .nv-desc {
+    font-size: 14px;
+    line-height: 24px;
+  }
 
-    .nv-subtitle {
-        font-size: 12px;
-        padding: 9px 18px;
-    }
+  .nv-work-showcase .swiper-button-next,
+  .nv-work-showcase .swiper-button-prev {
+    width: 42px;
+    height: 42px;
+  }
 
-    .nv-work-showcase .swiper-button-next,
-    .nv-work-showcase .swiper-button-prev {
-        width: 42px;
-        height: 42px;
-    }
-
-    .nv-work-showcase .swiper-button-next::after,
-    .nv-work-showcase .swiper-button-prev::after {
-        font-size: 15px;
-    }
-
+  .nv-work-showcase .swiper-button-next::after,
+  .nv-work-showcase .swiper-button-prev::after {
+    font-size: 15px;
+  }
 }
 
 /* SMALL MOBILE */
-
 @media (max-width: 480px) {
+  .nv-work-card {
+    height: 340px;
+  }
 
-    .nv-work-card {
-        height: 340px;
-    }
+  .nv-title {
+    font-size: 28px;
+  }
 
-    .nv-title {
-        font-size: 28px;
-    }
+  .nv-flip-back {
+    padding: 20px;
+  }
 
-    .nv-flip-back {
-        padding: 20px;
-    }
+  .nv-project-title {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
 
-    .nv-flip-back h3 {
-        font-size: 20px;
-        margin-bottom: 14px;
-    }
-
-    .nv-desc {
-        line-height: 24px;
-        margin-bottom: 18px;
-    }
-
+  .nv-desc {
+    line-height: 22px;
+    margin-bottom: 18px;
+  }
 }
