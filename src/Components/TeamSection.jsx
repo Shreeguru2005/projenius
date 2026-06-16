@@ -1,52 +1,31 @@
-// Team.jsx
-
 import React from "react";
 import "../index.css";
 import "../assets/css/TeamSection.css";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/pagination";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const teamMembers = [
   {
-    image:
-      "images/team-member-1.webp",
-    name: "Karthick Ganesh M",
-    position: "Founder & CEO",
+    image: "images/team-member-1.webp",
+    name: "Karthick Ganesh",
+    position: "Founder & COO",
+    accent: "lead",
+    socials: ["facebook", "twitter-x", "linkedin", "instagram"],
   },
-
   {
-    image:
-      "images/team-member-2.webp",
-    name: "Harshini M",
-    position: "Co-Founder & Embedded Engineer",
+    image: "images/team-member-2.webp",
+    name: "Harshini",
+    position: "CEO & Co-Founder",
+    accent: "core",
+    socials: ["facebook", "twitter-x", "linkedin", "instagram"],
   },
-
   {
-    image:
-      "images/team-member-3.webp",
-    name: "Hariharan S",
-    position: "Full Stack Developer",
-  },
-
-  {
-    image:
-      "images/team-member-4.webp",
-    name: "Balaji J",
-    position: "Video Editor",
-  },
-
-  {
-    image:
-      "images/team-member-5.webp",
-    name: "Kanimozhi B",
-    position: "IoT Engineer",
+    image: null,
+    name: "Brian",
+    position: "Details coming soon",
+    accent: "placeholder",
+    socials: ["facebook", "twitter-x", "linkedin", "instagram"],
   },
 ];
 
@@ -61,11 +40,8 @@ export default function TeamSection() {
   }, []);
   return (
     <section className="team-section">
-
       <div className="container">
-
         <div className="row align-items-center mb-5">
-
           <div className="col-lg-4 first" data-aos="fade-right" data-aos-delay="150">
             <span id="sub-heading">Our Team Members</span>
 
@@ -76,93 +52,48 @@ export default function TeamSection() {
 
           <div className="col-lg-8 second" data-aos="fade-up" data-aos-delay="300">
             <p className="section-desc">
-              Our dedicated team consists of passionate developers, designers, innovators, and mentors working together to build smart technology solutions. With expertise in AI, IoT, software development, design, and training, we focus on creativity, collaboration, innovation, and delivering impactful results for clients and students.
+              The leadership team behind Projenius combines product thinking, engineering depth, and practical execution. We are keeping this section focused on the core faces of the company for now.
             </p>
           </div>
-
         </div>
 
-        {/* Team Carousel */}
-
-        <Swiper
-          modules={[Pagination, Autoplay]}
-          slidesPerView={4}
-          spaceBetween={30}
-          loop={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-            },
-
-            576: {
-              slidesPerView: 2,
-            },
-
-            992: {
-              slidesPerView: 3,
-            },
-
-            1200: {
-              slidesPerView: 4,
-            },
-          }}
-          className="teamSwiper"
-        >
+        <div className="team-grid">
           {teamMembers.map((member, index) => (
-            <SwiperSlide key={index}>
-
-              <div className="team-card" data-aos="fade-up" data-aos-delay={150 + index * 150}>
-
-                <div className="team-image">
-
+            <article
+              className={`team-card ${member.accent === "placeholder" ? "team-card-placeholder" : ""}`}
+              data-aos="fade-up"
+              data-aos-delay={150 + index * 150}
+              key={member.name}
+            >
+              <div className={`team-image ${member.image ? "" : "team-image-placeholder"}`}>
+                {member.image ? (
                   <img
                     src={member.image}
                     alt={member.name}
                     className="img-fluid"
                   />
-
-                  <div className="social-icons">
-
-                    <a href="#">
-                      <i className="bi bi-facebook"></i>
-                    </a>
-
-                    <a href="#">
-                      <i className="bi bi-twitter-x"></i>
-                    </a>
-
-                    <a href="#">
-                      <i className="bi bi-linkedin"></i>
-                    </a>
-
-                    <a href="#">
-                      <i className="bi bi-instagram"></i>
-                    </a>
-
+                ) : (
+                  <div className="team-placeholder-avatar" aria-hidden="true">
+                    <span>BR</span>
                   </div>
-
+                )}
+                <div className="social-icons" aria-label={`${member.name} social links`}>
+                  {member.socials.map((platform) => (
+                    <a href="#" key={`${member.name}-${platform}`} aria-label={`${member.name} ${platform}`}>
+                      <i className={`bi bi-${platform}`}></i>
+                    </a>
+                  ))}
                 </div>
-
-                <div className="team-content">
-                  <h3>{member.name}</h3>
-                  <p>{member.position}</p>
-                </div>
-
               </div>
 
-            </SwiperSlide>
+              <div className="team-content">
+                <h3>{member.name}</h3>
+                <p>{member.position}</p>
+              </div>
+            </article>
           ))}
-        </Swiper>
-
+        </div>
       </div>
-
     </section>
   );
 }

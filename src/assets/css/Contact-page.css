@@ -69,39 +69,166 @@
     text-decoration: none;
 }
 
-/* FORM */
-
-.contact-form-wrapper{
-    background: #fff;
-    border-radius: 30px;
-    padding: 45px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-    border: 1px solid #edf2f7;
+/* CONFIRM QUOTE HEADER */
+.confirm-quote-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #4f46e5; /* Primary color similar to image, but let's use the site's accent or dark blue */
+    color: #06142d;
+    margin-bottom: 15px;
 }
 
-.contact-form-wrapper h3{
-    font-size: 34px;
+.confirm-quote-subtitle {
+    color: #5b6475;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* LEFT FORM CARD */
+.quote-form-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
+
+.quote-form-card h3 {
+    font-size: 26px;
     font-weight: 700;
     color: #06142d;
-    margin-bottom: 30px;
+    margin-bottom: 8px;
 }
 
-.custom-contact-input{
-    height: 60px;
-    border-radius: 16px;
-    border: 1px solid #dbe4ef;
-    padding: 15px 20px;
+.quote-form-subtitle {
+    color: #5b6475;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.quote-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.custom-quote-input {
+    background: #fcfcfd;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 15px;
     box-shadow: none !important;
+    transition: all 0.3s ease;
 }
 
-textarea.custom-contact-input{
-    height: auto;
-}
-
-.custom-contact-input:focus{
+.custom-quote-input:focus {
     border-color: #22d3ee;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.1) !important;
 }
 
+.quote-submit-btn {
+    background: #06142d;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.quote-submit-btn:hover {
+    background: #22d3ee;
+    color: #06142d;
+}
+
+/* RIGHT SIDE CARDS */
+.talk-first-card {
+    background: #4f46e5; /* The image uses a purple-blue, let's use a nice gradient or solid matching site theme */
+    background: linear-gradient(135deg, #06142d 0%, #1a365d 100%);
+    border-radius: 24px;
+    padding: 35px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(6, 20, 45, 0.15);
+}
+
+.talk-first-card h4 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.talk-first-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.talk-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.talk-contact-item i {
+    font-size: 20px;
+    color: #22d3ee;
+}
+
+.talk-response-time {
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.what-happens-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
+
+.what-happens-card h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #06142d;
+    margin-bottom: 25px;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.step-item:last-child {
+    margin-bottom: 0;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: #06142d;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.step-text {
+    font-size: 15px;
+    color: #5b6475;
+    line-height: 1.5;
+    padding-top: 4px;
+}
 
 
 /* MAP */
@@ -118,47 +245,111 @@ textarea.custom-contact-input{
     box-shadow: 0 20px 60px rgba(0,0,0,0.08);
 }
 
-/* FAQ */
-
-.faq-main-section{
-    background: #fff;
+/* FAQ GRID SECTION */
+.faq-grid-section {
+    background: #f8fafc; /* Very light gray/blue background like the image */
     padding: 100px 0;
 }
 
-.faq-title-wrap h2{
-    font-size: 48px;
+.faq-grid-title {
+    font-size: 36px;
     font-weight: 700;
-    color: #06142d;
-    margin-top: 12px;
-    margin-bottom: 50px;
+    color: #0f172a;
+    margin-bottom: 12px;
 }
 
-.custom-faq .accordion-item{
+.faq-grid-subtitle {
+    color: #475569;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.toggle-faq-btn {
+    background: #3b82f6; /* Blue like the image */
+    color: #fff;
     border: none;
-    border-radius: 20px !important;
-    overflow: hidden;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-}
-
-.custom-faq .accordion-button{
-    padding: 25px;
-    font-size: 18px;
+    border-radius: 8px;
+    padding: 12px 28px;
     font-weight: 600;
-    box-shadow: none !important;
-    background: #fff;
-    color: #06142d;
+    transition: all 0.3s ease;
 }
 
-.custom-faq .accordion-button:not(.collapsed){
-    background: #06142d;
+.toggle-faq-btn:hover {
+    background: #2563eb;
     color: #fff;
 }
 
-.custom-faq .accordion-body{
+.faq-grid-card {
+    background: #fff;
+    border-radius: 12px;
     padding: 25px;
-    color: #5b6475;
-    line-height: 1.9;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    height: 100%;
+}
+
+.faq-grid-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.faq-grid-card.active {
+    border-color: #3b82f6;
+    background: #eff6ff; /* slight blue tint */
+}
+
+.faq-q {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.faq-a {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* SOCIAL CONNECT SECTION */
+.social-connect-section {
+    background: #0b0f19;
+    padding: 80px 0;
+    color: #fff;
+}
+
+.social-connect-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.social-connect-subtitle {
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.social-icons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: #94a3b8;
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+.social-icon-link:hover {
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 /* RESPONSIVE */
