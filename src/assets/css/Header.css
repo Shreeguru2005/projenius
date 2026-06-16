@@ -16,9 +16,15 @@
   right: 0;
   top: 0;
   z-index: 1000;
-  padding: 38px 6vw 16px;
+  padding: 12px 4vw;
   animation: headerDrop 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   pointer-events: none;
+
+  transition:
+    top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.3s ease;
+
+  will-change: top;
 }
 
 .glass-header.scrolled {
@@ -29,27 +35,35 @@
   pointer-events: all;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 22px;
-  width: min(100%, 1180px);
-  min-height: 104px;
+
+  width: min(100%, 1100px);
+
+  min-height: 64px;      /* was 104px */
   margin: 0 auto;
-  padding: 18px 18px 18px 22px;
-  border-radius: 54px;
+
+  padding: 10px 18px;    /* reduced */
+
+  border-radius: 30px;   /* was 54px */
+
   background: rgba(13, 20, 36, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 6px solid #66c7dd;
+  border-bottom: 4px solid #66c7dd;
+
   box-shadow:
-    0 28px 70px rgba(0, 0, 0, 0.38),
+    0 15px 35px rgba(0, 0, 0, 0.25),
     0 1px 0 rgba(255, 255, 255, 0.06) inset;
+
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  transition: min-height 220ms ease, border-radius 220ms ease, box-shadow 220ms ease;
+
+  transition: all 0.3s ease;
 }
 
 .glass-header.scrolled .glass-navbar-inner {
-  min-height: 72px;
-  border-radius: 42px;
+  min-height: 56px;
+  border-radius: 28px;
   background: rgba(13, 20, 36, 0.98);
   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
   backdrop-filter: blur(24px);
@@ -58,6 +72,7 @@
 
 .glass-logo {
   display: inline-flex;
+  margin-right: 40px;
   align-items: center;
   flex: 0 0 auto;
   text-decoration: none;
@@ -71,15 +86,15 @@
 
 .glass-logo img {
   display: block;
-  width: 220px;
-  max-width: 220px;
+  width: 180px;
+  max-width: 180px;
   height: auto;
 }
 
 .shiny-logo-img {
   display: block;
-  width: 220px;
-  max-width: 220px;
+  width: 180px;
+  max-width: 180px;
   height: auto;
   filter: drop-shadow(0 0 8px rgba(102, 199, 221, 0.6)) drop-shadow(0 0 15px rgba(0, 191, 255, 0.4));
   animation: pulse-glow 2.5s infinite alternate;
@@ -123,7 +138,7 @@
   padding: 10px 0;
   color: #ffffff !important;
   font-family: "Outfit", "Inter", sans-serif;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
@@ -214,32 +229,7 @@
   transform: translateY(-1px);
 }
 
-.glass-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  min-height: 44px;
-  padding: 0 23px;
-  border-radius: 999px;
-  background: #ffffff;
-  color: #050915 !important;
-  border: none;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
-  font-family: "Inter", "Outfit", sans-serif;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-decoration: none !important;
-  white-space: nowrap;
-  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
-}
 
-.glass-cta-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  background: #f5fbff;
-  box-shadow: 0 16px 34px rgba(102, 199, 221, 0.28);
-}
 
 .glass-hamburger {
   display: none;
@@ -317,20 +307,7 @@
   font-size: 16px;
 }
 
-.glass-mobile-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  margin-top: 18px;
-  border-radius: 999px;
-  background: #ffffff;
-  color: #050915 !important;
-  font-family: "Inter", "Outfit", sans-serif;
-  font-size: 15px;
-  font-weight: 800;
-  text-decoration: none !important;
-}
+
 
 @media (max-width: 1240px) {
   .glass-header {
@@ -351,8 +328,7 @@
 }
 
 @media (max-width: 1080px) {
-  .glass-nav-links,
-  .glass-cta-btn {
+  .glass-nav-links {
     display: none;
   }
 
@@ -381,4 +357,15 @@
   .glass-logo img {
     width: 148px;
   }
+}
+/* ==========================================
+   Hide on Scroll Down / Show on Scroll Up
+========================================== */
+
+.header-visible {
+  top: 0;
+}
+
+.header-hidden {
+  top: -180px;
 }

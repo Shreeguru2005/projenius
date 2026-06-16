@@ -61,79 +61,13 @@ export default function TestimonialSection() {
             data-aos="fade-right"
             data-aos-delay="150"
           >
-            <Swiper
-              modules={[Navigation, Autoplay]}
-              slidesPerView={1}
-              loop={true}
-              speed={1200}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
-              navigation={{
-                nextEl: ".testimonial-next",
-                prevEl: ".testimonial-prev",
-              }}
-              className="testimonial-swiper"
-            >
-              {testimonialData.map((item) => (
-                <SwiperSlide key={item.id}>
-                  <div className="testimonial-content">
-
-                    <div className="google-review">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-                        alt="Google Logo"
-                      />
-
-                      <div className="stars">
-                        <i className="bi bi-star-fill"></i>
-                        <i className="bi bi-star-fill"></i>
-                        <i className="bi bi-star-fill"></i>
-                        <i className="bi bi-star-fill"></i>
-                        <i className="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-
-                    <p className="testimonial-text">
-                      “{item.review}”
-                    </p>
-
-                    <div className="testimonial-line"></div>
-
-                    <div className="client-info">
-
-                      <div className="client-image">
-                        <img
-                          src={item.profile}
-                          alt={item.name}
-                        />
-                      </div>
-
-                      <div className="client-details">
-                        <h4>{item.name}</h4>
-                        <span>{item.role}</span>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* NAVIGATION */}
-
-            <div className="testimonial-navigation">
-
-              <button className="testimonial-prev">
-                <i className="bi bi-chevron-left"></i>
-              </button>
-
-              <button className="testimonial-next">
-                <i className="bi bi-chevron-right"></i>
-              </button>
-
+            <div style={{ padding: '20px', background: '#fff', borderRadius: '15px' }}>
+              {/* Google Reviews Elfsight Widget */}
+              {/* NOTE TO USER: Replace "YOUR_WIDGET_ID" below with the actual ID from your Elfsight dashboard */}
+              <div className="elfsight-app-YOUR_WIDGET_ID" data-elfsight-app-lazy></div>
+              <p style={{ textAlign: 'center', marginTop: '15px', color: '#666', fontSize: '14px' }}>
+                <em>(Google Reviews will appear here once you replace 'YOUR_WIDGET_ID' in TestimonialSection.jsx)</em>
+              </p>
             </div>
           </div>
 

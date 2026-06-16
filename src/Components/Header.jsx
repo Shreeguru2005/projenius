@@ -25,27 +25,59 @@ const navLinks = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    let lastScrollY = window.scrollY;
+
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      setScrolled(currentScrollY > 50);
+
+      // Always show at top
+      if (currentScrollY < 50) {
+        setShowHeader(true);
+      }
+      // Hide when scrolling down
+      else if (currentScrollY > lastScrollY) {
+        setShowHeader(false);
+      }
+      // Show when scrolling up
+      else {
+        setShowHeader(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
     window.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const isActive = (link) => {
     if (link.dropdown) {
-      return link.to === location.pathname || link.dropdown.some((item) => item.to === location.pathname);
+      return (
+        link.to === location.pathname ||
+        link.dropdown.some((item) => item.to === location.pathname)
+      );
     }
 
     return link.to === location.pathname;
   };
 
   return (
-    <header className={`glass-header ${scrolled ? "scrolled" : ""}`}>
+    <header
+      className={`glass-header ${scrolled ? "scrolled" : ""
+        } ${showHeader ? "header-visible" : "header-hidden"}`}
+    >
       <div className="glass-navbar-inner">
         <Link to="/" className="glass-logo" aria-label="ProJenius Home">
           <img src={logo} alt="ProJenius" className="shiny-logo-img" />
@@ -56,7 +88,8 @@ export default function Header() {
             link.dropdown ? (
               <div
                 key={link.label}
-                className={`glass-nav-item has-dropdown ${isActive(link) ? "active" : ""}`}
+                className={`glass-nav-item has-dropdown ${isActive(link) ? "active" : ""
+                  }`}
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
                 onFocus={() => setServicesOpen(true)}
@@ -83,7 +116,8 @@ export default function Header() {
                         <Link
                           key={item.to}
                           to={item.to}
-                          className={`glass-dropdown-item ${location.pathname === item.to ? "active" : ""}`}
+                          className={`glass-dropdown-item ${location.pathname === item.to ? "active" : ""
+                            }`}
                           onClick={() => setServicesOpen(false)}
                         >
                           {item.label}
@@ -94,7 +128,11 @@ export default function Header() {
                 </AnimatePresence>
               </div>
             ) : (
-              <div key={link.to} className={`glass-nav-item ${isActive(link) ? "active" : ""}`}>
+              <div
+                key={link.to}
+                className={`glass-nav-item ${isActive(link) ? "active" : ""
+                  }`}
+              >
                 <Link to={link.to} className="glass-nav-link">
                   {link.label}
                 </Link>
@@ -103,9 +141,7 @@ export default function Header() {
           )}
         </nav>
 
-        <Link to="/contact" className="glass-cta-btn" aria-label="Enquiry Now">
-          Enquiry Now <span aria-hidden="true">↗</span>
-        </Link>
+
 
         <button
           className="glass-hamburger"
@@ -131,13 +167,15 @@ export default function Header() {
                 link.dropdown ? (
                   <div key={link.label} className="glass-mobile-group">
                     <button
-                      className={`glass-mobile-link glass-mobile-toggle ${servicesOpen ? "open" : ""}`}
+                      className={`glass-mobile-link glass-mobile-toggle ${servicesOpen ? "open" : ""
+                        }`}
                       onClick={() => setServicesOpen((open) => !open)}
                       aria-expanded={servicesOpen}
                     >
                       {link.label}
                       <ChevronDown size={16} aria-hidden="true" />
                     </button>
+
                     <AnimatePresence initial={false}>
                       {servicesOpen && (
                         <motion.div
@@ -151,7 +189,8 @@ export default function Header() {
                             <Link
                               key={item.to}
                               to={item.to}
-                              className={`glass-mobile-link sub ${location.pathname === item.to ? "active" : ""}`}
+                              className={`glass-mobile-link sub ${location.pathname === item.to ? "active" : ""
+                                }`}
                               onClick={() => {
                                 setMenuOpen(false);
                                 setServicesOpen(false);
@@ -168,16 +207,15 @@ export default function Header() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`glass-mobile-link ${isActive(link) ? "active" : ""}`}
+                    className={`glass-mobile-link ${isActive(link) ? "active" : ""
+                      }`}
                     onClick={() => setMenuOpen(false)}
                   >
                     {link.label}
                   </Link>
                 )
               )}
-              <Link to="/contact" className="glass-mobile-cta" onClick={() => setMenuOpen(false)}>
-                Enquiry Now ↗
-              </Link>
+
             </nav>
           </motion.div>
         )}

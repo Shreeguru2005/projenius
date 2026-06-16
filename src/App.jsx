@@ -115,7 +115,7 @@ export default function App() {
             path: currentPath,
             ...config
           });
-        }, 800);
+        }, 5000);
         return () => clearTimeout(timer);
       }
     } else {

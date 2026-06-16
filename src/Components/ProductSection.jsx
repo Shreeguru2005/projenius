@@ -7,11 +7,11 @@ import "aos/dist/aos.css";
 
 const tabsData = [
   {
-    title: "EduTech Platform",
+    title: "AI-Powered Nut Sorting & Grading System",
     image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978",
     description:
-      "Modern responsive websites with premium UI and smooth performance.",
+      "Creative marketing strategies to improve online visibility.",
   },
   {
     title: "IoT Kit",
@@ -19,13 +19,13 @@ const tabsData = [
       "https://images.unsplash.com/photo-1677442136019-21780ecad995",
     description:
       "Smart AI-powered systems for automation and business growth.",
-  },
+  },  
   {
-    title: "AI-Powered Nut Sorting & Grading System",
+    title: "EduTech Platform",
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     description:
-      "Creative marketing strategies to improve online visibility.",
+      "Modern responsive websites with premium UI and smooth performance.",
   },
   
 ];
