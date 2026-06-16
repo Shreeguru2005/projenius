@@ -136,13 +136,23 @@ export default function ProjectSection() {
                     </p>
 
                     <div className="nv-rating">
-                      {[...Array(item.rating)].map((_, i) => (
-                        <i
-                          key={i}
-                          className="bi bi-star-fill"
-                        ></i>
-                      ))}
-                    </div>
+  <div className="nv-rating-stars">
+    {[...Array(5)].map((_, i) => (
+      <i
+        key={i}
+        className={
+          i < item.rating
+            ? "bi bi-star-fill"
+            : "bi bi-star"
+        }
+      ></i>
+    ))}
+  </div>
+
+  <span className="nv-rating-text">
+    {item.rating}/5
+  </span>
+</div>
                   </div>
                 </div>
               </div>

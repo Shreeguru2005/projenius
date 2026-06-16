@@ -213,15 +213,27 @@
   margin-bottom: 25px;
 }
 
-/* RATING */
 .nv-rating {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
 }
 
-.nv-rating i {
-  color: #facc15;
-  font-size: 15px;
+.nv-rating-stars {
+  display: flex;
+  gap: 4px;
+}
+
+.nv-rating-stars i {
+  color: #FFD700;
+  font-size: 18px;
+}
+
+.nv-rating-text {
+  color: #FFD700;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 /* NAVIGATION */

@@ -20,7 +20,9 @@ const navLinks = [
   },
   { to: "/workshop", label: "Workshop" },
   { to: "/startup", label: "Startup Supporter" },
+   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
+ 
 ];
 
 export default function Header() {

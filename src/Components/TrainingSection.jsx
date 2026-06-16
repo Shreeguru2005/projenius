@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import "../assets/css/TrainingSection.css";
 import "../index.css";
 
@@ -7,7 +8,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function TrainingSection() {
-  const [imgIndex, setImgIndex] = useState(0);
+  const [imgIndex1, setImgIndex1] = useState(0);
+  const [imgIndex2, setImgIndex2] = useState(0);
+  const [imgIndex3, setImgIndex3] = useState(0);
+  const [imgIndex4, setImgIndex4] = useState(0);
 
   const imgPool1 = ["/images/iot-workshop.png", "/images/gallery-1.webp", "/images/gallery-2.webp"];
   const imgPool2 = ["/images/software-developement-training.png", "/images/gallery-3.webp", "/images/gallery-4.webp"];
@@ -22,10 +26,27 @@ export default function TrainingSection() {
       easing: "ease-in-out",
     });
 
-    const interval = setInterval(() => {
-      setImgIndex((prevIndex) => prevIndex + 1);
-    }, 4000);
-    return () => clearInterval(interval);
+    const timers = [];
+    timers.push(setInterval(() => setImgIndex1((prev) => prev + 1), 6000));
+
+    const timeout1 = setTimeout(() => {
+      timers.push(setInterval(() => setImgIndex2((prev) => prev + 1), 6000));
+    }, 1500);
+
+    const timeout2 = setTimeout(() => {
+      timers.push(setInterval(() => setImgIndex3((prev) => prev + 1), 6000));
+    }, 3000);
+
+    const timeout3 = setTimeout(() => {
+      timers.push(setInterval(() => setImgIndex4((prev) => prev + 1), 6000));
+    }, 4500);
+
+    return () => {
+      timers.forEach(clearInterval);
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      clearTimeout(timeout3);
+    };
   }, []);
 
   return (
@@ -65,11 +86,17 @@ export default function TrainingSection() {
 
               <Link to="/career-guidance" style={{textDecoration: 'none'}}>
                 <div className="training-card big-card">
-                  <img
-                    src={imgPool1[imgIndex % imgPool1.length]}
-                    alt="Career Guidance"
-                    style={{ transition: "all 1s ease-in-out" }}
-                  />
+                  <AnimatePresence>
+                    <motion.img
+                      key={imgIndex1}
+                      src={imgPool1[imgIndex1 % imgPool1.length]}
+                      alt="Career Guidance"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1.5, ease: "easeInOut" }}
+                    />
+                  </AnimatePresence>
 
                   <div className="training-content">
                     <span>Future Ready</span>
@@ -84,11 +111,17 @@ export default function TrainingSection() {
                   data-aos="zoom-in"
                   data-aos-delay="350"
                 >
-                  <img
-                    src={imgPool2[imgIndex % imgPool2.length]}
-                    alt="Mentoring Program"
-                    style={{ transition: "all 1s ease-in-out" }}
-                  />
+                  <AnimatePresence>
+                    <motion.img
+                      key={imgIndex2}
+                      src={imgPool2[imgIndex2 % imgPool2.length]}
+                      alt="Mentoring Program"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1.5, ease: "easeInOut" }}
+                    />
+                  </AnimatePresence>
 
                   <div className="training-content">
                     <span>Skill Growth</span>
@@ -112,11 +145,17 @@ export default function TrainingSection() {
                   data-aos="zoom-in"
                   data-aos-delay="300"
                 >
-                  <img
-                    src={imgPool3[imgIndex % imgPool3.length]}
-                    alt="IoT Workshop"
-                    style={{ transition: "all 1s ease-in-out" }}
-                  />
+                  <AnimatePresence>
+                    <motion.img
+                      key={imgIndex3}
+                      src={imgPool3[imgIndex3 % imgPool3.length]}
+                      alt="IoT Workshop"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1.5, ease: "easeInOut" }}
+                    />
+                  </AnimatePresence>
 
                   <div className="training-content">
                     <span>Smart Innovation</span>
@@ -131,11 +170,17 @@ export default function TrainingSection() {
                   data-aos="flip-left"
                   data-aos-delay="450"
                 >
-                  <img
-                    src={imgPool4[imgIndex % imgPool4.length]}
-                    alt="Programming Workshop"
-                    style={{ transition: "all 1s ease-in-out" }}
-                  />
+                  <AnimatePresence>
+                    <motion.img
+                      key={imgIndex4}
+                      src={imgPool4[imgIndex4 % imgPool4.length]}
+                      alt="Programming Workshop"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1.5, ease: "easeInOut" }}
+                    />
+                  </AnimatePresence>
 
                   <div className="training-content">
                     <span>Coding Skills</span>

@@ -9,7 +9,6 @@ import TeamSection from "../Components/TeamSection";
 import TraningSection from "../Components/TrainingSection";
 import ContactSection from "../Components/ContactSection";
 import FooterTopSection from "../Components/FooterTopSection";
-import TestimonialSection from "../Components/TestimonialSection";
 import PriceTableSection from "../Components/PriceTableSection";
 
 export default function Home() {
@@ -25,7 +24,6 @@ export default function Home() {
       <Reveal width="100%" delay={0.17}><TraningSection /></Reveal>
       <Reveal width="100%" delay={0.2}><ContactSection /></Reveal>
       <Reveal width="100%" delay={0.23}><PriceTableSection /></Reveal>
-      <Reveal width="100%" delay={0.26}><TestimonialSection /></Reveal>
       <Reveal width="100%" delay={0.29}><FooterTopSection /></Reveal>
     </div>
   );
