@@ -36,6 +36,17 @@ const PricingSection = () => {
     return () => clearInterval(timer);
   }, []);
 
+   const openWhatsApp = (packageName) => {
+    const phoneNumber = "918925450473";
+
+    const message = `Hi, I am interested in the ${packageName} package. Please share more details.`;
+
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  };
+
   return (
     <section className="pricing-main-section">
       <div className="container-fluid">
@@ -138,8 +149,12 @@ const PricingSection = () => {
                 </div>
               </div>
 
-              <button className="btn" style={{width:'100%'}}>
-                Choose Package <i className="bi bi-arrow-right"></i>
+              <button
+               className="btn"
+               style={{ width: "100%" }}
+               onClick={() => openWhatsApp("Monthly")}
+              >
+             Choose Package <i className="bi bi-arrow-right"></i>
               </button>
             </div>
           </div>
@@ -185,9 +200,13 @@ const PricingSection = () => {
                 </div>
               </div>
 
-              <button className="btn outline-btn" style={{width:'100%', border:'2px solid #fff',}}>
-                Choose Package <i className="bi bi-arrow-right"></i>
-              </button>
+<button
+  className="btn outline-btn"
+  style={{ width: "100%", border: "2px solid #fff" }}
+  onClick={() => openWhatsApp("Yearly")}
+>
+  Choose Package <i className="bi bi-arrow-right"></i>
+</button>
             </div>
           </div>
 
