@@ -1,14 +1,27 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import TestimonialSection from "../Components/TestimonialSection";
 import "../index.css";
 import "../assets/css/Contact-page.css";
 
 export default function Contact() {
 
   const form = useRef();
-  const [openFAQ, setOpenFAQ] = useState(null);
-  const [showFAQs, setShowFAQs] = useState(false);
+  const [showFaq, setShowFaq] = useState(false);
+  const [activeFaq, setActiveFaq] = useState(null);
 
+  const faqs = [
+    { q: "What services does ProJenius offer?", a: "We offer custom solutions in Machine Learning, Web Development, App Development, IoT integration, Graphic Designing, Video Editing, and Data Analysis. All projects are tailored to your requirements." },
+    { q: "How do I start a project with ProJenius?", a: "You can reach out to us through the contact form, phone, or email to schedule an initial consultation." },
+    { q: "Is there an advance payment required?", a: "Yes, we usually require a partial advance payment before commencing the project." },
+    { q: "What if my project involves hardware components?", a: "We have specialized teams to handle hardware integration, especially for IoT solutions." },
+    { q: "How are changes to the project handled?", a: "Changes are handled through a formal change request process to ensure clear communication and timeline adjustments." },
+    { q: "What is the typical timeline for a project?", a: "Timelines vary depending on project complexity, ranging from a few weeks to several months." },
+    { q: "Who owns the final deliverables?", a: "Upon full payment, the client owns the final deliverables unless specified otherwise in the contract." },
+    { q: "Is my information kept confidential?", a: "Absolutely. We sign an NDA to ensure all your information is strictly confidential." },
+    { q: "Can I terminate a project midway?", a: "Yes, subject to the termination clauses in our service agreement." },
+    { q: "How can I contact the ProJenius team?", a: "Use the contact form on this page or email us directly at teamprojenius2025@gmail.com." },
+  ];
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -31,48 +44,7 @@ export default function Contact() {
         }
       );
   };
-const faqs = [
-  {
-    question: "What services do you provide?",
-    answer: "We provide web development, IoT solutions, UI/UX design, software development and digital transformation services."
-  },
-  {
-    question: "How long does a project take?",
-    answer: "Project timelines depend on project scope and complexity."
-  },
-  {
-    question: "Do you provide custom software solutions?",
-    answer: "Yes, we create customized software solutions based on business needs."
-  },
-  {
-    question: "Will I get technical support after completion?",
-    answer: "Yes, we provide maintenance and support."
-  },
-  {
-    question: "How can I contact your team?",
-    answer: "Through phone, email or contact form."
-  },
-  {
-    question: "Do you provide SEO services?",
-    answer: "Yes, we provide SEO services."
-  },
-  {
-    question: "Do you develop mobile applications?",
-    answer: "Yes, Android and iOS applications."
-  },
-  {
-    question: "Can you redesign an existing website?",
-    answer: "Yes, we can redesign existing websites."
-  },
-  {
-    question: "Do you provide hosting support?",
-    answer: "Yes, hosting and deployment support."
-  },
-  {
-    question: "What industries do you work with?",
-    answer: "Healthcare, Education, Retail and Enterprise."
-  }
-];
+
   return (
     <>
       <section
@@ -91,145 +63,106 @@ const faqs = [
 
       <section className="contact-main-section">
         <div className="container">
+          
+          <div className="text-center mb-5 pb-3">
+            <h2 className="confirm-quote-title">Confirm Your Quote</h2>
+            <p className="confirm-quote-subtitle mx-auto" style={{maxWidth: '650px'}}>
+              Share your project details below. Our team will review your requirements and get back to you with clarity and confidence.
+            </p>
+          </div>
 
-          <div className="row align-items-center g-5">
+          <div className="row g-5">
+            {/* LEFT - FORM */}
+            <div className="col-lg-7">
+              <div className="quote-form-card">
+                <h3>Project & Quote Details</h3>
+                <p className="quote-form-subtitle">Fill in the details below so we can prepare the best solution for you.</p>
 
-            {/* LEFT */}
-
-            <div className="col-lg-5">
-              <div className="contact-info-box">
-
-                <span className="section-tag">
-                  Contact Us
-                </span>
-
-                <h2>
-                  Let’s Discuss Your Next Project
-                </h2>
-
-                <p>
-                  Reach out to our team for software development, IoT
-                  solutions, UI/UX design, and digital innovation services.
-                </p>
-
-                <div className="contact-detail-item">
-                  <div className="contact-icon">
-                    <i className="bi bi-telephone-fill"></i>
+                <form ref={form} onSubmit={sendEmail}>
+                  <div className="row g-4 mt-2">
+                    <div className="col-md-6">
+                      <label className="form-label quote-label">Full Name</label>
+                      <input type="text" name="user_name" className="form-control custom-quote-input" placeholder="Your full name" required />
+                    </div>
+                    <div className="col-md-6">
+                      <label className="form-label quote-label">Email Address</label>
+                      <input type="email" name="user_email" className="form-control custom-quote-input" placeholder="your.email@example.com" required />
+                    </div>
+                    <div className="col-12">
+                      <label className="form-label quote-label">Phone Number</label>
+                      <input type="text" name="user_phone" className="form-control custom-quote-input" placeholder="+91 98765 43210" />
+                    </div>
+                    <div className="col-12">
+                      <label className="form-label quote-label">Service Interested In</label>
+                      <select name="service" className="form-select custom-quote-input" required>
+                        <option value="">Select a service</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="IoT Solutions">IoT Solutions</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Carrier Guidance">Carrier Guidance</option>
+                        <option value="Workshops">Workshops</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div className="col-12">
+                      <label className="form-label quote-label">Project Details</label>
+                      <textarea rows="4" name="message" className="form-control custom-quote-input" placeholder="Briefly describe your project..." required></textarea>
+                    </div>
+                    <div className="col-12 mt-4">
+                      <button type="submit" className="btn quote-submit-btn w-100">
+                        Submit Details
+                      </button>
+                    </div>
                   </div>
-
-                  <div>
-                    <h5>Phone</h5>
-
-                    <span>
-                      <a href="tel:+918925450473">
-                        +91 89254 50473
-                      </a>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="contact-detail-item">
-                  <div className="contact-icon">
-                    <i className="bi bi-envelope-fill"></i>
-                  </div>
-
-                  <div>
-                    <h5>Email</h5>
-
-                    <span>
-                      <a href="mailto:teamprojenius2025@gmail.com">
-                        teamprojenius2025@gmail.com
-                      </a>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="contact-detail-item">
-                  <div className="contact-icon">
-                    <i className="bi bi-geo-alt-fill"></i>
-                  </div>
-
-                  <div>
-                    <h5>Location</h5>
-                    <span>Trichy, Tamil Nadu, India</span>
-                  </div>
-                </div>
-
+                </form>
               </div>
             </div>
 
-            {/* RIGHT */}
+            {/* RIGHT - INFO CARDS */}
+            <div className="col-lg-5">
+              
+              {/* TOP CARD */}
+              <div className="talk-first-card mb-4">
+                <h4>Need to Talk First?</h4>
+                <p>Prefer a quick discussion before confirming your quote? Reach out to us directly — we're happy to help.</p>
+                
+                <div className="talk-contact-list mt-4">
+                  <div className="talk-contact-item">
+                    <i className="bi bi-telephone"></i>
+                    <span>+91 89254 50473</span>
+                  </div>
+                  
+                  <div className="talk-contact-item mt-3">
+                    <i className="bi bi-envelope"></i>
+                    <span>teamprojenius2025@gmail.com</span>
+                  </div>
+                </div>
 
-            <div className="col-lg-7">
-              <div className="contact-form-wrapper">
+                <p className="talk-response-time mt-4">We usually respond within 24 hours.</p>
+              </div>
 
-                <h3>Send Message</h3>
-
-                <form ref={form} onSubmit={sendEmail}>
-
-                  <div className="row">
-
-                    <div className="col-md-6 mb-4">
-                      <input
-                        type="text"
-                        name="user_name"
-                        className="form-control custom-contact-input"
-                        placeholder="Your Name"
-                        required
-                      />
-                    </div>
-
-                    <div className="col-md-6 mb-4">
-                      <input
-                        type="email"
-                        name="user_email"
-                        className="form-control custom-contact-input"
-                        placeholder="Email Address"
-                        required
-                      />
-                    </div>
-
-                    <div className="col-md-6 mb-4">
-                      <input
-                        type="text"
-                        name="user_phone"
-                        className="form-control custom-contact-input"
-                        placeholder="Phone Number"
-                      />
-                    </div>
-
-                    <div className="col-md-6 mb-4">
-                      <input
-                        type="text"
-                        name="subject"
-                        className="form-control custom-contact-input"
-                        placeholder="Subject"
-                        required
-                      />
-                    </div>
-
-                    <div className="col-12 mb-4">
-                      <textarea
-                        rows="6"
-                        name="message"
-                        className="form-control custom-contact-input"
-                        placeholder="Write Your Message"
-                        required
-                      ></textarea>
-                    </div>
-
-                    <div className="col-12">
-                      <button type="submit" className="btn">
-                        Send Message
-                        <i className="bi bi-arrow-up-right"></i>
-                      </button>
-                    </div>
-
+              {/* BOTTOM CARD */}
+              <div className="what-happens-card">
+                <h4>What Happens Next?</h4>
+                
+                <div className="step-list mt-4">
+                  <div className="step-item">
+                    <div className="step-number">01</div>
+                    <div className="step-text">We carefully review your project requirements and objectives.</div>
                   </div>
 
-                </form>
+                  <div className="step-item">
+                    <div className="step-number">02</div>
+                    <div className="step-text">Our team may reach out for clarification or suggestions.</div>
+                  </div>
 
+                  <div className="step-item">
+                    <div className="step-number">03</div>
+                    <div className="step-text">You receive a transparent quote with timelines and deliverables.</div>
+                  </div>
+                </div>
               </div>
+
             </div>
 
           </div>
@@ -255,94 +188,51 @@ const faqs = [
           </div>
         </div>
       </section>
-      <section className="faq-main-section">
-  <div className="container">
 
-    <div className="faq-title-wrap text-center">
-      <span className="section-tag">FAQ</span>
-      <h2>Frequently Asked Questions</h2>
+      {/* FAQ */}
 
-<button
-  className="faq-open-btn"
-  onClick={() => setShowFAQs(!showFAQs)}
->
-  {showFAQs ? "Hide Questions" : "Open Questions"}
-</button>
-    </div>
-
-    {showFAQs && (
-    <div className="row">
-
-      <div className="col-lg-6">
-        {faqs.slice(0, 5).map((faq, index) => (
-          <div className="faq-card" key={index}>
-            <div
-              className="faq-question"
-              onClick={() =>
-                setOpenFAQ(
-                  openFAQ === index ? null : index
-                )
-              }
+      <section className="faq-grid-section">
+        <div className="container">
+          <div className="text-center mb-4">
+            <h2 className="faq-grid-title">Looking for Answers?</h2>
+            <p className="faq-grid-subtitle mx-auto" style={{maxWidth: '700px'}}>
+              Before sending a message, please check our comprehensive FAQ section or Help Center. You might find the solution instantly!
+            </p>
+            <button 
+              className="btn mt-4 toggle-faq-btn"
+              onClick={() => setShowFaq(!showFaq)}
             >
-              <h5>{faq.question}</h5>
-
-              <span>
-                {openFAQ === index ||
-                openFAQ === "all"
-                  ? "−"
-                  : "+"}
-              </span>
-            </div>
-          
-
-            {(openFAQ === index ||
-              openFAQ === "all") && (
-              <div className="faq-answer">
-                {faq.answer}
-              </div>
-            )}
+              {showFaq ? "Hide FAQs" : "Visit Our FAQ"}
+            </button>
           </div>
-        ))}
-      </div>
-      
 
-      <div className="col-lg-6">
-        {faqs.slice(5).map((faq, index) => (
-          <div className="faq-card" key={index + 5}>
-            <div
-              className="faq-question"
-              onClick={() =>
-                setOpenFAQ(
-                  openFAQ === index + 5
-                    ? null
-                    : index + 5
-                )
-              }
-            >
-              <h5>{faq.question}</h5>
-
-              <span>
-                {openFAQ === index + 5 ||
-                openFAQ === "all"
-                  ? "−"
-                  : "+"}
-              </span>
-            </div>
-
-            {(openFAQ === index + 5 ||
-              openFAQ === "all") && (
-              <div className="faq-answer">
-                {faq.answer}
+          {showFaq && (
+            <div className="faq-grid-container mt-5 pt-3">
+              <div className="row g-4">
+                {faqs.map((faq, index) => (
+                  <div className="col-lg-6" key={index}>
+                    <div 
+                      className={`faq-grid-card ${activeFaq === index ? "active" : ""}`}
+                      onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                    >
+                      <h5 className="faq-q">Q: {faq.q}</h5>
+                      {activeFaq === index && (
+                        <p className="faq-a mt-3 mb-0">A: {faq.a}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
-            )}
-          </div>
-        ))}
-      </div>
+            </div>
+          )}
+        </div>
+      </section>
 
-    </div>
-    )}
-  </div>
-</section>
+
+
+      {/* GOOGLE REVIEWS */}
+      <TestimonialSection />
+
     </>
   );
 }

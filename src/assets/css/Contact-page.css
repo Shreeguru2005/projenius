@@ -245,67 +245,71 @@
     box-shadow: 0 20px 60px rgba(0,0,0,0.08);
 }
 
-/* ===========================
-   FAQ SECTION
-=========================== */
-
-.faq-main-section {
+/* FAQ GRID SECTION */
+.faq-grid-section {
+    background: #f8fafc; /* Very light gray/blue background like the image */
     padding: 100px 0;
-    background: #06142d;
 }
 
-.faq-title-wrap {
-    margin-bottom: 50px;
-}
-
-.faq-title-wrap h2 {
-    color: #fff;
-    font-size: 48px;
+.faq-grid-title {
+    font-size: 36px;
     font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
 }
 
-.faq-open-btn{
-    background:#66C7DD;
-    color:#06142d;
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    font-weight:600;
-    margin-top:20px;
+.faq-grid-subtitle {
+    color: #475569;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-.faq-card{
-    background:#fff;
-    border-radius:20px;
-    margin-bottom:20px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+.toggle-faq-btn {
+    background: #3b82f6; /* Blue like the image */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.faq-question{
-    padding:25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    cursor:pointer;
+.toggle-faq-btn:hover {
+    background: #2563eb;
+    color: #fff;
 }
 
-.faq-question h5{
-    margin:0;
-    font-weight:700;
-    color:#06142d;
+.faq-grid-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    height: 100%;
 }
 
-.faq-question span{
-    font-size:30px;
-    color:#66C7DD;
-    font-weight:bold;
+.faq-grid-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
 }
 
-.faq-answer{
-    padding:0 25px 25px;
-    color:#5b6475;
-    line-height:1.8;
+.faq-grid-card.active {
+    border-color: #3b82f6;
+    background: #eff6ff; /* slight blue tint */
+}
+
+.faq-q {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.faq-a {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.6;
 }
 
 /* SOCIAL CONNECT SECTION */
