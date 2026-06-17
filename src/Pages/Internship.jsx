@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import "../index.css";
 import "../assets/css/Service-page.css";
 
@@ -11,73 +12,73 @@ const programDetails = [
 
 const domains = [
   {
-    icon: "bi bi-window-stack",
+    icon: "/images/fullstack-icon.png",
     title: "Full Stack Development",
     category: "Development",
     outcome: "Build complete web apps with frontend, backend, APIs, and database workflows.",
   },
   {
-    icon: "bi bi-layout-text-window-reverse",
+    icon: "/images/frontend-icon.png",
     title: "Frontend Development",
     category: "Development",
     outcome: "Create responsive interfaces with React, reusable components, and polished UI flows.",
   },
   {
-    icon: "bi bi-hdd-network",
+    icon: "/images/backend-icon.png",
     title: "Backend Development",
     category: "Development",
     outcome: "Design server logic, APIs, authentication, and database-backed application features.",
   },
   {
-    icon: "bi bi-braces",
+    icon: "/images/react-icon.png",
     title: "React JS",
     category: "Development",
     outcome: "Develop dynamic React pages with routing, state management, and API integration.",
   },
   {
-    icon: "bi bi-filetype-py",
+    icon: "/images/python-icon.png",
     title: "Python Development",
     category: "Development",
     outcome: "Work with Python fundamentals, automation, APIs, and practical project modules.",
   },
   {
-    icon: "bi bi-cup-hot",
+    icon: "/images/java-icon.png",
     title: "Java Development",
     category: "Development",
     outcome: "Practice object-oriented programming and build structured Java application features.",
   },
   {
-    icon: "bi bi-cpu",
+    icon: "/images/ai-icon.png",
     title: "AI & Machine Learning",
     category: "AI & Data",
     outcome: "Explore model building, data preparation, prediction workflows, and AI use cases.",
   },
   {
-    icon: "bi bi-bar-chart",
+    icon: "/images/data-science-icon.png",
     title: "Data Science",
     category: "AI & Data",
     outcome: "Analyze datasets, visualize insights, and create portfolio-ready data projects.",
   },
   {
-    icon: "bi bi-router",
+    icon: "/images/iot-icon.png",
     title: "IoT Development",
     category: "Hardware",
     outcome: "Connect sensors, microcontrollers, and dashboards for smart device prototypes.",
   },
   {
-    icon: "bi bi-link-45deg",
+    icon: "/images/blockchain-icon.png",
     title: "Blockchain Development",
     category: "Emerging Tech",
     outcome: "Understand decentralized app concepts, smart-contract basics, and traceability systems.",
   },
   {
-    icon: "bi bi-palette",
+    icon: "/images/uiux-icon.png",
     title: "UI/UX Design",
     category: "Design",
     outcome: "Design user journeys, wireframes, prototypes, and clean app screens.",
   },
   {
-    icon: "bi bi-phone",
+    icon: "/images/mobile-icon.png",
     title: "Mobile App Development",
     category: "Development",
     outcome: "Build mobile-first app screens and practical features for real-world use cases.",
@@ -87,22 +88,22 @@ const domains = [
 const domainFilters = ["All", "Development", "AI & Data", "Hardware", "Design", "Emerging Tech"];
 
 const learningPoints = [
-  "Industry-Level Projects",
-  "Git & GitHub",
-  "API Integration",
-  "Database Management",
-  "Team Collaboration",
-  "Agile Methodology",
+  { text: "Industry-Level Projects", icon: "bi-building", color: "blue" },
+  { text: "Git & GitHub", icon: "bi-github", color: "purple" },
+  { text: "API Integration", icon: "bi-cloud-arrow-down", color: "green" },
+  { text: "Database Management", icon: "bi-database", color: "yellow" },
+  { text: "Team Collaboration", icon: "bi-people", color: "pink" },
+  { text: "Agile Methodology", icon: "bi-kanban", color: "orange" },
 ];
 
 const benefits = [
-  "Internship Certificate",
-  "Project Completion Certificate",
-  "Letter of Recommendation",
-  "Placement Assistance",
-  "Mentorship from Experts",
-  "Resume Building Support",
-  "LinkedIn Profile Optimization",
+  { text: "Internship Certificate", icon: "bi-patch-check", color: "green" },
+  { text: "Project Completion Certificate", icon: "bi-file-earmark-check", color: "blue" },
+  { text: "Letter of Recommendation", icon: "bi-envelope-paper", color: "yellow" },
+  { text: "Placement Assistance", icon: "bi-briefcase", color: "purple" },
+  { text: "Mentorship from Experts", icon: "bi-person-hearts", color: "pink" },
+  { text: "Resume Building Support", icon: "bi-file-person", color: "orange" },
+  { text: "LinkedIn Optimization", icon: "bi-linkedin", color: "blue" },
 ];
 
 const liveProjects = [
@@ -114,29 +115,29 @@ const liveProjects = [
 ];
 
 const technologies = [
-  { name: "HTML", icon: "bi bi-filetype-html" },
-  { name: "CSS", icon: "bi bi-filetype-css" },
-  { name: "JavaScript", icon: "bi bi-filetype-js" },
-  { name: "React JS", icon: "bi bi-react" },
-  { name: "Node.js", icon: "bi bi-node-plus-fill" },
-  { name: "Express.js", icon: "bi bi-code-slash" },
-  { name: "MongoDB", icon: "bi bi-database-fill" },
-  { name: "Python", icon: "bi bi-filetype-py" },
-  { name: "GitHub", icon: "bi bi-github" },
-  { name: "Postman", icon: "bi bi-send-fill" },
+  { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "React JS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+  { name: "Express.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+  { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+  { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+  { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
 ];
 
 const successStories = [
-  "Intern Testimonials",
-  "Student Reviews",
-  "Placement Achievements",
+  { text: "Intern Testimonials", icon: "bi-chat-quote-fill", color: "blue" },
+  { text: "Student Reviews", icon: "bi-star-fill", color: "yellow" },
+  { text: "Placement Achievements", icon: "bi-trophy-fill", color: "purple" },
 ];
 
 const stats = [
-  { end: 500, suffix: "+", label: "Interns Trained" },
-  { end: 100, suffix: "+", label: "Projects Completed" },
-  { end: 50, suffix: "+", label: "Hiring Partners" },
-  { end: 90, suffix: "%", label: "Student Satisfaction" },
+  { end: 500, suffix: "+", label: "Interns Trained", icon: "bi-people-fill", color: "blue" },
+  { end: 100, suffix: "+", label: "Projects Completed", icon: "bi-code-slash", color: "purple" },
+  { end: 50, suffix: "+", label: "Hiring Partners", icon: "bi-building", color: "orange" },
+  { end: 90, suffix: "%", label: "Student Satisfaction", icon: "bi-emoji-smile-fill", color: "pink" },
 ];
 
 const getWhatsAppApplyLink = (domain) =>
@@ -221,26 +222,120 @@ export default function Internship() {
         </div>
       </section>
 
-      <section className="internship-program-section">
-        <div className="container">
-          <div className="internship-about-grid">
-            <div>
-              <span id="sub-heading">About the Internship</span>
-              <h2 id="title">Practical Training Built Around Real Work</h2>
-              <p className="section-desc">
+      <section className="internship-program-section modern-about-section">
+        {/* Animated Background blobs */}
+        <div className="about-bg-blobs">
+          <div className="blob blob-1"></div>
+          <div className="blob blob-2"></div>
+        </div>
+
+        <div className="container relative z-10">
+          <div className="internship-about-grid modern-grid">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="about-content-wrapper"
+            >
+              <div className="about-accent-line"></div>
+              <span id="sub-heading" className="modern-sub-heading">About the Internship</span>
+              <h2 id="title" className="modern-title">
+                Practical Training <br/>
+                <span className="text-gradient">Built Around Real Work</span>
+              </h2>
+              <p className="section-desc modern-desc">
                 Gain hands-on experience through structured training, mentor
                 support, live projects, and career preparation designed for
                 students and freshers entering the tech industry.
               </p>
-            </div>
 
-            <div className="internship-detail-grid">
-              {programDetails.map((detail) => (
-                <div className="internship-detail-card" key={detail}>
-                  <i className="bi bi-check2-circle"></i>
-                  <span>{detail}</span>
-                </div>
-              ))}
+              <div className="modern-cta-group">
+                <a href="#apply" className="modern-btn-primary">
+                  <span>Start Your Journey</span>
+                  <i className="bi bi-arrow-right-short"></i>
+                </a>
+                <a href="#brochure" className="modern-btn-secondary">
+                  <span>Download Syllabus</span>
+                  <i className="bi bi-cloud-arrow-down"></i>
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="internship-detail-grid modern-detail-grid"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.15 }
+                }
+              }}
+            >
+              {programDetails.map((detail, index) => {
+                const [title, desc] = detail.split(": ");
+                return (
+                  <motion.div 
+                    className="internship-detail-card modern-detail-card" 
+                    key={detail}
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
+                    }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                  >
+                    <div className="card-bg-gradient"></div>
+                    <div className="card-content-relative">
+                      <div className={`card-icon-wrapper ${
+                        index === 0 ? "color-blue" : 
+                        index === 1 ? "color-purple" : 
+                        index === 2 ? "color-pink" : 
+                        "color-orange"
+                      }`}>
+                        <i className={`bi ${
+                          index === 0 ? "bi-calendar2-check" : 
+                          index === 1 ? "bi-laptop" : 
+                          index === 2 ? "bi-briefcase" : 
+                          "bi-person-check"
+                        }`}></i>
+                      </div>
+                      <div className="card-text">
+                        <h4>{title}</h4>
+                        <span>{desc}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* New N8N Style Showcase Section */}
+      <section className="internship-showcase-section">
+        <div className="container showcase-container">
+          <div className="showcase-header">
+            <h2>How ProJenius transforms your <br/> career with real-world projects</h2>
+            <p>Discover how ProJenius uses hands-on training to prepare students for the tech industry.</p>
+          </div>
+          
+          <div className="showcase-video-container">
+            <div className="showcase-video-glow"></div>
+            <div className="showcase-video-inner">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/1adzVmNh078?si=dCnd1I_Mky0IN98m"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>
@@ -277,7 +372,11 @@ export default function Internship() {
                   type="button"
                   onClick={() => setSelectedDomain(domain)}
                 >
-                  <i className={domain.icon}></i>
+                  {domain.icon.endsWith(".png") ? (
+                    <img src={domain.icon} alt={domain.title} className="domain-icon-img" />
+                  ) : (
+                    <i className={domain.icon}></i>
+                  )}
                   <h3>{domain.title}</h3>
                   <span className="internship-domain-apply">View Track</span>
                 </button>
@@ -286,7 +385,11 @@ export default function Internship() {
 
             <aside className="internship-track-preview">
               <span id="sub-heading">Selected Track</span>
-              <i className={selectedDomain.icon}></i>
+              {selectedDomain.icon.endsWith(".png") ? (
+                <img src={selectedDomain.icon} alt={selectedDomain.title} className="domain-icon-img" />
+              ) : (
+                <i className={selectedDomain.icon}></i>
+              )}
               <h3>{selectedDomain.title}</h3>
               <p>{selectedDomain.outcome}</p>
               <a
@@ -302,74 +405,110 @@ export default function Internship() {
         </div>
       </section>
 
-      <section className="internship-split-section">
-        <div className="container">
-          <div className="internship-split-grid">
-            <div className="internship-panel">
-              <span id="sub-heading">What Interns Will Learn</span>
-              <h2 id="title">Work Like a Modern Tech Team</h2>
-              <div className="internship-check-grid">
-                {learningPoints.map((point) => (
-                  <span key={point}>
-                    <i className="bi bi-check-lg"></i>
-                    {point}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="internship-panel">
-              <span id="sub-heading">Benefits</span>
-              <h2 id="title">Career Support Beyond Training</h2>
-              <div className="internship-check-grid">
-                {benefits.map((benefit) => (
-                  <span key={benefit}>
-                    <i className="bi bi-award"></i>
-                    {benefit}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="internship-projects-section">
-        <div className="container">
-          <div className="section-heading text-center">
-            <span id="sub-heading">Live Projects</span>
-            <h2 id="title">Build Portfolio-Ready Work</h2>
-          </div>
-
-          <div className="internship-project-grid">
-            {liveProjects.map((project) => (
-              <article className="internship-project-card" key={project}>
-                <i className="bi bi-kanban"></i>
-                <h3>{project}</h3>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="internship-tech-section">
         <div className="container">
           <div className="section-heading text-center">
             <span id="sub-heading">Technologies Covered</span>
             <h2 id="title">Tools Used in Real Development</h2>
           </div>
+        </div>
 
-          <div className="internship-tech-list">
-            {technologies.map((tech) => (
-              <span
-                key={tech.name}
-                className={`internship-tech-chip tech-${tech.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-              >
-                <i className={tech.icon}></i>
-                {tech.name}
-              </span>
-            ))}
+        <div className="tech-carousel-wrapper">
+          <div className="tech-carousel-track">
+            {/* Original list */}
+            <ul className="tech-carousel-list">
+              {technologies.map((tech) => (
+                <li key={tech.name} className="tech-carousel-item">
+                  <img src={tech.logo} alt={tech.name} className="tech-carousel-logo" />
+                  <span>{tech.name}</span>
+                </li>
+              ))}
+            </ul>
+            {/* Duplicate for seamless loop */}
+            <ul className="tech-carousel-list" aria-hidden="true">
+              {technologies.map((tech) => (
+                <li key={`dup-${tech.name}`} className="tech-carousel-item">
+                  <img src={tech.logo} alt={tech.name} className="tech-carousel-logo" />
+                  <span>{tech.name}</span>
+                </li>
+              ))}
+            </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="internship-split-section modern-split">
+        <div className="container">
+          <motion.div 
+            className="internship-split-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+            }}
+          >
+            <motion.div 
+              className="internship-panel glass-panel"
+              variants={{
+                hidden: { opacity: 0, x: -30 },
+                visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 70 } }
+              }}
+            >
+              <div className="panel-header">
+                <span className="badge-purple">What Interns Will Learn</span>
+                <h2 className="gradient-title">Work Like a Modern Tech Team</h2>
+              </div>
+              <div className="internship-check-grid">
+                {learningPoints.map((point, index) => (
+                  <motion.div 
+                    key={point.text}
+                    className="modern-check-item"
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <div className={`icon-box color-${point.color}`}>
+                      <i className={`bi ${point.icon}`}></i>
+                    </div>
+                    <span>{point.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="internship-panel glass-panel"
+              variants={{
+                hidden: { opacity: 0, x: 30 },
+                visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 70 } }
+              }}
+            >
+              <div className="panel-header">
+                <span className="badge-blue">Benefits</span>
+                <h2 className="gradient-title">Career Support Beyond Training</h2>
+              </div>
+              <div className="internship-check-grid">
+                {benefits.map((benefit, index) => (
+                  <motion.div 
+                    key={benefit.text}
+                    className="modern-check-item"
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <div className={`icon-box color-${benefit.color}`}>
+                      <i className={`bi ${benefit.icon}`}></i>
+                    </div>
+                    <span>{benefit.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -379,19 +518,25 @@ export default function Internship() {
             <div>
               <span id="sub-heading">Success Stories</span>
               <h2 id="title">Growth You Can Measure</h2>
-              <div className="internship-story-list">
+              <div className="internship-check-grid" style={{ marginTop: '24px' }}>
                 {successStories.map((story) => (
-                  <span key={story}>
-                    <i className="bi bi-star-fill"></i>
-                    {story}
-                  </span>
+                  <div key={story.text} className="modern-check-item">
+                    <div className={`icon-box color-${story.color}`}>
+                      <i className={`bi ${story.icon}`}></i>
+                    </div>
+                    <span>{story.text}</span>
+                  </div>
                 ))}
               </div>
             </div>
 
             <div className="internship-stats-grid" ref={statsRef}>
               {stats.map((stat, index) => (
-                <article className="internship-stat-card" key={stat.label}>
+                <article className="internship-stat-card relative overflow-hidden" key={stat.label}>
+                  <div className={`absolute -right-4 -top-4 w-20 h-20 rounded-full opacity-10 bg-${stat.color}-500`}></div>
+                  <div className={`icon-box mb-3 color-${stat.color}`}>
+                    <i className={`bi ${stat.icon}`}></i>
+                  </div>
                   <strong>{statCounts[index]}{stat.suffix}</strong>
                   <span>{stat.label}</span>
                 </article>
