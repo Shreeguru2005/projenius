@@ -36,7 +36,19 @@
 }
 
 .hero-wrapper::after {
-    display: none;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 140px; /* Base height */
+    background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%221440%22%20zoomAndPan%3D%22magnify%22%20viewBox%3D%220%200%201080%20123.750003%22%20height%3D%22165%22%20preserveAspectRatio%3D%22none%22%20version%3D%221.0%22%3E%3Cdefs%3E%3CclipPath%20id%3D%2293f9834975%22%3E%3Cpath%20d%3D%22M%201.089844%200%20L%201078.910156%200%20L%201078.910156%20123.5%20L%201.089844%20123.5%20Z%20M%201.089844%200%20%22%20clip-rule%3D%22nonzero%22%2F%3E%3C%2FclipPath%3E%3CclipPath%20id%3D%226c8e690bbd%22%3E%3Cpath%20d%3D%22M%200.0898438%2011%20L%201077.910156%2011%20L%201077.910156%20123.5%20L%200.0898438%20123.5%20Z%20M%200.0898438%2011%20%22%20clip-rule%3D%22nonzero%22%2F%3E%3C%2FclipPath%3E%3CclipPath%20id%3D%224c34389736%22%3E%3Cpath%20d%3D%22M%200.0898438%208%20L%201077.910156%208%20L%201077.910156%20106.5625%20L%200.0898438%20106.5625%20Z%20M%200.0898438%208%20%22%20clip-rule%3D%22nonzero%22%2F%3E%3C%2FclipPath%3E%3CclipPath%20id%3D%22b5a758477e%22%3E%3Crect%20x%3D%220%22%20width%3D%221078%22%20y%3D%220%22%20height%3D%22124%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Cg%20clip-path%3D%22url(%2393f9834975)%22%3E%3Cg%20transform%3D%22matrix(1%2C%200%2C%200%2C%201%2C%201%2C%200.00000000000000159)%22%3E%3Cg%20clip-path%3D%22url(%23b5a758477e)%22%3E%3Cg%20clip-path%3D%22url(%236c8e690bbd)%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M%20-3.59375%2028.574219%20L%2088.101562%2062.867188%20L%20185.527344%2011.429688%20L%201096.726562%20102.871094%20L%201096.726562%20125.734375%20L%20-3.59375%20125.734375%20Z%20M%20-3.59375%2028.574219%20%22%20fill-opacity%3D%221%22%20fill-rule%3D%22nonzero%22%2F%3E%3C%2Fg%3E%3Cg%20clip-path%3D%22url(%234c34389736)%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20transform%3D%22matrix(0.573081%2C%200%2C%200%2C%200.571511%2C%20-3.59211%2C%200.0000142953)%22%20fill%3D%22none%22%20stroke-linejoin%3D%22round%22%20d%3D%22M%20-0.00286252%2049.997633%20L%20160.001126%20110.001656%20L%20330.004511%2019.999038%20L%201920.004101%20179.998377%20%22%20stroke%3D%22%2366c7dd%22%20stroke-width%3D%2212%22%20stroke-opacity%3D%221%22%20stroke-miterlimit%3D%224%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% 100%;
+    z-index: 2;
+    pointer-events: none;
+    animation: shapeSway 10s ease-in-out infinite;
 }
 
 @keyframes shapeSway {

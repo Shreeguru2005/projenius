@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "../index.css";
 import "../assets/css/Contact-page.css";
@@ -6,6 +6,9 @@ import "../assets/css/Contact-page.css";
 export default function Contact() {
 
   const form = useRef();
+  const [openFAQ, setOpenFAQ] = useState(null);
+  const [showFAQs, setShowFAQs] = useState(false);
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -28,7 +31,48 @@ export default function Contact() {
         }
       );
   };
-
+const faqs = [
+  {
+    question: "What services do you provide?",
+    answer: "We provide web development, IoT solutions, UI/UX design, software development and digital transformation services."
+  },
+  {
+    question: "How long does a project take?",
+    answer: "Project timelines depend on project scope and complexity."
+  },
+  {
+    question: "Do you provide custom software solutions?",
+    answer: "Yes, we create customized software solutions based on business needs."
+  },
+  {
+    question: "Will I get technical support after completion?",
+    answer: "Yes, we provide maintenance and support."
+  },
+  {
+    question: "How can I contact your team?",
+    answer: "Through phone, email or contact form."
+  },
+  {
+    question: "Do you provide SEO services?",
+    answer: "Yes, we provide SEO services."
+  },
+  {
+    question: "Do you develop mobile applications?",
+    answer: "Yes, Android and iOS applications."
+  },
+  {
+    question: "Can you redesign an existing website?",
+    answer: "Yes, we can redesign existing websites."
+  },
+  {
+    question: "Do you provide hosting support?",
+    answer: "Yes, hosting and deployment support."
+  },
+  {
+    question: "What industries do you work with?",
+    answer: "Healthcare, Education, Retail and Enterprise."
+  }
+];
   return (
     <>
       <section
@@ -211,146 +255,94 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
-      {/* FAQ */}
-
       <section className="faq-main-section">
-        <div className="container">
+  <div className="container">
 
-          <div className="faq-title-wrap text-center">
-            <span className="section-tag">
-              FAQ
-            </span>
+    <div className="faq-title-wrap text-center">
+      <span className="section-tag">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
 
-            <h2>Frequently Asked Questions</h2>
+<button
+  className="faq-open-btn"
+  onClick={() => setShowFAQs(!showFAQs)}
+>
+  {showFAQs ? "Hide Questions" : "Open Questions"}
+</button>
+    </div>
+
+    {showFAQs && (
+    <div className="row">
+
+      <div className="col-lg-6">
+        {faqs.slice(0, 5).map((faq, index) => (
+          <div className="faq-card" key={index}>
+            <div
+              className="faq-question"
+              onClick={() =>
+                setOpenFAQ(
+                  openFAQ === index ? null : index
+                )
+              }
+            >
+              <h5>{faq.question}</h5>
+
+              <span>
+                {openFAQ === index ||
+                openFAQ === "all"
+                  ? "−"
+                  : "+"}
+              </span>
+            </div>
+          
+
+            {(openFAQ === index ||
+              openFAQ === "all") && (
+              <div className="faq-answer">
+                {faq.answer}
+              </div>
+            )}
           </div>
+        ))}
+      </div>
+      
 
-          <div className="accordion custom-faq" id="faqAccordion">
+      <div className="col-lg-6">
+        {faqs.slice(5).map((faq, index) => (
+          <div className="faq-card" key={index + 5}>
+            <div
+              className="faq-question"
+              onClick={() =>
+                setOpenFAQ(
+                  openFAQ === index + 5
+                    ? null
+                    : index + 5
+                )
+              }
+            >
+              <h5>{faq.question}</h5>
 
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#faq1"
-                >
-                  What services do you provide?
-                </button>
-              </h2>
-
-              <div
-                id="faq1"
-                className="accordion-collapse collapse show"
-                data-bs-parent="#faqAccordion"
-              >
-                <div className="accordion-body">
-                  We provide web development, IoT solutions, UI/UX design,
-                  software development, and digital transformation services.
-                </div>
-              </div>
+              <span>
+                {openFAQ === index + 5 ||
+                openFAQ === "all"
+                  ? "−"
+                  : "+"}
+              </span>
             </div>
 
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#faq2"
-                >
-                  How long does a project take?
-                </button>
-              </h2>
-
-              <div
-                id="faq2"
-                className="accordion-collapse collapse"
-                data-bs-parent="#faqAccordion"
-              >
-                <div className="accordion-body">
-                  Project timelines depend on the scope, features, and
-                  complexity of the project requirements.
-                </div>
+            {(openFAQ === index + 5 ||
+              openFAQ === "all") && (
+              <div className="faq-answer">
+                {faq.answer}
               </div>
-            </div>
-
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#faq3"
-                >
-                  Do you provide custom software solutions?
-                </button>
-              </h2>
-
-              <div
-                id="faq3"
-                className="accordion-collapse collapse"
-                data-bs-parent="#faqAccordion"
-              >
-                <div className="accordion-body">
-                  Yes, we create customized software solutions based on your
-                  business and industry needs.
-                </div>
-              </div>
-            </div>
-
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#faq4"
-                >
-                  Will I get technical support after completion?
-                </button>
-              </h2>
-
-              <div
-                id="faq4"
-                className="accordion-collapse collapse"
-                data-bs-parent="#faqAccordion"
-              >
-                <div className="accordion-body">
-                  Yes, we provide maintenance, updates, and technical support
-                  after project delivery.
-                </div>
-              </div>
-            </div>
-
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#faq5"
-                >
-                  How can I contact your team?
-                </button>
-              </h2>
-
-              <div
-                id="faq5"
-                className="accordion-collapse collapse"
-                data-bs-parent="#faqAccordion"
-              >
-                <div className="accordion-body">
-                  You can contact us through the contact form, phone number,
-                  or email mentioned on this page.
-                </div>
-              </div>
-            </div>
-
+            )}
           </div>
+        ))}
+      </div>
 
-        </div>
-      </section>
+    </div>
+    )}
+  </div>
+</section>
     </>
   );
 }

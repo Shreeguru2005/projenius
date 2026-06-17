@@ -136,15 +136,11 @@ const PricingSection = () => {
 
               <div className="price-box">
                 <div>
-                  <span className="dollar">$</span>
-                  <span className="price">45.9</span>
+                  <span className="dollar">₹</span>
+                  <span className="price">2500</span>
                 </div>
 
                 <div className="save-box">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/545/545682.png"
-                    alt=""
-                  />
                   <span>Save 15%</span>
                 </div>
               </div>
@@ -186,15 +182,11 @@ const PricingSection = () => {
 
               <div className="price-box">
                 <div>
-                  <span className="dollar">$</span>
-                  <span className="price">98.3</span>
+                  <span className="dollar">₹</span>
+                  <span className="price">30000</span>
                 </div>
 
                 <div className="save-box">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/545/545682.png"
-                    alt=""
-                  />
                   <span>Save 15%</span>
                 </div>
               </div>

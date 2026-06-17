@@ -248,9 +248,10 @@
 }
 
 .save-box span {
-    color: #fff;
+    color: #00e5ff;
     font-size: 22px;
     font-weight: 600;
+    text-transform: lowercase;
 }
 
 /* =========================

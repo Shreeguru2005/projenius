@@ -1,3 +1,5 @@
+// Team.jsx
+
 import React from "react";
 import "../index.css";
 import "../assets/css/TeamSection.css";
@@ -40,8 +42,11 @@ export default function TeamSection() {
   }, []);
   return (
     <section className="team-section">
+
       <div className="container">
+
         <div className="row align-items-center mb-5">
+
           <div className="col-lg-4 first" data-aos="fade-right" data-aos-delay="150">
             <span id="sub-heading">Our Team Members</span>
 
@@ -55,6 +60,7 @@ export default function TeamSection() {
               The leadership team behind Projenius combines product thinking, engineering depth, and practical execution. We are keeping this section focused on the core faces of the company for now.
             </p>
           </div>
+
         </div>
 
         <div className="team-grid">
@@ -93,7 +99,9 @@ export default function TeamSection() {
             </article>
           ))}
         </div>
+
       </div>
+
     </section>
   );
 }

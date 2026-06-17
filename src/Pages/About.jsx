@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import '../index.css';
 import '../assets/css/About-page.css';
 import TeamSection from "../Components/TeamSection";
@@ -50,6 +50,7 @@ const counterStats = [
 export default function About() {
   const [showMagazine, setShowMagazine] = useState(false);
   const [isOpeningMagazine, setIsOpeningMagazine] = useState(false);
+  const magazineCoverRef = useRef(null);
 
     useEffect(() => {
   AOS.init({
@@ -71,6 +72,60 @@ export default function About() {
     return () => clearTimeout(timer);
   }, [isOpeningMagazine]);
 
+  useEffect(() => {
+    const magazineCover = magazineCoverRef.current;
+    if (!magazineCover || typeof window === "undefined") return undefined;
+
+    let frameId = 0;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const updateToyMotion = () => {
+      const rect = magazineCover.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const start = viewportHeight * 0.95;
+      const end = viewportHeight * 0.28;
+      const progress = clamp((start - rect.top) / (start - end), 0, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      const x = (1 - eased) * -130;
+      const y = (1 - eased) * 62 - eased * 10;
+      const rotate = -10 + eased * 8;
+      const scale = 0.84 + eased * 0.16;
+      const pointX = eased * 8;
+      const pointRotate = (1 - eased) * -2;
+      const pointScale = 1 + eased * 0.025;
+      const bubbleY = (1 - eased) * 16;
+      const bubbleScale = 0.9 + eased * 0.1;
+
+      magazineCover.style.setProperty("--toy-x", `${x.toFixed(2)}px`);
+      magazineCover.style.setProperty("--toy-y", `${y.toFixed(2)}px`);
+      magazineCover.style.setProperty("--toy-rotate", `${rotate.toFixed(2)}deg`);
+      magazineCover.style.setProperty("--toy-scale", scale.toFixed(3));
+      magazineCover.style.setProperty("--toy-focus", eased.toFixed(3));
+      magazineCover.style.setProperty("--toy-point-x", `${pointX.toFixed(2)}px`);
+      magazineCover.style.setProperty("--toy-point-rotate", `${pointRotate.toFixed(2)}deg`);
+      magazineCover.style.setProperty("--toy-point-scale", pointScale.toFixed(3));
+      magazineCover.style.setProperty("--toy-bubble-y", `${bubbleY.toFixed(2)}px`);
+      magazineCover.style.setProperty("--toy-bubble-scale", bubbleScale.toFixed(3));
+    };
+
+    const requestToyMotion = () => {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(updateToyMotion);
+    };
+
+    updateToyMotion();
+    window.addEventListener("scroll", requestToyMotion, { passive: true });
+    window.addEventListener("resize", requestToyMotion);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", requestToyMotion);
+      window.removeEventListener("resize", requestToyMotion);
+    };
+  }, []);
+
   const openMagazine = () => {
     if (isOpeningMagazine) return;
     setIsOpeningMagazine(true);
@@ -83,9 +138,32 @@ export default function About() {
 
   return (
     <>
-      <div className="header-wrap" style={{ backgroundImage: 'linear-gradient(#1219297d), url(/images/projenius-banner.webp)' }}>
-        <div className="container title-section">
+      <div className="header-wrap about-hero-wrap" style={{ backgroundImage: 'linear-gradient(120deg, rgba(18, 25, 41, 0.9), rgba(18, 25, 41, 0.58)), url(/images/projenius-banner.webp)' }}>
+        <div className="container title-section about-hero-content">
           <h1 className="page-title">About Us</h1>
+          <p className="about-hero-desc">
+            We build practical digital products, IoT systems, AI solutions, and learning experiences for students, startups, and growing businesses.
+          </p>
+          <div className="about-hero-actions">
+            <a
+              href="https://wa.me/918925450473?text=Hello%20ProJenius%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+              className="about-hero-whatsapp"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="about-hero-whatsapp-icon">
+                <i className="bi bi-whatsapp"></i>
+              </span>
+              <span>
+                <strong>Contact on WhatsApp</strong>
+              </span>
+            </a>
+          </div>
+          <div className="about-hero-proof" aria-label="Projenius focus areas">
+            <span>AI & Software</span>
+            <span>IoT Projects</span>
+            <span>Training & Mentorship</span>
+          </div>
         </div>
       </div>
       <section className="about-1 py-5">
@@ -183,7 +261,7 @@ export default function About() {
         </div>
 
         <a
-          href="https://wa.me/919025476322?text=Hello%20ProJenius%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+          href="https://wa.me/918925450473?text=Hello%20ProJenius%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
           className="btn about-contact-btn"
           target="_blank"
           rel="noreferrer"
@@ -299,7 +377,7 @@ export default function About() {
               aria-label="Close magazine"
               title="Close magazine"
             >
-              <span aria-hidden="true">Ã—</span>
+              <span aria-hidden="true">×</span>
             </button>
             <Suspense
               fallback={
@@ -312,13 +390,21 @@ export default function About() {
             </Suspense>
           </div>
         ) : (
-          <div className="container magazine-load-card magazine-cover-card">
+          <div
+            className="container magazine-load-card magazine-cover-card"
+            ref={magazineCoverRef}
+          >
             <div className="magazine-cover-copy">
               <span id="sub-heading">Magazine</span>
               <h2 className="section-title magazine-cover-title" id="title">Explore the Projenius Magazine</h2>
               <p className="section-desc">
-                Tap the cover to open the interactive magazine.
+                See our services, training work, project approach, and company story in one interactive digital magazine.
               </p>
+              <div className="magazine-cover-points" aria-label="Magazine highlights">
+                <span>Company story</span>
+                <span>Services</span>
+                <span>Workshops</span>
+              </div>
             </div>
             <div className="magazine-cover-cta">
               <div className="magazine-toy-wrap" aria-hidden="true">

@@ -127,7 +127,7 @@ const MagazineSection = () => {
               onClick={goPrevPage}
               aria-label="Previous page"
             >
-              â€¹
+              ‹
             </button>
             <span className="magazine-page-number">
               {activePage + 1} / {totalPages || 0}
@@ -138,7 +138,7 @@ const MagazineSection = () => {
               onClick={goNextPage}
               aria-label="Next page"
             >
-              â€º
+              ›
             </button>
           </div>
         </div>

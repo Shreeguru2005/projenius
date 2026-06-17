@@ -8,7 +8,7 @@ export default function FooterTopSection() {
         padding: "50px 40px",
         borderRadius: "40px",
         background:
-          "linear-gradient(135deg, #4f46e5 0%, #5b4ff0 50%, #4338ca 100%)",
+          "linear-gradient(135deg, #0c005cff 0%, #644ff0ff 50%, #0c005cff 100%)",
         textAlign: "center",
         boxShadow: "0 25px 60px rgba(79,70,229,.15)",
       }}
