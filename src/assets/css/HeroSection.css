@@ -3,7 +3,7 @@
    ========================================= */
 .hero-wrapper {
     background-image: linear-gradient(135deg, #121929, transparent), url('../images/projenius-banner.webp');
-    padding: 195px 20px 120px; /* Increased bottom padding to 120px to clear the shape divider */
+    padding: 80px 20px 120px; /* Increased bottom padding to 120px to clear the shape divider */
     position: relative;
     overflow: hidden;
     background-size: cover;
@@ -38,7 +38,7 @@
 .hero-wrapper::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
     left: 0;
     width: 100vw;
     height: 140px; /* Base height */
@@ -451,4 +451,18 @@
     .hero .subheading {
         font-size: 13px;
     }
+}
+.hero-wrapper {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+}
+
+.hero {
+    border-bottom: none !important;
+}
+
+.about-section,
+.who-we-are-section {
+    border-top: none !important;
+    margin-top: 0 !important;
 }
