@@ -3,6 +3,11 @@ import { createConnectedApp } from "../server/app.mjs";
 let appPromise;
 
 export default async function handler(req, res) {
+  if (req.url === "/api/health" || req.url?.startsWith("/api/health?")) {
+    res.status(200).json({ ok: true, service: "projenius-api" });
+    return;
+  }
+
   try {
     appPromise ||= createConnectedApp();
     const app = await appPromise;
