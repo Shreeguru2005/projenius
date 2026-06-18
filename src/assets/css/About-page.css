@@ -85,26 +85,26 @@
     min-width: 0;
     padding: 13px 22px;
     border-radius: 999px;
-    background: linear-gradient(135deg, #66c7dd 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
     color: #ffffff;
     font-weight: 800;
     text-decoration: none;
-    border: 1px solid rgba(102, 199, 221, 0.45);
+    border: 1px solid rgba(37, 211, 102, 0.5);
     box-shadow:
-        0 18px 38px rgba(37, 99, 235, 0.32),
+        0 18px 38px rgba(37, 211, 102, 0.28),
         inset 0 1px 0 rgba(255, 255, 255, 0.24);
     transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .about-hero-whatsapp:hover {
     transform: translateY(-4px);
-    background: linear-gradient(135deg, #4bb8d1 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #20bd5a 0%, #075e54 100%);
     color: #ffffff;
     text-decoration: none;
-    border-color: rgba(102, 199, 221, 0.72);
+    border-color: rgba(37, 211, 102, 0.78);
     box-shadow:
-        0 24px 50px rgba(37, 99, 235, 0.36),
-        0 0 0 4px rgba(102, 199, 221, 0.16);
+        0 24px 50px rgba(37, 211, 102, 0.34),
+        0 0 0 4px rgba(37, 211, 102, 0.16);
 }
 
 .about-hero-whatsapp-icon {
@@ -541,17 +541,26 @@
 
 .about-3 .why-right {
     padding-left: 54px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
 }
 
 .about-3 .icon-box {
     position: relative;
     overflow: hidden;
-    padding: 20px;
+    padding: 28px 34px 28px 24px;
+    min-height: 185px;
     border: 1px solid rgba(18, 25, 41, 0.09);
     border-radius: 8px;
     background: #ffffff;
     box-shadow: 0 14px 34px rgba(18, 25, 41, 0.06);
     transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.about-3 .icon-box.mt-3 {
+    margin-top: 0 !important;
 }
 
 .about-3 .icon-box::before {
@@ -580,6 +589,31 @@
     pointer-events: none;
 }
 
+.about-3 .icon-box:nth-child(2) {
+    border-color: rgba(102, 199, 221, 0.82);
+    box-shadow:
+        0 18px 44px rgba(18, 25, 41, 0.08),
+        0 0 0 1px rgba(102, 199, 221, 0.12);
+}
+
+.about-3 .icon-box:nth-child(2)::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.about-3 .icon-box:nth-child(2)::after {
+    opacity: 1;
+}
+
+.about-3 .icon-box:nth-child(2) .icon {
+    background-color: #121929;
+    color: #ffffff;
+}
+
+.about-3 .icon-box:nth-child(2) .icon-box-heading {
+    color: #2563eb;
+}
+
 .about-3 .icon-box:hover {
     border-color: rgba(102, 199, 221, 0.72);
     box-shadow:
@@ -604,11 +638,30 @@
 .about-3 .icon-box .row {
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 26px;
+    margin: 0;
+    min-height: 126px;
+}
+
+.about-3 .icon-box .row > [class*="col-"] {
+    width: auto;
+    max-width: none;
+    padding: 0;
+    flex: 0 0 auto;
+}
+
+.about-3 .icon-box .row > [class*="col-"]:last-child {
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .about-3 .icon {
     width: 64px;
     height: 64px;
+    min-width: 64px;
     background-color: #66c7dd;
     border-radius: 8px;
     display: flex;
@@ -628,7 +681,18 @@
 }
 
 .about-3 h3.icon-box-heading {
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    color: #121929;
+}
+
+.about-3 p.icon-box-desc {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.75;
+    color: #2f3340;
 }
 
 .about-3 p.section-desc {
@@ -789,30 +853,44 @@
 
 .magazine-cover-copy {
     flex: 1 1 420px;
+    align-self: flex-start;
+    padding-top: 34px;
 }
 
 .magazine-cover-title {
-    font-size: clamp(30px, 3vw, 40px);
-    line-height: 1.14;
-    max-width: 560px;
+    font-size: clamp(48px, 5vw, 72px);
+    line-height: 1.04;
+    max-width: 760px;
+    margin-bottom: 18px;
+}
+
+.magazine-cover-copy #sub-heading {
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.magazine-cover-copy .section-desc {
+    max-width: 700px;
+    font-size: 22px;
+    line-height: 1.62;
 }
 
 .magazine-cover-points {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 22px;
+    margin-top: 28px;
 }
 
 .magazine-cover-points span {
     display: inline-flex;
     align-items: center;
-    min-height: 34px;
-    padding: 7px 13px;
+    min-height: 42px;
+    padding: 9px 17px;
     border-radius: 999px;
     background: #ffffff;
     color: #121929;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 800;
     border: 1px solid rgba(102, 199, 221, 0.28);
     box-shadow: 0 10px 22px rgba(18, 25, 41, 0.06);
@@ -1244,6 +1322,21 @@
 
     .magazine-cover-title {
         max-width: none;
+        font-size: clamp(38px, 10vw, 50px);
+    }
+
+    .magazine-cover-copy {
+        align-self: center;
+        padding-top: 0;
+    }
+
+    .magazine-cover-copy #sub-heading {
+        font-size: 18px;
+    }
+
+    .magazine-cover-copy .section-desc {
+        font-size: 18px;
+        line-height: 1.65;
     }
 
     .magazine-cover-points {
@@ -1451,7 +1544,16 @@ img {
     }
 
     .about-3 .icon-box {
-        padding: 18px;
+        padding: 22px 24px;
+        min-height: 160px;
+    }
+
+    .about-3 h3.icon-box-heading {
+        font-size: 23px;
+    }
+
+    .about-3 p.icon-box-desc {
+        font-size: 16px;
     }
 }
 
@@ -1464,7 +1566,12 @@ img {
     }
 
     .about-3 .icon-box {
-        padding: 18px;
+        padding: 22px 24px;
+        min-height: auto;
+    }
+
+    .about-3 .icon-box .row {
+        min-height: auto;
     }
 
     .about-2 {
@@ -1563,6 +1670,7 @@ img {
     .about-3 .icon {
         width: 55px;
         height: 55px;
+        min-width: 55px;
     }
 
     .award-content {
@@ -1588,6 +1696,19 @@ img {
     .about-3 .icon-box {
         padding: 15px;
         max-width: 100%;
+    }
+
+    .about-3 .icon-box .row {
+        gap: 14px;
+    }
+
+    .about-3 h3.icon-box-heading {
+        font-size: 20px;
+    }
+
+    .about-3 p.icon-box-desc {
+        font-size: 14px;
+        line-height: 1.65;
     }
 
     .award-item {
