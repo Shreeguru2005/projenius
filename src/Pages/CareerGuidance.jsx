@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from 'lenis';
-import ScrollStack, { ScrollStackItem } from '../Components/ScrollStack';
+import ScrollStack, { ScrollStackItem } from '../Components/scrollstack';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 import "../index.css";
