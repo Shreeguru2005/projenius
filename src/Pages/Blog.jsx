@@ -333,11 +333,35 @@ export default function Blog() {
         </main>
       </div>
 
+      <section className="container blog-subscribe-benefits" aria-labelledby="blog-subscribe-benefits-title">
+        <div className="blog-subscribe-benefits-heading">
+          <span>What subscribers get</span>
+          <h2 id="blog-subscribe-benefits-title">A sharper view of what ProJenius is building</h2>
+        </div>
+        <div className="blog-subscribe-benefits-grid">
+          <article>
+            <i className="bi bi-lightning-charge"></i>
+            <h3>Fresh technology reads</h3>
+            <p>New blogs on AI, IoT, product development, and digital growth without hunting for updates.</p>
+          </article>
+          <article>
+            <i className="bi bi-kanban"></i>
+            <h3>Project and company notes</h3>
+            <p>Behind-the-scenes updates from ProJenius, including launches, experiments, and service improvements.</p>
+          </article>
+          <article>
+            <i className="bi bi-mortarboard"></i>
+            <h3>Learning opportunities</h3>
+            <p>Early updates about workshops, internships, courses, and practical sessions for students and teams.</p>
+          </article>
+        </div>
+      </section>
+
       <form className="container blog-newsletter" onSubmit={handleNewsletterSubmit}>
         <div>
-          <span>Newsletter</span>
+          <span>ProJenius Updates</span>
           <h2>Get ProJenius updates in your inbox</h2>
-          <p>Subscribe for new blogs, company updates, and practical technology insights.</p>
+          <p>Subscribe for useful ideas, product thinking, and company news from the ProJenius team.</p>
         </div>
         <div className="blog-newsletter-fields">
           <input
@@ -348,20 +372,6 @@ export default function Blog() {
             onChange={(event) => setNewsletterEmail(event.target.value)}
           />
           <button type="submit">Subscribe</button>
-        </div>
-        <div className="blog-newsletter-proof" aria-label="Newsletter benefits">
-          <div>
-            <strong>Weekly</strong>
-            <span>Practical insights</span>
-          </div>
-          <div>
-            <strong>Curated</strong>
-            <span>AI, IoT and product notes</span>
-          </div>
-          <div>
-            <strong>No spam</strong>
-            <span>Only ProJenius updates</span>
-          </div>
         </div>
         {newsletterStatus && <small>{newsletterStatus}</small>}
       </form>

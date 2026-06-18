@@ -21,7 +21,9 @@ export default function Footer() {
     const location = useLocation();
     const isBlogPage = location.pathname === "/blog";
 
-
+    if (isBlogPage) {
+        return <ChatBot />;
+    }
 
     return (
 
@@ -31,7 +33,6 @@ export default function Footer() {
 
                 {/* TOP BAR */}
 
-                {!isBlogPage && (
                 <div className="footer-topbar">
 
                     <div className="footer-call">
@@ -85,7 +86,6 @@ export default function Footer() {
                     </div>
 
                 </div>
-                )}
 
                 {/* MAIN FOOTER */}
 
