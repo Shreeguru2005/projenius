@@ -295,12 +295,12 @@ export default function Internship() {
                         index === 2 ? "color-pink" : 
                         "color-orange"
                       }`}>
-                        <i className={`bi ${
-                          index === 0 ? "bi-calendar2-check" : 
-                          index === 1 ? "bi-laptop" : 
-                          index === 2 ? "bi-briefcase" : 
-                          "bi-person-check"
-                        }`}></i>
+                        <img 
+                          src={`/images/icon-${index + 1}.png`} 
+                          alt={title} 
+                          className="detail-icon-img" 
+                          style={{ width: "32px", height: "32px", objectFit: "contain" }} 
+                        />
                       </div>
                       <div className="card-text">
                         <h4>{title}</h4>
