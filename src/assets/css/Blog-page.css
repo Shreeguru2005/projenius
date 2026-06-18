@@ -347,12 +347,18 @@
   text-align: center;
 }
 
+.blog-updates-footer {
+  background: #07142c;
+  margin-top: 70px;
+  padding: 42px 0 46px;
+}
+
 .blog-subscribe-benefits {
   background: #ffffff;
   box-shadow: 0 22px 54px rgba(7, 20, 44, 0.06);
   display: grid;
   gap: 24px;
-  margin-top: 52px;
+  margin-top: 0;
   padding: 30px;
 }
 
@@ -430,7 +436,8 @@
 .blog-newsletter {
   align-items: center;
   background:
-    linear-gradient(120deg, rgba(7, 20, 44, 0.98), rgba(11, 45, 72, 0.96));
+    linear-gradient(120deg, rgba(11, 45, 72, 0.98), rgba(7, 20, 44, 0.96));
+  border-color: rgba(139, 238, 255, 0.2);
   color: #ffffff;
   display: grid;
   gap: 24px 34px;
