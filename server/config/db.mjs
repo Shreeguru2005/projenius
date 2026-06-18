@@ -13,9 +13,14 @@ export function connectDatabase() {
     throw new Error("MONGODB_URI is required to start the API server.");
   }
 
-  connectionPromise = mongoose.connect(uri, {
-    serverSelectionTimeoutMS: 10000,
-  });
+  connectionPromise = mongoose
+    .connect(uri, {
+      serverSelectionTimeoutMS: 10000,
+    })
+    .catch((error) => {
+      connectionPromise = null;
+      throw error;
+    });
 
   return connectionPromise;
 }
