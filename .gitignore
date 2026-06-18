@@ -34,3 +34,4 @@ public/Magazine.pdf
 *.njsproj
 *.sln
 *.sw?
+.vercel
