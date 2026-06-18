@@ -8,15 +8,21 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "chat": "node chat-server.mjs"
+    "chat": "node chat-server.mjs",
+    "api": "node server/index.mjs",
+    "seed:blogs": "node server/scripts/seedDefaultBlogs.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "framer-motion": "^12.40.0",
     "lenis": "^1.3.23",
     "lucide-react": "^1.14.0",
+    "mongoose": "^9.0.1",
     "ogl": "^1.0.11",
     "pdfjs-dist": "^5.7.284",
     "react": "^19.2.5",

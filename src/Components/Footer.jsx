@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../assets/css/Footer.css";
 import "../assets/css/Floating.css";
 import ChatBot from "../Components/ChatBot";
@@ -19,6 +18,8 @@ const Arrow = () => (
 );
 
 export default function Footer() {
+    const location = useLocation();
+    const isBlogPage = location.pathname === "/blog";
 
 
 
@@ -30,6 +31,7 @@ export default function Footer() {
 
                 {/* TOP BAR */}
 
+                {!isBlogPage && (
                 <div className="footer-topbar">
 
                     <div className="footer-call">
@@ -83,6 +85,7 @@ export default function Footer() {
                     </div>
 
                 </div>
+                )}
 
                 {/* MAIN FOOTER */}
 

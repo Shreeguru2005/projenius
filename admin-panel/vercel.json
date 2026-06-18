@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/admin/blogs",
+      "destination": "/api/admin/blogs.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

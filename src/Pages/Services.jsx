@@ -9,6 +9,7 @@ import PriceTableSection from "../Components/PriceTableSection";
 export default function Services() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.12 });
+  const whatsappNumber = "918925450473";
 
   const developmentServices = [
     {
@@ -97,6 +98,11 @@ export default function Services() {
     },
   };
 
+  const getWhatsAppLink = (serviceTitle) => {
+    const message = `Hello ProJenius, I would like to know more about your ${serviceTitle} service.`;
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  };
+
   return (
     <>
 
@@ -132,10 +138,6 @@ export default function Services() {
           <div className="hero-buttons">
             <a href="/contact" className="hero-btn-primary">
               Start Your Project
-            </a>
-
-            <a href="#services" className="hero-btn-secondary">
-              Explore Services
             </a>
           </div>
 
@@ -210,9 +212,14 @@ export default function Services() {
           {service.desc}
         </p>
 
-        <button className="service-btn">
-          Learn More
-        </button>
+        <a
+          href={getWhatsAppLink(service.title)}
+          className="service-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          To get More Info
+        </a>
 
       </motion.div>
 
