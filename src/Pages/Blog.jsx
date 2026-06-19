@@ -205,6 +205,19 @@ export default function Blog() {
   const selectedPostImages = selectedPost
     ? Array.from(new Set([selectedPost.image, ...(selectedPost.galleryImages || [])].filter(Boolean)))
     : [];
+  const relatedPosts = selectedPost
+    ? [
+        ...posts.filter(
+          (post) =>
+            post.slug !== selectedPost.slug &&
+            (post.category === selectedPost.category ||
+              post.tags?.some((tag) => selectedPost.tags?.includes(tag))),
+        ),
+        ...posts.filter((post) => post.slug !== selectedPost.slug),
+      ]
+        .filter((post, index, list) => list.findIndex((item) => item.slug === post.slug) === index)
+        .slice(0, 2)
+    : [];
 
   const openPost = (post) => {
     if (post.slug) {
@@ -437,52 +450,83 @@ export default function Blog() {
         </main>
       </div>
 
-      <footer className="blog-updates-footer">
-        <div className="container">
-          <section className="blog-subscribe-benefits" aria-labelledby="blog-subscribe-benefits-title">
-            <div className="blog-subscribe-benefits-heading">
-              <span>What subscribers get</span>
-              <h2 id="blog-subscribe-benefits-title">A sharper view of what ProJenius is building</h2>
+      {selectedPost ? (
+        <footer className="blog-related-footer">
+          <div className="container">
+            <h2>You Might Be Interested In...</h2>
+            <div className="blog-related-grid">
+              {relatedPosts.map((post) => (
+                <article
+                  className="blog-related-card"
+                  key={post.slug || post.title}
+                  onClick={() => openPost(post)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      openPost(post);
+                    }
+                  }}
+                  role="link"
+                  tabIndex={0}
+                >
+                  <img src={post.image} alt={post.title} />
+                  <div>
+                    <h3>{post.title}</h3>
+                    <p>{post.excerpt}</p>
+                  </div>
+                </article>
+              ))}
             </div>
-            <div className="blog-subscribe-benefits-grid">
-              <article>
-                <i className="bi bi-lightning-charge"></i>
-                <h3>Fresh technology reads</h3>
-                <p>New blogs on AI, IoT, product development, and digital growth without hunting for updates.</p>
-              </article>
-              <article>
-                <i className="bi bi-kanban"></i>
-                <h3>Project and company notes</h3>
-                <p>Behind-the-scenes updates from ProJenius, including launches, experiments, and service improvements.</p>
-              </article>
-              <article>
-                <i className="bi bi-mortarboard"></i>
-                <h3>Learning opportunities</h3>
-                <p>Early updates about workshops, internships, courses, and practical sessions for students and teams.</p>
-              </article>
-            </div>
-          </section>
+          </div>
+        </footer>
+      ) : (
+        <footer className="blog-updates-footer">
+          <div className="container">
+            <section className="blog-subscribe-benefits" aria-labelledby="blog-subscribe-benefits-title">
+              <div className="blog-subscribe-benefits-heading">
+                <span>What subscribers get</span>
+                <h2 id="blog-subscribe-benefits-title">A sharper view of what ProJenius is building</h2>
+              </div>
+              <div className="blog-subscribe-benefits-grid">
+                <article>
+                  <i className="bi bi-lightning-charge"></i>
+                  <h3>Fresh technology reads</h3>
+                  <p>New blogs on AI, IoT, product development, and digital growth without hunting for updates.</p>
+                </article>
+                <article>
+                  <i className="bi bi-kanban"></i>
+                  <h3>Project and company notes</h3>
+                  <p>Behind-the-scenes updates from ProJenius, including launches, experiments, and service improvements.</p>
+                </article>
+                <article>
+                  <i className="bi bi-mortarboard"></i>
+                  <h3>Learning opportunities</h3>
+                  <p>Early updates about workshops, internships, courses, and practical sessions for students and teams.</p>
+                </article>
+              </div>
+            </section>
 
-          <form className="blog-newsletter" onSubmit={handleNewsletterSubmit}>
-            <div>
-              <span>ProJenius Updates</span>
-              <h2>Get ProJenius updates in your inbox</h2>
-              <p>Subscribe for useful ideas, product thinking, and company news from the ProJenius team.</p>
-            </div>
-            <div className="blog-newsletter-fields">
-              <input
-                required
-                type="email"
-                placeholder="Email address"
-                value={newsletterEmail}
-                onChange={(event) => setNewsletterEmail(event.target.value)}
-              />
-              <button type="submit">Subscribe</button>
-            </div>
-            {newsletterStatus && <small>{newsletterStatus}</small>}
-          </form>
-        </div>
-      </footer>
+            <form className="blog-newsletter" onSubmit={handleNewsletterSubmit}>
+              <div>
+                <span>ProJenius Updates</span>
+                <h2>Get ProJenius updates in your inbox</h2>
+                <p>Subscribe for useful ideas, product thinking, and company news from the ProJenius team.</p>
+              </div>
+              <div className="blog-newsletter-fields">
+                <input
+                  required
+                  type="email"
+                  placeholder="Email address"
+                  value={newsletterEmail}
+                  onChange={(event) => setNewsletterEmail(event.target.value)}
+                />
+                <button type="submit">Subscribe</button>
+              </div>
+              {newsletterStatus && <small>{newsletterStatus}</small>}
+            </form>
+          </div>
+        </footer>
+      )}
 
       {newsletterPopup && (
         <div className="newsletter-popup-backdrop" role="presentation">
