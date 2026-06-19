@@ -67,7 +67,7 @@ export default function TeamSection() {
             <article
               className="team-card"
               key={member.name}
-              data-aos="fade-up"
+              data-aos={index === 0 ? "team-slide-right" : "team-slide-left"}
               data-aos-delay={200 + index * 150}
             >
               {/* Text — left */}
@@ -96,7 +96,7 @@ export default function TeamSection() {
         <div className="team-grid-bottom">
           <article
             className="team-card"
-            data-aos="fade-up"
+            data-aos="team-rise"
             data-aos-delay="500"
           >
             <div className="team-card-body">
