@@ -42,7 +42,9 @@ export function createBlogEmail(blog) {
   const category = escapeHtml(blog.tags?.[0] || "Technology");
   const title = escapeHtml(blog.title);
   const description = escapeHtml(blog.description);
-  const thumbnailUrl = getEmailImageUrl(blog.thumbnailUrl) || `${siteUrl}/images/projenius-banner.webp`;
+  const thumbnailUrl =
+    getEmailImageUrl(blog.thumbnailUrl) ||
+    (blog._id ? `${siteUrl}/api/blogs/${blog._id}/thumbnail` : `${siteUrl}/images/projenius-banner.webp`);
   const thumbnail = thumbnailUrl
     ? `
       <img

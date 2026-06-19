@@ -6,6 +6,20 @@ import { slugify } from "../utils/slugify.mjs";
 
 export const blogRouter = Router();
 
+function parseDataImage(imageValue) {
+  const image = String(imageValue || "").trim();
+  const match = image.match(/^data:(image\/(?:png|jpe?g|webp|gif));base64,([a-z0-9+/=\s]+)$/i);
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    contentType: match[1].toLowerCase(),
+    buffer: Buffer.from(match[2].replace(/\s/g, ""), "base64"),
+  };
+}
+
 function normalizeImages({ thumbnailUrl, galleryImages }) {
   const images = Array.isArray(galleryImages)
     ? galleryImages
@@ -102,6 +116,35 @@ blogRouter.get("/admin/all", requireAdmin, async (req, res, next) => {
       .lean();
 
     res.json({ items: blogs });
+  } catch (error) {
+    next(error);
+  }
+});
+
+blogRouter.get("/:id/thumbnail", async (req, res, next) => {
+  try {
+    const blog = await Blog.findById(req.params.id).select("thumbnailUrl").lean();
+
+    if (!blog?.thumbnailUrl) {
+      res.status(404).json({ error: "Blog image not found." });
+      return;
+    }
+
+    if (/^https?:\/\//i.test(blog.thumbnailUrl)) {
+      res.redirect(302, blog.thumbnailUrl);
+      return;
+    }
+
+    const dataImage = parseDataImage(blog.thumbnailUrl);
+
+    if (!dataImage) {
+      res.status(404).json({ error: "Blog image is not available as a public image." });
+      return;
+    }
+
+    res.setHeader("Content-Type", dataImage.contentType);
+    res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+    res.send(dataImage.buffer);
   } catch (error) {
     next(error);
   }
