@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "../index.css";
 import "../assets/css/Service-page.css";
+import "../assets/css/Contact-page.css";
 
 export default function Courses() {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [levelFilter, setLevelFilter] = useState("All");
   const [openFaq, setOpenFaq] = useState(null);
+  const [showFaq, setShowFaq] = useState(false);
 
   const courses = [
     {
@@ -72,10 +74,15 @@ export default function Courses() {
   ];
 
   const courseFaqs = [
-    { q: "Are the courses self-paced or scheduled?", a: "We offer both self-paced modules and scheduled live cohorts. Check the course tags for specific mode details." },
-    { q: "Do I get a certificate upon completion?", a: "Yes, you will receive a verifiable industry-recognized certificate upon successfully passing the final project." },
-    { q: "What is the refund policy?", a: "We offer a 7-day money-back guarantee on all our self-paced courses. Live cohorts are refundable up to the 2nd session." },
-    { q: "Do I need prior experience?", a: "Beginner courses require no prior experience. Intermediate and Advanced courses have prerequisites listed on their detail pages." },
+    { q: "What courses do you offer?", a: "We offer courses in Web Development, React JS, JavaScript, Python, UI/UX Design, Digital Marketing, Data Analytics, and other industry-relevant technologies designed to help students and professionals build practical skills." },
+    { q: "Are the courses suitable for beginners?", a: "Yes. Most of our courses are designed for beginners and start with fundamental concepts before progressing to advanced topics. No prior experience is required for beginner-level programs." },
+    { q: "Do I receive a certificate after completing a course?", a: "Yes. Students who successfully complete the course requirements and assessments will receive a course completion certificate." },
+    { q: "Are the classes conducted online or offline?", a: "We offer both online and offline learning options, depending on the course. You can choose the mode that best fits your schedule and learning preferences." },
+    { q: "What is the duration of the courses?", a: "Course durations vary based on the subject and depth of coverage. Most programs range from a few weeks to several months." },
+    { q: "Will I get hands-on project experience?", a: "Yes. Our courses include practical assignments, real-world projects, and case studies to help you apply what you learn and build a strong portfolio." },
+    { q: "Is there any placement or career support?", a: "Yes. We provide career guidance, resume-building assistance, interview preparation, and placement support for eligible programs." },
+    { q: "Can I access course materials after the classes are completed?", a: "Yes. Depending on the course, students may receive access to recorded sessions, notes, presentations, and other learning resources for future reference." },
+    { q: "How can I choose the right course for my career goals?", a: "Our academic advisors and mentors can help you evaluate your interests, current skill level, and career objectives to recommend the most suitable course for you." },
   ];
 
   const testimonials = [
@@ -100,10 +107,6 @@ export default function Courses() {
     const matchLevel = levelFilter === "All" || course.level === levelFilter;
     return matchSearch && matchCategory && matchLevel;
   });
-
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
 
   return (
     <>
@@ -233,31 +236,40 @@ export default function Courses() {
       </section>
 
       {/* Course FAQ */}
-      <section id="faq" className="career-faq section-padding">
+      <section id="faq" className="faq-grid-section">
         <div className="container">
-          <div className="section-heading text-center mb-5">
-            <span id="sub-heading">Logistics</span>
-            <h2>Course FAQs</h2>
+          <div className="text-center mb-4">
+            <h2 className="faq-grid-title">FAQ</h2>
+            <p className="faq-grid-subtitle mx-auto" style={{maxWidth: '700px'}}>
+              Looking for Answers?
+            </p>
+            <button
+              className="btn mt-4 toggle-faq-btn"
+              onClick={() => setShowFaq(!showFaq)}
+            >
+              {showFaq ? "Hide FAQs" : "Visit Our FAQ"}
+            </button>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <div className="faq-accordion">
+
+          {showFaq && (
+            <div className="faq-grid-container mt-5 pt-3">
+              <div className="row g-4">
                 {courseFaqs.map((faq, index) => (
-                  <div className={`faq-item ${openFaq === index ? "active" : ""}`} key={index} onClick={() => toggleFaq(index)} style={{backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', marginBottom: '15px', padding: '20px', cursor: 'pointer', transition: 'all 0.3s'}}>
-                    <div className="faq-question d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 fw-bold" style={{color: '#0f172a', fontSize: '16px'}}>{faq.q}</h5>
-                      <i className={`bi bi-chevron-${openFaq === index ? "up" : "down"}`} style={{color: '#64748b'}}></i>
+                  <div className="col-lg-6" key={index}>
+                    <div
+                      className={`faq-grid-card ${openFaq === index ? "active" : ""}`}
+                      onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    >
+                      <h5 className="faq-q">Q: {faq.q}</h5>
+                      {openFaq === index && (
+                        <p className="faq-a mt-3 mb-0">A: {faq.a}</p>
+                      )}
                     </div>
-                    {openFaq === index && (
-                      <div className="faq-answer mt-3 pt-3 border-top">
-                        <p className="mb-0 text-muted">{faq.a}</p>
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
     </>

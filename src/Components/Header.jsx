@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -27,40 +27,81 @@ const navLinks = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
+  const [showHeader, setShowHeader] = useState(false); // start hidden, animate in on mount
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const hideTimerRef = useRef(null);
+  const showHeaderRef = useRef(false);
 
   const location = useLocation();
+
+  // Animate in on mount after a short delay
+  useEffect(() => {
+    const t = setTimeout(() => {
+      showHeaderRef.current = true;
+      setShowHeader(true);
+    }, 50);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
 
+    const hide = () => {
+      if (showHeaderRef.current) {
+        showHeaderRef.current = false;
+        setShowHeader(false);
+      }
+    };
+
+    const show = () => {
+      if (!showHeaderRef.current) {
+        showHeaderRef.current = true;
+        setShowHeader(true);
+      }
+    };
+
+    const clearTimer = () => {
+      if (hideTimerRef.current) {
+        clearTimeout(hideTimerRef.current);
+        hideTimerRef.current = null;
+      }
+    };
+
+    const scheduleHide = () => {
+      clearTimer();
+      hideTimerRef.current = setTimeout(() => {
+        if (window.scrollY >= 50) hide();
+      }, 1200);
+    };
+
     const onScroll = () => {
       const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+      lastScrollY = currentScrollY;
 
       setScrolled(currentScrollY > 50);
 
-      // Always show at top
       if (currentScrollY < 50) {
-        setShowHeader(true);
+        // At top — always show, cancel any pending hide
+        clearTimer();
+        show();
+      } else if (delta > 5) {
+        // Scrolling down (threshold 5px to avoid jitter) — hide immediately
+        clearTimer();
+        hide();
+      } else if (delta < -5) {
+        // Scrolling up — show, then schedule hide after stop
+        show();
+        scheduleHide();
       }
-      // Hide when scrolling down
-      else if (currentScrollY > lastScrollY) {
-        setShowHeader(false);
-      }
-      // Show when scrolling up
-      else {
-        setShowHeader(true);
-      }
-
-      lastScrollY = currentScrollY;
     };
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      clearTimer();
     };
   }, []);
 
@@ -77,8 +118,23 @@ export default function Header() {
 
   return (
     <header
-      className={`glass-header ${scrolled ? "scrolled" : ""
-        } ${showHeader ? "header-visible" : "header-hidden"}`}
+      className={`glass-header ${scrolled ? "scrolled" : ""} ${showHeader ? "header-visible" : "header-hidden"}`}
+      onMouseEnter={() => {
+        // Cancel the idle hide timer while hovering
+        if (hideTimerRef.current) {
+          clearTimeout(hideTimerRef.current);
+          hideTimerRef.current = null;
+        }
+      }}
+      onMouseLeave={() => {
+        // Restart the idle hide timer when mouse leaves
+        if (window.scrollY >= 50) {
+          hideTimerRef.current = setTimeout(() => {
+            showHeaderRef.current = false;
+            setShowHeader(false);
+          }, 1200);
+        }
+      }}
     >
       <div className="glass-navbar-inner">
         <Link
