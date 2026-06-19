@@ -37,11 +37,12 @@ function getEmailImageUrl(value) {
 }
 
 export function createBlogEmail(blog) {
-  const url = `${getSiteUrl()}/blog`;
+  const siteUrl = getSiteUrl();
+  const url = `${siteUrl}/blog`;
   const category = escapeHtml(blog.tags?.[0] || "Technology");
   const title = escapeHtml(blog.title);
   const description = escapeHtml(blog.description);
-  const thumbnailUrl = getEmailImageUrl(blog.thumbnailUrl);
+  const thumbnailUrl = getEmailImageUrl(blog.thumbnailUrl) || `${siteUrl}/images/projenius-banner.webp`;
   const thumbnail = thumbnailUrl
     ? `
       <img
