@@ -240,30 +240,50 @@
     }
 }
 
-/* Reference-style scroll reveal for the existing team layout */
-.team-card[data-aos="team-slide-right"] {
-    opacity: 0;
-    transform: translate3d(-90px, 46px, 0) rotate(-2deg) scale(0.96);
-    transition-property: opacity, transform, box-shadow;
+/* Reference-style staged reveal inside the existing team cards */
+.team-member-name,
+.team-member-role,
+.team-member-bio,
+.team-card-photo img {
+    will-change: transform, opacity;
 }
 
-.team-card[data-aos="team-slide-left"] {
+.team-member-name {
     opacity: 0;
-    transform: translate3d(90px, 46px, 0) rotate(2deg) scale(0.96);
-    transition-property: opacity, transform, box-shadow;
+    transform: translateY(-60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.team-card[data-aos="team-rise"] {
+.team-member-role {
     opacity: 0;
-    transform: translate3d(0, 86px, 0) scale(0.92);
-    transition-property: opacity, transform, box-shadow;
+    transform: translateY(-40px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
 }
 
-.team-card[data-aos="team-slide-right"].aos-animate,
-.team-card[data-aos="team-slide-left"].aos-animate,
-.team-card[data-aos="team-rise"].aos-animate {
+.team-member-bio {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+
+.team-card-photo img {
+    transform: translateX(110%);
+    transition: transform 0.8s ease;
+}
+
+.team-member-name.team-name-in,
+.team-member-role.team-role-in,
+.team-member-bio.team-bio-in {
     opacity: 1;
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    transform: translateY(0);
+}
+
+.team-card-photo img.team-image-in {
+    transform: translateX(0);
+}
+
+.team-card:hover .team-card-photo img.team-image-in {
+    transform: translateX(0) scale(1.04);
 }
 
 .team-card.aos-animate {
@@ -272,19 +292,29 @@
         0 0 0 1px rgba(102, 199, 221, 0.12);
 }
 
-@media (max-width: 991px) {
-    .team-card[data-aos="team-slide-right"],
-    .team-card[data-aos="team-slide-left"],
-    .team-card[data-aos="team-rise"] {
-        transform: translate3d(0, 58px, 0) scale(0.96);
+@media (max-width: 600px) {
+    .team-card-photo img {
+        opacity: 0;
+        transform: scale(0.82);
+    }
+
+    .team-card-photo img.team-image-in {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .team-card:hover .team-card-photo img.team-image-in {
+        transform: scale(1.04);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .team-card[data-aos="team-slide-right"],
-    .team-card[data-aos="team-slide-left"],
-    .team-card[data-aos="team-rise"] {
+    .team-member-name,
+    .team-member-role,
+    .team-member-bio,
+    .team-card-photo img {
         opacity: 1;
         transform: none;
+        transition: none;
     }
 }

@@ -1,9 +1,8 @@
 // Team.jsx
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../index.css";
 import "../assets/css/TeamSection.css";
-import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -35,6 +34,11 @@ const teamMembers = [
 ];
 
 export default function TeamSection() {
+  const sectionRef = useRef(null);
+  const [animateName, setAnimateName] = useState(false);
+  const [animateImage, setAnimateImage] = useState(false);
+  const [animateBio, setAnimateBio] = useState(false);
+
   useEffect(() => {
     AOS.init({
       duration: 900,
@@ -44,8 +48,43 @@ export default function TeamSection() {
     });
   }, []);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || typeof window === "undefined") return undefined;
+
+    const timers = [];
+
+    const setAnimationState = (isActive) => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      timers.length = 0;
+
+      if (!isActive) {
+        setAnimateName(false);
+        setAnimateImage(false);
+        setAnimateBio(false);
+        return;
+      }
+
+      timers.push(window.setTimeout(() => setAnimateName(true), 100));
+      timers.push(window.setTimeout(() => setAnimateImage(true), 300));
+      timers.push(window.setTimeout(() => setAnimateBio(true), 500));
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setAnimationState(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="team-section">
+    <section className="team-section" ref={sectionRef}>
       <div className="container">
 
         {/* ── Section heading ── */}
@@ -67,19 +106,19 @@ export default function TeamSection() {
             <article
               className="team-card"
               key={member.name}
-              data-aos={index === 0 ? "team-slide-right" : "team-slide-left"}
+              data-aos="fade-up"
               data-aos-delay={200 + index * 150}
             >
               {/* Text — left */}
               <div className="team-card-body">
-                <h3 className="team-member-name">{member.name}</h3>
-                <p className="team-member-role">{member.position}</p>
-                {member.bio && <p className="team-member-bio">{member.bio}</p>}
+                <h3 className={`team-member-name ${animateName ? "team-name-in" : ""}`}>{member.name}</h3>
+                <p className={`team-member-role ${animateName ? "team-role-in" : ""}`}>{member.position}</p>
+                {member.bio && <p className={`team-member-bio ${animateBio ? "team-bio-in" : ""}`}>{member.bio}</p>}
               </div>
 
               {/* Photo — right, image overflows above card */}
               <div className="team-card-photo">
-                <img src={member.image} alt={member.name} />
+                <img className={animateImage ? "team-image-in" : ""} src={member.image} alt={member.name} />
                 <div className="team-card-socials">
                   {member.socials.map((platform) => (
                     <a href="#" key={platform} aria-label={`${member.name} ${platform}`}>
@@ -96,21 +135,21 @@ export default function TeamSection() {
         <div className="team-grid-bottom">
           <article
             className="team-card"
-            data-aos="team-rise"
+            data-aos="fade-up"
             data-aos-delay="500"
           >
             <div className="team-card-body">
-              <h3 className="team-member-name">{teamMembers[2].name}</h3>
-              <p className="team-member-role">{teamMembers[2].position}</p>
+              <h3 className={`team-member-name ${animateName ? "team-name-in" : ""}`}>{teamMembers[2].name}</h3>
+              <p className={`team-member-role ${animateName ? "team-role-in" : ""}`}>{teamMembers[2].position}</p>
               {teamMembers[2].bio && (
-                <p className="team-member-bio">
+                <p className={`team-member-bio ${animateBio ? "team-bio-in" : ""}`}>
                     {teamMembers[2].bio}
                 </p>
   )}
             </div>
 
             <div className="team-card-photo">
-              <img src={teamMembers[2].image} alt={teamMembers[2].name} />
+              <img className={animateImage ? "team-image-in" : ""} src={teamMembers[2].image} alt={teamMembers[2].name} />
               <div className="team-card-socials">
                 {teamMembers[2].socials.map((platform) => (
                   <a href="#" key={platform} aria-label={`Brian ${platform}`}>
