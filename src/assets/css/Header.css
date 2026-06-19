@@ -17,14 +17,9 @@
   top: 0;
   z-index: 1000;
   padding: 12px 4vw;
-  animation: headerDrop 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   pointer-events: none;
 
-  transition:
-    top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    padding 0.3s ease;
-
-  will-change: top;
+  will-change: opacity, transform;
 }
 
 .glass-header.scrolled {
@@ -362,10 +357,23 @@
    Hide on Scroll Down / Show on Scroll Up
 ========================================== */
 
+/* Snap in when appearing (also handles initial page-load drop-in) */
 .header-visible {
-  top: 0;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.3s ease;
 }
 
+/* Fade out slowly when hiding (scroll down or idle after scroll up) */
 .header-hidden {
-  top: -180px;
+  opacity: 0 !important;
+  transform: translateY(-14px) !important;
+  pointer-events: none !important;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.3s ease;
 }
