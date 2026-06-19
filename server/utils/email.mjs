@@ -15,14 +15,38 @@ function getFromAddress() {
   return process.env.RESEND_FROM_EMAIL || "ProJenius <newsletter@projenius.in>";
 }
 
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function getEmailImageUrl(value) {
+  const rawValue = String(value || "").trim();
+  const srcMatch = rawValue.match(/\bsrc=["']([^"']+)["']/i);
+  const imageUrl = (srcMatch?.[1] || rawValue).trim();
+
+  if (!/^https?:\/\//i.test(imageUrl)) {
+    return "";
+  }
+
+  return imageUrl;
+}
+
 export function createBlogEmail(blog) {
   const url = `${getSiteUrl()}/blog`;
-  const category = blog.tags?.[0] || "Technology";
-  const thumbnail = blog.thumbnailUrl
+  const category = escapeHtml(blog.tags?.[0] || "Technology");
+  const title = escapeHtml(blog.title);
+  const description = escapeHtml(blog.description);
+  const thumbnailUrl = getEmailImageUrl(blog.thumbnailUrl);
+  const thumbnail = thumbnailUrl
     ? `
       <img
-        alt="${blog.title}"
-        src="${blog.thumbnailUrl}"
+        alt="${title}"
+        src="${thumbnailUrl}"
         style="display:block;width:100%;height:auto;border:0"
       />
     `
@@ -31,7 +55,7 @@ export function createBlogEmail(blog) {
   return `
     <div style="margin:0;padding:0;background:#f3f7fb;font-family:Arial,Helvetica,sans-serif;color:#111827">
       <div style="display:none;max-height:0;overflow:hidden;color:transparent">
-        New ProJenius article: ${blog.title}
+        New ProJenius article: ${title}
       </div>
 
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f3f7fb;margin:0;padding:28px 12px">
@@ -61,10 +85,10 @@ export function createBlogEmail(blog) {
                     ${category}
                   </p>
                   <h1 style="margin:0 0 14px;color:#07142c;font-size:30px;line-height:1.18;font-weight:900">
-                    ${blog.title}
+                    ${title}
                   </h1>
                   <p style="margin:0 0 24px;color:#5c6878;font-size:16px;line-height:1.7">
-                    ${blog.description}
+                    ${description}
                   </p>
                   <table role="presentation" cellspacing="0" cellpadding="0">
                     <tr>
