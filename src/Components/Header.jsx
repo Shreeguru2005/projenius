@@ -35,32 +35,45 @@ export default function Header() {
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let hideTimer = null;
 
     const onScroll = () => {
       const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
 
       setScrolled(currentScrollY > 50);
 
-      // Always show at top
+      // Always show at top of page
       if (currentScrollY < 50) {
         setShowHeader(true);
+        if (hideTimer) clearTimeout(hideTimer);
       }
-      // Hide when scrolling down
-      else if (currentScrollY > lastScrollY) {
+      // Scrolling down — hide immediately
+      else if (delta > 0) {
         setShowHeader(false);
+        if (hideTimer) clearTimeout(hideTimer);
       }
-      // Show when scrolling up
-      else {
+      // Scrolling up — show navbar, but hide quickly when scroll stops
+      else if (delta < 0) {
         setShowHeader(true);
+
+        // Hide after 300ms of no scroll activity
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (window.scrollY >= 50) {
+            setShowHeader(false);
+          }
+        }, 100);
       }
 
       lastScrollY = currentScrollY;
     };
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      if (hideTimer) clearTimeout(hideTimer);
     };
   }, []);
 
