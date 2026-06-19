@@ -1106,11 +1106,11 @@
 
 @media (max-width: 767px) {
   .blog-page-section {
-    padding-top: 94px;
+    padding-top: 124px;
   }
 
   .blog-shell {
-    gap: 28px;
+    gap: 22px;
   }
 
   .blog-index {
@@ -1118,18 +1118,20 @@
   }
 
   .blog-index h1 {
-    font-size: 52px;
-    margin-bottom: 16px;
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 10px;
   }
 
   .blog-index p {
-    font-size: 15px;
-    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 14px;
     max-width: 420px;
   }
 
   .blog-index p::after {
-    margin-top: 18px;
+    margin-top: 14px;
   }
 
   .blog-category-nav {
@@ -1175,24 +1177,41 @@
   }
 
   .blog-feed {
-    gap: 24px;
+    gap: 14px;
     grid-template-columns: 1fr;
   }
 
   .blog-post-card {
+    align-items: stretch;
     background: rgba(255, 255, 255, 0.72);
     border-color: rgba(216, 232, 241, 0.9);
     border-radius: 12px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 112px minmax(0, 1fr);
     padding: 10px;
   }
 
   .blog-post-image {
     border-radius: 9px;
-    margin-bottom: 16px;
+    height: 100%;
+    margin-bottom: 0;
   }
 
   .blog-post-image img {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 126px;
+  }
+
+  .blog-post-body {
+    min-width: 0;
+    padding: 2px 0;
+  }
+
+  .blog-post-category {
+    font-size: 12px;
+    margin-bottom: 6px;
   }
 
   .blog-detail-article {
@@ -1265,11 +1284,19 @@
   }
 
   .blog-post-body h2 {
-    font-size: 25px;
+    font-size: 19px;
+    line-height: 1.18;
+    margin-bottom: 7px;
   }
 
   .blog-post-body p {
-    font-size: 16px;
+    display: -webkit-box;
+    font-size: 13px;
+    line-height: 1.42;
+    margin-bottom: 12px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .blog-newsletter-fields {
@@ -1305,19 +1332,15 @@
   }
 
   .blog-index h1 {
-    font-size: 44px;
+    font-size: 40px;
   }
 
   .blog-index p {
-    font-size: 16px;
-  }
-
-  .blog-post-body h2 {
-    font-size: 22px;
+    font-size: 14px;
   }
 
   .blog-author strong {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .blog-author small {
@@ -1370,11 +1393,11 @@
 
 @media (max-width: 390px) {
   .blog-page-section {
-    padding-top: 86px;
+    padding-top: 116px;
   }
 
   .blog-index h1 {
-    font-size: 38px;
+    font-size: 36px;
   }
 
   .blog-index p {
@@ -1386,16 +1409,25 @@
   }
 
   .blog-post-card {
+    grid-template-columns: 96px minmax(0, 1fr);
     padding: 8px;
   }
 
   .blog-post-body h2 {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .blog-post-body p,
   .blog-detail-content,
   .blog-detail-excerpt {
     font-size: 15px;
+  }
+
+  .blog-post-body p {
+    font-size: 12px;
+  }
+
+  .blog-post-image img {
+    min-height: 112px;
   }
 }

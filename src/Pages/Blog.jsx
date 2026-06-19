@@ -224,7 +224,7 @@ export default function Blog() {
   const openPost = (post) => {
     if (post.slug) {
       navigate(`/blog/${post.slug}`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "auto" });
     }
   };
 
@@ -256,7 +256,7 @@ export default function Blog() {
 
   const closePost = () => {
     navigate("/blog");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
   const handleCategoryChange = (category) => {
