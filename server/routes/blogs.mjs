@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Blog } from "../models/Blog.mjs";
 import { requireAdmin } from "../middleware/adminAuth.mjs";
-import { queueBlogNewsletter } from "../jobs/newsletterQueue.mjs";
+import { publishDueScheduledBlogs, queueBlogNewsletter } from "../jobs/newsletterQueue.mjs";
 import { slugify } from "../utils/slugify.mjs";
 
 export const blogRouter = Router();
@@ -108,6 +108,8 @@ async function sendBlogThumbnail(req, res, next) {
 
 blogRouter.get("/", async (req, res, next) => {
   try {
+    await publishDueScheduledBlogs();
+
     const { tag, limit = 20, page = 1 } = req.query;
     const query = { status: "published" };
 
@@ -140,6 +142,8 @@ blogRouter.get("/", async (req, res, next) => {
 
 blogRouter.get("/admin/all", requireAdmin, async (req, res, next) => {
   try {
+    await publishDueScheduledBlogs();
+
     const blogs = await Blog.find()
       .sort({ createdAt: -1 })
       .limit(100)

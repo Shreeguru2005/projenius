@@ -260,6 +260,9 @@ export default function App() {
     setForm((current) => ({ ...current, thumbnailUrl: image }));
   };
 
+  const getScheduledAtPayload = () =>
+    form.status === "scheduled" ? new Date(form.scheduledAt).toISOString() : null;
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -297,7 +300,7 @@ export default function App() {
           content: form.content,
           thumbnailUrl: form.thumbnailUrl,
           galleryImages: form.galleryImages,
-          scheduledAt: form.status === "scheduled" ? form.scheduledAt : null,
+          scheduledAt: getScheduledAtPayload(),
           author: {
             name: form.authorName,
             role: form.authorRole,
