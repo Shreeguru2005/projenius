@@ -1,7 +1,14 @@
 const RESEND_API_URL = "https://api.resend.com/emails";
+const DEFAULT_SITE_URL = "https://projenius-rho.vercel.app";
 
 function getSiteUrl() {
-  return process.env.PUBLIC_SITE_URL || "https://projenius.in";
+  const configuredUrl = (process.env.PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "");
+
+  if (configuredUrl.includes("admin-panel")) {
+    return DEFAULT_SITE_URL;
+  }
+
+  return configuredUrl;
 }
 
 function getFromAddress() {
@@ -9,7 +16,7 @@ function getFromAddress() {
 }
 
 export function createBlogEmail(blog) {
-  const url = `${getSiteUrl().replace(/\/$/, "")}/blog/${blog.slug}`;
+  const url = `${getSiteUrl()}/blog`;
   const category = blog.tags?.[0] || "Technology";
   const thumbnail = blog.thumbnailUrl
     ? `
