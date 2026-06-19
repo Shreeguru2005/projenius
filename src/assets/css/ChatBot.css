@@ -273,21 +273,19 @@
     }
 
     .pj-chatbot-toggle-btn {
-        width: 58px;
-        height: 58px;
-        font-size: 24px;
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
     }
 
     .pj-chatbot-launcher {
-        right: 14px;
-        bottom: 20px;
-        gap: 8px;
+        right: 10px;
+        bottom: 14px;
+        gap: 6px;
     }
 
     .pj-chatbot-helper-bubble {
-        max-width: 150px;
-        font-size: 11px;
-        padding: 6px 10px;
+        display: none;
     }
 
     .pj-chatbot-helper-bubble::after {
