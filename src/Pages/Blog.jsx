@@ -360,10 +360,21 @@ export default function Blog() {
           )}
 
           {visiblePosts.map((post) => (
-            <article className="blog-post-card" key={post.title}>
+            <article
+              className="blog-post-card"
+              key={post.title}
+              onClick={() => openPost(post)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  openPost(post);
+                }
+              }}
+              role="link"
+              tabIndex={0}
+            >
               <button
                 className="blog-post-image"
-                onClick={() => openPost(post)}
                 type="button"
                 aria-label={post.title}
               >
@@ -373,7 +384,7 @@ export default function Blog() {
               <div className="blog-post-body">
                 <span className="blog-post-category">{post.category}</span>
                 <h2>
-                  <button onClick={() => openPost(post)} type="button">{post.title}</button>
+                  <button type="button">{post.title}</button>
                 </h2>
                 <p>{post.excerpt}</p>
 

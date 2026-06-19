@@ -264,6 +264,7 @@
   min-width: 0;
   border: 1px solid transparent;
   border-radius: 14px;
+  cursor: pointer;
   overflow: hidden;
   padding: 12px;
   position: relative;
@@ -312,6 +313,7 @@
 }
 
 .blog-post-card:hover,
+.blog-post-card:focus,
 .blog-post-card:focus-within {
   border-color: rgba(20, 184, 255, 0.34);
   box-shadow:
@@ -322,8 +324,10 @@
 }
 
 .blog-post-card:hover::before,
+.blog-post-card:focus::before,
 .blog-post-card:focus-within::before,
 .blog-post-card:hover::after,
+.blog-post-card:focus::after,
 .blog-post-card:focus-within::after,
 .blog-subscribe-benefits-grid article:hover::before,
 .blog-subscribe-benefits-grid article:focus-within::before,
