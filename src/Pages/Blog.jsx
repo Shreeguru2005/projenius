@@ -206,7 +206,7 @@ export default function Blog() {
   const selectedPostImages = selectedPost
     ? Array.from(new Set([selectedPost.image, ...(selectedPost.galleryImages || [])].filter(Boolean)))
     : [];
-  const gallerySlides = selectedPostImages.slice(1);
+  const gallerySlides = selectedPostImages;
   const relatedPosts = selectedPost
     ? [
         ...posts.filter(
@@ -385,7 +385,7 @@ export default function Blog() {
                     __html: selectedPost.content || `<p>${selectedPost.excerpt}</p>`,
                   }}
                 />
-                {gallerySlides.length > 0 && (
+                {gallerySlides.length > 1 && (
                   <div className="blog-detail-gallery" aria-label="Blog image gallery">
                     <div
                       className="blog-detail-gallery-track"
@@ -393,41 +393,37 @@ export default function Blog() {
                     >
                       {gallerySlides.map((image, index) => (
                         <figure key={`${image}-${index}`}>
-                          <img src={image} alt={`${selectedPost.title} gallery image ${index + 2}`} />
+                          <img src={image} alt={`${selectedPost.title} gallery image ${index + 1}`} />
                         </figure>
                       ))}
                     </div>
-                    {gallerySlides.length > 1 && (
-                      <>
+                    <button
+                      aria-label="Previous gallery image"
+                      className="blog-gallery-nav blog-gallery-nav-prev"
+                      onClick={showPreviousGalleryImage}
+                      type="button"
+                    >
+                      <i className="bi bi-chevron-left"></i>
+                    </button>
+                    <button
+                      aria-label="Next gallery image"
+                      className="blog-gallery-nav blog-gallery-nav-next"
+                      onClick={showNextGalleryImage}
+                      type="button"
+                    >
+                      <i className="bi bi-chevron-right"></i>
+                    </button>
+                    <div className="blog-gallery-dots" aria-label="Gallery image selector">
+                      {gallerySlides.map((image, index) => (
                         <button
-                          aria-label="Previous gallery image"
-                          className="blog-gallery-nav blog-gallery-nav-prev"
-                          onClick={showPreviousGalleryImage}
+                          aria-label={`Show gallery image ${index + 1}`}
+                          className={activeGalleryIndex === index ? "active" : ""}
+                          key={`${image}-dot-${index}`}
+                          onClick={() => setActiveGalleryIndex(index)}
                           type="button"
-                        >
-                          <i className="bi bi-chevron-left"></i>
-                        </button>
-                        <button
-                          aria-label="Next gallery image"
-                          className="blog-gallery-nav blog-gallery-nav-next"
-                          onClick={showNextGalleryImage}
-                          type="button"
-                        >
-                          <i className="bi bi-chevron-right"></i>
-                        </button>
-                        <div className="blog-gallery-dots" aria-label="Gallery image selector">
-                          {gallerySlides.map((image, index) => (
-                            <button
-                              aria-label={`Show gallery image ${index + 1}`}
-                              className={activeGalleryIndex === index ? "active" : ""}
-                              key={`${image}-dot-${index}`}
-                              onClick={() => setActiveGalleryIndex(index)}
-                              type="button"
-                            />
-                          ))}
-                        </div>
-                      </>
-                    )}
+                        />
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
