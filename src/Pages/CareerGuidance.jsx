@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from 'lenis';
-import ScrollStack, { ScrollStackItem } from '../Components/scrollstack';
+import ScrollStack, { ScrollStackItem } from '../Components/ScrollStack';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 import "../index.css";
@@ -16,42 +16,42 @@ const guidanceCards = [
   {
     title: "Career Roadmap Planning",
     icon: "bi bi-signpost-split",
-    image: "/images/cg-card-roadmap.jpg",
+    image: "/images/cg_card_roadmap.png",
     desc: "Walk away with a clear, step-by-step learning roadmap tailored to your skills and target role.",
     colorClass: "accent-blue",
   },
   {
     title: "Resume Building",
     icon: "bi bi-file-earmark-person",
-    image: "/images/cg-card-resume.jpg",
+    image: "/images/cg_card_resume.png",
     desc: "Transform your resume from generic to job-ready by highlighting exactly what recruiters want to see.",
     colorClass: "accent-amber",
   },
   {
     title: "Interview Preparation",
     icon: "bi bi-chat-square-text",
-    image: "/images/cg-card-interview.jpg",
+    image: "/images/cg_card_interview.png",
     desc: "Gain confidence with mock interviews, technical problem-solving, and HR round strategies.",
     colorClass: "accent-teal",
   },
   {
     title: "LinkedIn Optimization",
     icon: "bi bi-linkedin",
-    image: "/images/cg-card-linkedin.jpg",
+    image: "/images/cg_card_linkedin.png",
     desc: "Build a professional profile that ranks higher in recruiter searches and attracts the right connections.",
     colorClass: "accent-blue",
   },
   {
     title: "Project Portfolio Support",
     icon: "bi bi-kanban",
-    image: "/images/cg-card-portfolio.jpg",
+    image: "/images/cg_card_portfolio.png",
     desc: "Develop and showcase practical projects that prove your real-world problem-solving abilities.",
     colorClass: "accent-amber",
   },
   {
     title: "Placement Guidance",
     icon: "bi bi-briefcase",
-    image: "/images/cg-card-placement.jpg",
+    image: "/images/cg_card_placement.png",
     desc: "Navigate job applications, referrals, and negotiations with end-to-end placement support.",
     colorClass: "accent-teal",
   },
