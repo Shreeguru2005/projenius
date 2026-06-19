@@ -117,6 +117,7 @@ export default function Blog() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState("");
   const [newsletterPopup, setNewsletterPopup] = useState(null);
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
 
   const categories = [
     "Latest",
@@ -205,6 +206,7 @@ export default function Blog() {
   const selectedPostImages = selectedPost
     ? Array.from(new Set([selectedPost.image, ...(selectedPost.galleryImages || [])].filter(Boolean)))
     : [];
+  const gallerySlides = selectedPostImages.slice(1);
   const relatedPosts = selectedPost
     ? [
         ...posts.filter(
@@ -224,6 +226,32 @@ export default function Blog() {
       navigate(`/blog/${post.slug}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+  };
+
+  useEffect(() => {
+    setActiveGalleryIndex(0);
+  }, [slug]);
+
+  useEffect(() => {
+    if (gallerySlides.length <= 1) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveGalleryIndex((current) => (current + 1) % gallerySlides.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, [gallerySlides.length]);
+
+  const showPreviousGalleryImage = () => {
+    setActiveGalleryIndex((current) =>
+      current === 0 ? gallerySlides.length - 1 : current - 1,
+    );
+  };
+
+  const showNextGalleryImage = () => {
+    setActiveGalleryIndex((current) => (current + 1) % gallerySlides.length);
   };
 
   const closePost = () => {
@@ -357,13 +385,49 @@ export default function Blog() {
                     __html: selectedPost.content || `<p>${selectedPost.excerpt}</p>`,
                   }}
                 />
-                {selectedPostImages.length > 1 && (
+                {gallerySlides.length > 0 && (
                   <div className="blog-detail-gallery" aria-label="Blog image gallery">
-                    {selectedPostImages.slice(1).map((image, index) => (
-                      <figure key={`${image}-${index}`}>
-                        <img src={image} alt={`${selectedPost.title} gallery image ${index + 2}`} />
-                      </figure>
-                    ))}
+                    <div
+                      className="blog-detail-gallery-track"
+                      style={{ transform: `translateX(-${activeGalleryIndex * 100}%)` }}
+                    >
+                      {gallerySlides.map((image, index) => (
+                        <figure key={`${image}-${index}`}>
+                          <img src={image} alt={`${selectedPost.title} gallery image ${index + 2}`} />
+                        </figure>
+                      ))}
+                    </div>
+                    {gallerySlides.length > 1 && (
+                      <>
+                        <button
+                          aria-label="Previous gallery image"
+                          className="blog-gallery-nav blog-gallery-nav-prev"
+                          onClick={showPreviousGalleryImage}
+                          type="button"
+                        >
+                          <i className="bi bi-chevron-left"></i>
+                        </button>
+                        <button
+                          aria-label="Next gallery image"
+                          className="blog-gallery-nav blog-gallery-nav-next"
+                          onClick={showNextGalleryImage}
+                          type="button"
+                        >
+                          <i className="bi bi-chevron-right"></i>
+                        </button>
+                        <div className="blog-gallery-dots" aria-label="Gallery image selector">
+                          {gallerySlides.map((image, index) => (
+                            <button
+                              aria-label={`Show gallery image ${index + 1}`}
+                              className={activeGalleryIndex === index ? "active" : ""}
+                              key={`${image}-dot-${index}`}
+                              onClick={() => setActiveGalleryIndex(index)}
+                              type="button"
+                            />
+                          ))}
+                        </div>
+                      </>
+                    )}
                   </div>
                 )}
               </div>
