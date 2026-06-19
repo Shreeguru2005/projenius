@@ -202,6 +202,9 @@ export default function Blog() {
     safeCurrentPage * POSTS_PER_PAGE
   );
   const selectedPost = slug ? posts.find((post) => post.slug === slug) : null;
+  const selectedPostImages = selectedPost
+    ? Array.from(new Set([selectedPost.image, ...(selectedPost.galleryImages || [])].filter(Boolean)))
+    : [];
 
   const openPost = (post) => {
     if (post.slug) {
@@ -323,7 +326,7 @@ export default function Blog() {
                 <i className="bi bi-arrow-left"></i>
                 Back to blogs
               </button>
-              <img className="blog-detail-image" src={selectedPost.image} alt={selectedPost.title} />
+              <img className="blog-detail-image" src={selectedPostImages[0]} alt={selectedPost.title} />
               <div className="blog-detail-body">
                 <span>{selectedPost.category}</span>
                 <h2>{selectedPost.title}</h2>
@@ -341,6 +344,15 @@ export default function Blog() {
                     __html: selectedPost.content || `<p>${selectedPost.excerpt}</p>`,
                   }}
                 />
+                {selectedPostImages.length > 1 && (
+                  <div className="blog-detail-gallery" aria-label="Blog image gallery">
+                    {selectedPostImages.slice(1).map((image, index) => (
+                      <figure key={`${image}-${index}`}>
+                        <img src={image} alt={`${selectedPost.title} gallery image ${index + 2}`} />
+                      </figure>
+                    ))}
+                  </div>
+                )}
               </div>
             </article>
           )}
