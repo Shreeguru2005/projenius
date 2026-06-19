@@ -315,7 +315,7 @@ export default function Blog() {
   };
 
   return (
-    <section className="blog-page-section">
+    <section className={`blog-page-section ${selectedPost ? "blog-page-section-detail" : ""}`}>
       <div className="container blog-shell">
         <aside className="blog-index">
           <div className="blog-index-inner">
