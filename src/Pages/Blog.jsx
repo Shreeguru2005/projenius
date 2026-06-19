@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "../index.css";
 import "../assets/css/Blog-page.css";
 
@@ -11,6 +12,9 @@ const FALLBACK_POSTS = [
       "Practical ways companies are using automation, intelligent workflows, and connected data to improve operations.",
     author: "ProJenius Team",
     role: "Technology Insights",
+    slug: "how-ai-is-transforming-modern-businesses",
+    content:
+      "<p>AI is helping modern teams automate repetitive work, understand customer data, and create faster decision-making systems.</p>",
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop",
   },
@@ -22,6 +26,9 @@ const FALLBACK_POSTS = [
       "A look at how our team approaches client problems, project planning, and long-term digital transformation.",
     author: "ProJenius Team",
     role: "Company Updates",
+    slug: "inside-projenius-building-practical-technology-solutions",
+    content:
+      "<p>At ProJenius, we focus on practical technology solutions that solve real business problems through discovery, design, development, and continuous improvement.</p>",
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop",
   },
@@ -33,6 +40,9 @@ const FALLBACK_POSTS = [
       "A business-focused view of connected devices, edge analytics, automation, and smarter infrastructure.",
     author: "Engineering Team",
     role: "IoT Research",
+    slug: "top-iot-innovations-in-2026",
+    content:
+      "<p>IoT continues to move from simple device connectivity to intelligent systems that monitor, analyze, and act closer to the source of data.</p>",
     image:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
   },
@@ -44,6 +54,9 @@ const FALLBACK_POSTS = [
       "Why scalable websites, dashboards, and applications need a thoughtful balance of speed, UX, and maintainability.",
     author: "Development Team",
     role: "Web Engineering",
+    slug: "how-modern-web-development-supports-business-growth",
+    content:
+      "<p>Modern web development is about creating reliable digital systems that help teams work faster and customers act with confidence.</p>",
     image:
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop",
   },
@@ -55,6 +68,9 @@ const FALLBACK_POSTS = [
       "How clear product experiences help startups build trust, reduce friction, and communicate value faster.",
     author: "Design Team",
     role: "Product Experience",
+    slug: "why-ui-ux-design-matters-for-startups",
+    content:
+      "<p>Good UI/UX helps startups explain their product clearly, reduce confusion, and build trust during the earliest stages of growth.</p>",
     image:
       "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?q=80&w=1200&auto=format&fit=crop",
   },
@@ -66,6 +82,9 @@ const FALLBACK_POSTS = [
       "A practical stack overview for founders planning scalable products, lean teams, and faster market validation.",
     author: "Strategy Team",
     role: "Business Advisory",
+    slug: "best-technologies-for-future-startups",
+    content:
+      "<p>Startups should choose technologies that support speed, stability, and future scale based on their goals, team skills, and customer needs.</p>",
     image:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
   },
@@ -77,6 +96,9 @@ const FALLBACK_POSTS = [
       "A practical approach to messaging, content, lead generation, and trust-building for technology companies.",
     author: "Growth Team",
     role: "Digital Marketing",
+    slug: "digital-marketing-priorities-for-growing-technology-brands",
+    content:
+      "<p>Technology brands need clear positioning, consistent content, and measurable campaigns that help prospects understand why the solution matters.</p>",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
   },
@@ -85,6 +107,8 @@ const FALLBACK_POSTS = [
 export default function Blog() {
   const POSTS_PER_PAGE = 4;
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+  const navigate = useNavigate();
+  const { slug } = useParams();
   const [activeCategory, setActiveCategory] = useState("Latest");
   const [currentPage, setCurrentPage] = useState(1);
   const [apiPosts, setApiPosts] = useState([]);
@@ -135,6 +159,7 @@ export default function Blog() {
             image: blog.thumbnailUrl,
             galleryImages: blog.galleryImages || [],
             slug: blog.slug,
+            content: blog.content || "",
           })),
         );
       } catch (error) {
@@ -176,6 +201,19 @@ export default function Blog() {
     (safeCurrentPage - 1) * POSTS_PER_PAGE,
     safeCurrentPage * POSTS_PER_PAGE
   );
+  const selectedPost = slug ? posts.find((post) => post.slug === slug) : null;
+
+  const openPost = (post) => {
+    if (post.slug) {
+      navigate(`/blog/${post.slug}`);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const closePost = () => {
+    navigate("/blog");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
@@ -272,7 +310,43 @@ export default function Blog() {
           </div>
         </aside>
 
-        <main className="blog-feed">
+        <main className={selectedPost ? "blog-detail-feed" : "blog-feed"}>
+          {slug && !selectedPost && !isLoadingBlogs && (
+            <div className="blog-status" role="status">
+              This article is not available yet.
+            </div>
+          )}
+
+          {selectedPost && (
+            <article className="blog-detail-article">
+              <button className="blog-detail-back" onClick={closePost} type="button">
+                <i className="bi bi-arrow-left"></i>
+                Back to blogs
+              </button>
+              <img className="blog-detail-image" src={selectedPost.image} alt={selectedPost.title} />
+              <div className="blog-detail-body">
+                <span>{selectedPost.category}</span>
+                <h2>{selectedPost.title}</h2>
+                <p className="blog-detail-excerpt">{selectedPost.excerpt}</p>
+                <div className="blog-author">
+                  <span>{selectedPost.author.charAt(0)}</span>
+                  <div>
+                    <strong>{selectedPost.author}</strong>
+                    <small>{selectedPost.role}</small>
+                  </div>
+                </div>
+                <div
+                  className="blog-detail-content"
+                  dangerouslySetInnerHTML={{
+                    __html: selectedPost.content || `<p>${selectedPost.excerpt}</p>`,
+                  }}
+                />
+              </div>
+            </article>
+          )}
+
+          {!selectedPost && (
+            <>
           {isLoadingBlogs && (
             <div className="blog-status" role="status">
               Loading latest articles...
@@ -287,14 +361,19 @@ export default function Blog() {
 
           {visiblePosts.map((post) => (
             <article className="blog-post-card" key={post.title}>
-              <button className="blog-post-image" type="button" aria-label={post.title}>
+              <button
+                className="blog-post-image"
+                onClick={() => openPost(post)}
+                type="button"
+                aria-label={post.title}
+              >
                 <img src={post.image} alt={post.title} />
               </button>
 
               <div className="blog-post-body">
                 <span className="blog-post-category">{post.category}</span>
                 <h2>
-                  <button type="button">{post.title}</button>
+                  <button onClick={() => openPost(post)} type="button">{post.title}</button>
                 </h2>
                 <p>{post.excerpt}</p>
 
@@ -329,6 +408,8 @@ export default function Blog() {
               <i className="bi bi-arrow-right"></i>
             </button>
           </div>
+            </>
+          )}
 
         </main>
       </div>

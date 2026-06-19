@@ -161,6 +161,7 @@ export default function App() {
           <Route path="/career-guidance" element={<PageTransition><CareerGuidance /></PageTransition>} />
           <Route path="/startup" element={<PageTransition><Startup /></PageTransition>} />
           <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+          <Route path="/blog/:slug" element={<PageTransition><Blog /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         </Routes>
       </AnimatePresence>
