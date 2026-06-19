@@ -1,3 +1,11 @@
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "12mb",
+    },
+  },
+};
+
 export default async function handler(req, res) {
   if (!["GET", "POST", "PUT", "DELETE"].includes(req.method)) {
     res.setHeader("Allow", "GET,POST,PUT,DELETE");

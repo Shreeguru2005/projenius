@@ -14,9 +14,11 @@ const initialForm = {
 };
 
 const MAX_BLOG_IMAGES = 8;
-const MAX_IMAGE_SIZE_MB = 0.9;
+const MAX_IMAGE_SIZE_MB = 6;
+const MAX_STORED_IMAGE_SIZE_MB = 1.2;
+const MAX_IMAGE_DIMENSION = 1600;
 
-function readImageFile(file) {
+function readImageFile(file, quality = 0.82) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
@@ -24,6 +26,47 @@ function readImageFile(file) {
     reader.onerror = () => reject(new Error(`Unable to read ${file.name}.`));
     reader.readAsDataURL(file);
   });
+}
+
+function loadImage(dataUrl) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error("Unable to process selected image."));
+    image.src = dataUrl;
+  });
+}
+
+async function compressImageFile(file) {
+  const originalDataUrl = await readImageFile(file);
+
+  if (!file.type.startsWith("image/")) {
+    return originalDataUrl;
+  }
+
+  const image = await loadImage(originalDataUrl);
+  const scale = Math.min(
+    1,
+    MAX_IMAGE_DIMENSION / Math.max(image.naturalWidth || image.width, image.naturalHeight || image.height),
+  );
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.max(1, Math.round((image.naturalWidth || image.width) * scale));
+  canvas.height = Math.max(1, Math.round((image.naturalHeight || image.height) * scale));
+
+  const context = canvas.getContext("2d");
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+  let quality = 0.86;
+  let compressed = canvas.toDataURL("image/jpeg", quality);
+  const maxLength = MAX_STORED_IMAGE_SIZE_MB * 1024 * 1024 * 1.37;
+
+  while (compressed.length > maxLength && quality > 0.55) {
+    quality -= 0.08;
+    compressed = canvas.toDataURL("image/jpeg", quality);
+  }
+
+  return compressed;
 }
 
 function toDatetimeLocalValue(value) {
@@ -178,7 +221,7 @@ export default function App() {
         setMessage(`Only image files under ${MAX_IMAGE_SIZE_MB}MB each were added.`);
       }
 
-      const uploadedImages = await Promise.all(validFiles.map(readImageFile));
+      const uploadedImages = await Promise.all(validFiles.map(compressImageFile));
 
       setForm((current) => {
         const nextImages = [...current.galleryImages, ...uploadedImages];
@@ -345,7 +388,9 @@ export default function App() {
                 type="file"
               />
               <strong>Choose Images</strong>
-              <small>PNG, JPG, WebP. Max {MAX_IMAGE_SIZE_MB}MB each.</small>
+              <small>
+                PNG, JPG, WebP. Max {MAX_IMAGE_SIZE_MB}MB each. Large images are optimized automatically.
+              </small>
             </label>
 
             {form.galleryImages.length > 0 && (
