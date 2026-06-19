@@ -367,7 +367,49 @@ export default function Blog() {
                 <i className="bi bi-arrow-left"></i>
                 Back to blogs
               </button>
-              <img className="blog-detail-image" src={selectedPostImages[0]} alt={selectedPost.title} />
+              {gallerySlides.length > 1 ? (
+                <div className="blog-detail-gallery blog-detail-gallery-hero" aria-label="Blog image gallery">
+                  <div
+                    className="blog-detail-gallery-track"
+                    style={{ transform: `translateX(-${activeGalleryIndex * 100}%)` }}
+                  >
+                    {gallerySlides.map((image, index) => (
+                      <figure key={`${image}-${index}`}>
+                        <img src={image} alt={`${selectedPost.title} gallery image ${index + 1}`} />
+                      </figure>
+                    ))}
+                  </div>
+                  <button
+                    aria-label="Previous gallery image"
+                    className="blog-gallery-nav blog-gallery-nav-prev"
+                    onClick={showPreviousGalleryImage}
+                    type="button"
+                  >
+                    <i className="bi bi-chevron-left"></i>
+                  </button>
+                  <button
+                    aria-label="Next gallery image"
+                    className="blog-gallery-nav blog-gallery-nav-next"
+                    onClick={showNextGalleryImage}
+                    type="button"
+                  >
+                    <i className="bi bi-chevron-right"></i>
+                  </button>
+                  <div className="blog-gallery-dots" aria-label="Gallery image selector">
+                    {gallerySlides.map((image, index) => (
+                      <button
+                        aria-label={`Show gallery image ${index + 1}`}
+                        className={activeGalleryIndex === index ? "active" : ""}
+                        key={`${image}-dot-${index}`}
+                        onClick={() => setActiveGalleryIndex(index)}
+                        type="button"
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <img className="blog-detail-image" src={selectedPostImages[0]} alt={selectedPost.title} />
+              )}
               <div className="blog-detail-body">
                 <span>{selectedPost.category}</span>
                 <h2>{selectedPost.title}</h2>
@@ -385,47 +427,6 @@ export default function Blog() {
                     __html: selectedPost.content || `<p>${selectedPost.excerpt}</p>`,
                   }}
                 />
-                {gallerySlides.length > 1 && (
-                  <div className="blog-detail-gallery" aria-label="Blog image gallery">
-                    <div
-                      className="blog-detail-gallery-track"
-                      style={{ transform: `translateX(-${activeGalleryIndex * 100}%)` }}
-                    >
-                      {gallerySlides.map((image, index) => (
-                        <figure key={`${image}-${index}`}>
-                          <img src={image} alt={`${selectedPost.title} gallery image ${index + 1}`} />
-                        </figure>
-                      ))}
-                    </div>
-                    <button
-                      aria-label="Previous gallery image"
-                      className="blog-gallery-nav blog-gallery-nav-prev"
-                      onClick={showPreviousGalleryImage}
-                      type="button"
-                    >
-                      <i className="bi bi-chevron-left"></i>
-                    </button>
-                    <button
-                      aria-label="Next gallery image"
-                      className="blog-gallery-nav blog-gallery-nav-next"
-                      onClick={showNextGalleryImage}
-                      type="button"
-                    >
-                      <i className="bi bi-chevron-right"></i>
-                    </button>
-                    <div className="blog-gallery-dots" aria-label="Gallery image selector">
-                      {gallerySlides.map((image, index) => (
-                        <button
-                          aria-label={`Show gallery image ${index + 1}`}
-                          className={activeGalleryIndex === index ? "active" : ""}
-                          key={`${image}-dot-${index}`}
-                          onClick={() => setActiveGalleryIndex(index)}
-                          type="button"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </article>
           )}
