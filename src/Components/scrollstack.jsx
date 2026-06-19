@@ -24,6 +24,7 @@ const ScrollStack = ({
   const scrollerRef = useRef(null);
   const stackCompletedRef = useRef(false);
   const animationFrameRef = useRef(null);
+  const scrollFrameRef = useRef(null);
   const lenisRef = useRef(null);
   const cardsRef = useRef([]);
   const lastTransformsRef = useRef(new Map());
@@ -180,7 +181,12 @@ const ScrollStack = ({
   ]);
 
   const handleScroll = useCallback(() => {
-    updateCardTransforms();
+    if (scrollFrameRef.current) return;
+
+    scrollFrameRef.current = requestAnimationFrame(() => {
+      scrollFrameRef.current = null;
+      updateCardTransforms();
+    });
   }, [updateCardTransforms]);
 
   const setupLenis = useCallback(() => {
@@ -257,6 +263,10 @@ const ScrollStack = ({
       }
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
+      }
+      if (scrollFrameRef.current) {
+        cancelAnimationFrame(scrollFrameRef.current);
+        scrollFrameRef.current = null;
       }
       if (lenisRef.current) {
         lenisRef.current.destroy();

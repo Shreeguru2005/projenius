@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollStack, { ScrollStackItem } from "../Components/ScrollStack";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 import "../index.css";
@@ -336,25 +337,53 @@ export default function CareerGuidance() {
             <h2 id="title">Everything You Need to Get Hired</h2>
           </div>
 
-          <div className="row g-4 cg-cards-grid mt-4">
-            {guidanceCards.map((card) => (
-              <div className="col-lg-4 col-md-6 col-12" key={card.title}>
-                <div className="cg-box cg-box-layered">
-                  <div className="cg-card-image-header">
+          {isMobile || shouldReduceMotion ? (
+            <div className="row g-4 cg-cards-grid mt-4">
+              {guidanceCards.map((card) => (
+                <div className="col-12" key={card.title}>
+                  <div className="cg-box cg-box-layered">
+                    <div className="cg-card-image-header">
+                      <img src={card.image} alt={card.title} className="cg-card-image" loading="lazy" />
+                      <div className={`cg-card-overlay ${card.colorClass}-overlay`}></div>
+                    </div>
+                    <div className={`cg-icon-circle ${card.colorClass}`}>
+                      <i className={card.icon}></i>
+                    </div>
+                    <div className="cg-box-content">
+                      <h4 className="cg-box-title text-center">{card.title}</h4>
+                      <p className="cg-box-desc text-center">{card.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ScrollStack
+              useWindowScroll={true}
+              itemDistance={110}
+              itemScale={0.025}
+              itemStackDistance={22}
+              baseScale={0.9}
+              rotationAmount={0.4}
+              blurAmount={0}
+            >
+              {guidanceCards.map((card) => (
+                <ScrollStackItem key={card.title} itemClassName={`cg-stack-card cg-stack-${card.colorClass}`}>
+                  <div className="cg-card-image-header cg-stack-image-header">
                     <img src={card.image} alt={card.title} className="cg-card-image" loading="lazy" />
                     <div className={`cg-card-overlay ${card.colorClass}-overlay`}></div>
                   </div>
-                  <div className={`cg-icon-circle ${card.colorClass}`}>
+                  <div className={`cg-icon-circle ${card.colorClass} cg-stack-icon`}>
                     <i className={card.icon}></i>
                   </div>
-                  <div className="cg-box-content">
+                  <div className="cg-box-content cg-stack-content">
                     <h4 className="cg-box-title text-center">{card.title}</h4>
                     <p className="cg-box-desc text-center">{card.desc}</p>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </ScrollStackItem>
+              ))}
+            </ScrollStack>
+          )}
         </div>
       </section>
 
