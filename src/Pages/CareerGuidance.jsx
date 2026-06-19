@@ -3,8 +3,6 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from 'lenis';
-import ScrollStack, { ScrollStackItem } from '../Components/ScrollStack';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 import "../index.css";
@@ -16,42 +14,42 @@ const guidanceCards = [
   {
     title: "Career Roadmap Planning",
     icon: "bi bi-signpost-split",
-    image: "/images/cg_card_roadmap.png",
+    image: "/images/cg-card-roadmap.jpg",
     desc: "Walk away with a clear, step-by-step learning roadmap tailored to your skills and target role.",
     colorClass: "accent-blue",
   },
   {
     title: "Resume Building",
     icon: "bi bi-file-earmark-person",
-    image: "/images/cg_card_resume.png",
+    image: "/images/cg-card-resume.jpg",
     desc: "Transform your resume from generic to job-ready by highlighting exactly what recruiters want to see.",
     colorClass: "accent-amber",
   },
   {
     title: "Interview Preparation",
     icon: "bi bi-chat-square-text",
-    image: "/images/cg_card_interview.png",
+    image: "/images/cg-card-interview.jpg",
     desc: "Gain confidence with mock interviews, technical problem-solving, and HR round strategies.",
     colorClass: "accent-teal",
   },
   {
     title: "LinkedIn Optimization",
     icon: "bi bi-linkedin",
-    image: "/images/cg_card_linkedin.png",
+    image: "/images/cg-card-linkedin.jpg",
     desc: "Build a professional profile that ranks higher in recruiter searches and attracts the right connections.",
     colorClass: "accent-blue",
   },
   {
     title: "Project Portfolio Support",
     icon: "bi bi-kanban",
-    image: "/images/cg_card_portfolio.png",
+    image: "/images/cg-card-portfolio.jpg",
     desc: "Develop and showcase practical projects that prove your real-world problem-solving abilities.",
     colorClass: "accent-amber",
   },
   {
     title: "Placement Guidance",
     icon: "bi bi-briefcase",
-    image: "/images/cg_card_placement.png",
+    image: "/images/cg-card-placement.jpg",
     desc: "Navigate job applications, referrals, and negotiations with end-to-end placement support.",
     colorClass: "accent-teal",
   },
@@ -156,29 +154,6 @@ export default function CareerGuidance() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  useEffect(() => {
-    if (shouldReduceMotion) return;
-    
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
-
-    lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-    
-    gsap.ticker.lagSmoothing(0);
-
-    return () => {
-      gsap.ticker.remove((time) => lenis.raf(time * 1000));
-      lenis.destroy();
-    };
-  }, [shouldReduceMotion]);
 
   useGSAP(() => {
     if (shouldReduceMotion) return;
@@ -361,51 +336,25 @@ export default function CareerGuidance() {
             <h2 id="title">Everything You Need to Get Hired</h2>
           </div>
 
-          {isMobile || shouldReduceMotion ? (
-            <div className="row g-4 cg-cards-grid mt-4">
-              {guidanceCards.map((card, index) => (
-                <div className="col-12" key={card.title}>
-                  <div className="cg-box cg-box-layered">
-                    <div className="cg-card-image-header">
-                      <img src={card.image} alt={card.title} className="cg-card-image" loading="lazy" />
-                      <div className={`cg-card-overlay ${card.colorClass}-overlay`}></div>
-                    </div>
-                    <div className={`cg-icon-circle ${card.colorClass}`}>
-                      <i className={card.icon}></i>
-                    </div>
-                    <div className="cg-box-content">
-                      <h4 className="cg-box-title text-center">{card.title}</h4>
-                      <p className="cg-box-desc text-center">{card.desc}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <ScrollStack
-              useWindowScroll={true}
-              itemDistance={150}
-              itemScale={0.04}
-              rotationAmount={1.5}
-              blurAmount={1.5}
-            >
-              {guidanceCards.map((card, index) => (
-                <ScrollStackItem key={card.title} itemClassName={`cg-stack-card cg-stack-${card.colorClass}`}>
-                  <div className="cg-card-image-header cg-stack-image-header">
+          <div className="row g-4 cg-cards-grid mt-4">
+            {guidanceCards.map((card) => (
+              <div className="col-lg-4 col-md-6 col-12" key={card.title}>
+                <div className="cg-box cg-box-layered">
+                  <div className="cg-card-image-header">
                     <img src={card.image} alt={card.title} className="cg-card-image" loading="lazy" />
                     <div className={`cg-card-overlay ${card.colorClass}-overlay`}></div>
                   </div>
-                  <div className={`cg-icon-circle ${card.colorClass} cg-stack-icon`}>
+                  <div className={`cg-icon-circle ${card.colorClass}`}>
                     <i className={card.icon}></i>
                   </div>
-                  <div className="cg-box-content cg-stack-content">
+                  <div className="cg-box-content">
                     <h4 className="cg-box-title text-center">{card.title}</h4>
                     <p className="cg-box-desc text-center">{card.desc}</p>
                   </div>
-                </ScrollStackItem>
-              ))}
-            </ScrollStack>
-          )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
