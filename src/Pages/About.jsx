@@ -307,7 +307,12 @@ export default function About() {
             <span id="sub-heading">Why Choose us?</span>
             <h2 className="section-title" id="title">Why Projenius Stands Out in Innovation</h2>
             <p className="section-desc">We combine innovation, technology, and practical expertise to deliver reliable solutions, quality services, and impactful learning experiences for everyone.</p>
-            <div className="why-img-slider" aria-label="Projenius company achievements">
+            <div
+  className="why-img-slider"
+  aria-label="Projenius company achievements"
+  data-aos="zoom-in"
+  data-aos-duration="1000"
+>
               <img
                 src="/images/iot-course.webp"
                 alt="Projenius IoT course"
@@ -325,7 +330,11 @@ export default function About() {
             </div>
           </div>
           <div className="col-lg-6 col-12 why-right">
-            <div className="icon-box">
+            <div
+  className="icon-box"
+  data-aos="fade-left"
+  data-aos-delay="100"
+>
               <div className="row">
                 <div className="col-3 col-sm-2">
                   <div className="icon">
@@ -338,7 +347,11 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="icon-box mt-3">
+            <div
+  className="icon-box mt-3"
+  data-aos="fade-left"
+  data-aos-delay="300"
+>
               <div className="row">
                 <div className="col-3 col-sm-2">
                   <div className="icon">

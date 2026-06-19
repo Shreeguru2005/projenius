@@ -329,6 +329,29 @@
     animation-delay: -4s;
 }
 
+.icon-box{
+    transition: all 0.4s ease;
+}
+
+.icon-box:hover{
+    transform: translateX(10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.icon{
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon{
+    0%,100%{
+        transform: translateY(0);
+    }
+
+    50%{
+        transform: translateY(-8px);
+    }
+}
+
 @keyframes principleOrbitSpin {
     from {
         transform: rotate(0deg);

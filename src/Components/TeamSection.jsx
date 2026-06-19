@@ -11,7 +11,7 @@ const teamMembers = [
   {
     image: "images/team-member-1.webp",
     name: "Karthick Ganesh",
-    position: "Founder & COO",
+    position: "Founder & CEO",
     bio: "A passionate leader focused on empowering the next generation of innovators with a strong vision for academic and practical excellence.",
     accent: "lead",
     socials: ["facebook", "twitter-x", "linkedin", "instagram"],
@@ -19,7 +19,7 @@ const teamMembers = [
   {
     image: "images/team-member-2.webp",
     name: "Harshini",
-    position: "CEO & Co-Founder",
+    position: "CTO & Co-Founder",
     bio: "A visionary mentor promoting entrepreneurship and innovation, supporting students from exploration to impactful execution.",
     accent: "core",
     socials: ["facebook", "twitter-x", "linkedin", "instagram"],
@@ -27,8 +27,8 @@ const teamMembers = [
   {
     image: "images/team-member-3.webp",
     name: "Brian",
-    position: "Details coming soon",
-    bio: "",
+    position: "COO & Co-Founder",
+    bio: "A visionary mentor promoting entrepreneurship and innovation, supporting students from exploration to impactful execution.",
     accent: "placeholder",
     socials: ["facebook", "twitter-x", "linkedin", "instagram"],
   },
@@ -102,6 +102,11 @@ export default function TeamSection() {
             <div className="team-card-body">
               <h3 className="team-member-name">{teamMembers[2].name}</h3>
               <p className="team-member-role">{teamMembers[2].position}</p>
+              {teamMembers[2].bio && (
+                <p className="team-member-bio">
+                    {teamMembers[2].bio}
+                </p>
+  )}
             </div>
 
             <div className="team-card-photo">
