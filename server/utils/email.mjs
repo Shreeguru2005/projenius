@@ -44,7 +44,7 @@ export function createBlogEmail(blog) {
   const description = escapeHtml(blog.description);
   const thumbnailUrl =
     getEmailImageUrl(blog.thumbnailUrl) ||
-    (blog._id ? `${siteUrl}/api/blogs/${blog._id}/thumbnail` : `${siteUrl}/images/projenius-banner.webp`);
+    (blog._id ? `${siteUrl}/api/blogs/${blog._id}/thumbnail.jpg` : `${siteUrl}/images/projenius-banner.webp`);
   const thumbnail = thumbnailUrl
     ? `
       <img

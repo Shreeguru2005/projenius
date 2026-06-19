@@ -76,6 +76,36 @@ function normalizePublication({ status = "published", scheduledAt }) {
   };
 }
 
+async function sendBlogThumbnail(req, res, next) {
+  try {
+    const blog = await Blog.findById(req.params.id).select("thumbnailUrl").lean();
+
+    if (!blog?.thumbnailUrl) {
+      res.status(404).json({ error: "Blog image not found." });
+      return;
+    }
+
+    if (/^https?:\/\//i.test(blog.thumbnailUrl)) {
+      res.redirect(302, blog.thumbnailUrl);
+      return;
+    }
+
+    const dataImage = parseDataImage(blog.thumbnailUrl);
+
+    if (!dataImage) {
+      res.status(404).json({ error: "Blog image is not available as a public image." });
+      return;
+    }
+
+    res.setHeader("Content-Type", dataImage.contentType);
+    res.setHeader("Content-Disposition", `inline; filename="blog-thumbnail.${dataImage.contentType.split("/")[1]}"`);
+    res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+    res.send(dataImage.buffer);
+  } catch (error) {
+    next(error);
+  }
+}
+
 blogRouter.get("/", async (req, res, next) => {
   try {
     const { tag, limit = 20, page = 1 } = req.query;
@@ -121,34 +151,8 @@ blogRouter.get("/admin/all", requireAdmin, async (req, res, next) => {
   }
 });
 
-blogRouter.get("/:id/thumbnail", async (req, res, next) => {
-  try {
-    const blog = await Blog.findById(req.params.id).select("thumbnailUrl").lean();
-
-    if (!blog?.thumbnailUrl) {
-      res.status(404).json({ error: "Blog image not found." });
-      return;
-    }
-
-    if (/^https?:\/\//i.test(blog.thumbnailUrl)) {
-      res.redirect(302, blog.thumbnailUrl);
-      return;
-    }
-
-    const dataImage = parseDataImage(blog.thumbnailUrl);
-
-    if (!dataImage) {
-      res.status(404).json({ error: "Blog image is not available as a public image." });
-      return;
-    }
-
-    res.setHeader("Content-Type", dataImage.contentType);
-    res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-    res.send(dataImage.buffer);
-  } catch (error) {
-    next(error);
-  }
-});
+blogRouter.get("/:id/thumbnail", sendBlogThumbnail);
+blogRouter.get("/:id/thumbnail.jpg", sendBlogThumbnail);
 
 blogRouter.get("/:slug", async (req, res, next) => {
   try {
